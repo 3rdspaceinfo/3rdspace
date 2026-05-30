@@ -11,47 +11,47 @@
             --primary: #000000;
             --secondary: #52525b;
             --border: #e4e4e7;
-            --radius: 16px;
+            --radius: 12px;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
         body { background-color: var(--bg); color: var(--primary); padding-bottom: 95px; -webkit-font-smoothing: antialiased; }
         
-        /* Tech Header Layout */
-        .hero { background: var(--surface); padding: 2.2rem 1.2rem 1.4rem; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+        /* Pure Utility Header */
+        .hero { background: var(--surface); padding: 2rem 1.2rem 1rem; border-bottom: 1px solid var(--border); }
         .hero h1 { font-size: 1.8rem; font-weight: 800; margin-bottom: 0.4rem; letter-spacing: -0.8px; color: var(--primary); }
-        .hero p { color: var(--secondary); font-size: 0.88rem; margin-bottom: 1.2rem; line-height: 1.45; letter-spacing: -0.1px; }
+        .hero p { color: var(--secondary); font-size: 0.88rem; line-height: 1.45; letter-spacing: -0.1px; }
         
-        /* Search Bar Engine */
-        .search-bar { display: flex; align-items: center; background: var(--bg); border-radius: 12px; padding: 0.8rem 1rem; border: 1px solid var(--border); }
-        .search-bar input { border: none; background: transparent; width: 100%; font-size: 0.95rem; outline: none; margin-left: 0.5rem; color: var(--primary); }
-        .search-icon-svg { color: var(--secondary); display: flex; align-items: center; }
+        /* Checkbox Filter Dashboard Layout */
+        .filter-container { background: var(--surface); padding: 1rem 1.2rem 1.2rem; border-bottom: 1px solid var(--border); display: flex; flex-direction: column; gap: 1rem; }
+        .filter-group { display: flex; flex-direction: column; gap: 0.5rem; }
+        .filter-title { font-size: 0.78rem; font-weight: 800; color: var(--secondary); text-transform: uppercase; letter-spacing: 0.8px; border-left: 3px solid var(--primary); padding-left: 6px; }
+        .checkbox-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.4rem; }
+        .checkbox-label { display: flex; align-items: center; font-size: 0.85rem; font-weight: 600; cursor: pointer; color: var(--primary); user-select: none; }
+        .checkbox-label input { margin-right: 0.5rem; accent-color: var(--primary); width: 16px; height: 16px; cursor: pointer; }
+        
+        /* Status Bar Counter */
+        .status-bar { padding: 0.6rem 1.2rem; background: var(--bg); display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); }
+        .counter-text { font-size: 0.8rem; font-weight: 700; color: var(--secondary); }
+        .btn-reset { background: transparent; border: none; font-size: 0.8rem; font-weight: 700; color: var(--primary); text-decoration: underline; cursor: pointer; }
 
-        /* District Selector Chips */
-        .chip-scroll { display: flex; overflow-x: auto; gap: 0.5rem; padding: 1rem 1.2rem; background: var(--surface); border-bottom: 1px solid var(--border); -webkit-overflow-scrolling: touch; }
-        .chip-scroll::-webkit-scrollbar { display: none; }
-        .chip { padding: 0.5rem 1rem; background: var(--bg); border: 1px solid var(--border); border-radius: 20px; font-size: 0.85rem; font-weight: 600; color: var(--secondary); white-space: nowrap; cursor: pointer; transition: all 0.15s ease; }
-        .chip.active { background: var(--primary); color: white; border-color: var(--primary); }
+        /* Pure Text Utility Cards Feed */
+        .feed { padding: 1rem 1.2rem; display: flex; flex-direction: column; gap: 1rem; }
+        .card { background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border); padding: 1.2rem; display: flex; flex-direction: column; gap: 0.6rem; }
+        .card-header-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; }
+        .badge { background: var(--primary); color: white; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.7rem; font-weight: 700; white-space: nowrap; text-transform: uppercase; }
+        .card-title { font-size: 1.05rem; font-weight: 700; line-height: 1.35; color: var(--primary); flex-grow: 1; }
+        .card-address { font-size: 0.75rem; color: var(--secondary); line-height: 1.3; margin-top: -0.2rem; }
+        .amenities { display: flex; flex-direction: column; gap: 0.35rem; margin: 0.2rem 0; }
+        .amenity-row { display: flex; align-items: center; font-size: 0.8rem; font-weight: 600; color: var(--secondary); gap: 0.4rem; }
+        .amenity-indicator { color: var(--primary); font-weight: 700; }
         
-        /* Database Feed Grid */
-        .feed { padding: 1.2rem; display: flex; flex-direction: column; gap: 1.2rem; }
-        .card { background: var(--surface); border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); box-shadow: 0 2px 8px rgba(0,0,0,0.01); }
-        .card-img-container { position: relative; height: 180px; background: #e4e4e7; }
-        .card-img { width: 100%; height: 100%; object-fit: cover; }
-        .badge { position: absolute; top: 12px; left: 12px; background: rgba(255,255,255,0.95); backdrop-filter: blur(4px); padding: 0.3rem 0.6rem; border-radius: 6px; font-size: 0.75rem; font-weight: 700; border: 1px solid var(--border); letter-spacing: 0.2px; }
+        /* Card Action Row */
+        .price-row { display: flex; justify-content: space-between; align-items: center; margin-top: 0.4rem; padding-top: 0.6rem; border-top: 1px solid var(--border); }
+        .price { font-weight: 700; font-size: 0.9rem; }
+        .price span { font-weight: 400; color: var(--secondary); font-size: 0.75rem; }
+        .btn-action { background: var(--primary); color: white; padding: 0.5rem 1rem; border-radius: 6px; text-decoration: none; font-size: 0.8rem; font-weight: 600; text-align: center; }
         
-        /* Workspace Card Body */
-        .card-body { padding: 1.2rem; }
-        .card-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.6rem; line-height: 1.35; color: var(--primary); }
-        .amenities { display: flex; gap: 0.4rem; margin: 0.6rem 0; flex-wrap: wrap; }
-        .amenity-icon { background: var(--bg); padding: 0.35rem 0.6rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600; color: var(--secondary); }
-        
-        /* Card Action Footer */
-        .price-row { display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; padding-top: 0.8rem; border-top: 1px solid var(--border); }
-        .price { font-weight: 700; font-size: 0.95rem; }
-        .price span { font-weight: 400; color: var(--secondary); font-size: 0.8rem; }
-        .btn-action { background: var(--primary); color: white; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-size: 0.85rem; font-weight: 600; text-align: center; }
-        
-        /* Minimalist iOS Bottom Dock */
+        /* Premium Minimalist iOS Bottom Dock */
         .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(255,255,255,0.96); backdrop-filter: blur(20px); border-top: 1px solid var(--border); display: flex; justify-content: space-around; padding: 0.7rem 0; z-index: 1000; }
         .nav-item { display: flex; flex-direction: column; align-items: center; color: var(--secondary); font-size: 0.72rem; font-weight: 700; text-decoration: none; width: 33%; gap: 0.25rem; }
         .nav-item.active { color: var(--primary); }
@@ -63,27 +63,49 @@
     <div class="hero">
         <h1>ThirdSpace</h1>
         <p>Find cafes and spaces to work from with a laptop in Hong Kong. Filter by power outlets and Wi-Fi.</p>
-        <div class="search-bar">
-            <div class="search-icon-svg">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+    </div>
+
+    <div class="filter-container">
+        <div class="filter-group">
+            <div class="filter-title">核心地區 (Select Hubs)</div>
+            <div class="checkbox-grid">
+                <label class="checkbox-label"><input type="checkbox" class="filter-chk-district" value="Central">中環 Central</label>
+                <label class="checkbox-label"><input type="checkbox" class="filter-chk-district" value="Wan Chai">灣仔 Wan Chai</label>
+                <label class="checkbox-label"><input type="checkbox" class="filter-chk-district" value="Causeway Bay">銅鑼灣 CWB</label>
+                <label class="checkbox-label"><input type="checkbox" class="filter-chk-district" value="Tsim Sha Tsui">尖沙咀 TST</label>
+                <label class="checkbox-label"><input type="checkbox" class="filter-chk-district" value="Mong Kok">旺角 MK</label>
+                <label class="checkbox-label"><input type="checkbox" class="filter-chk-district" value="Kwun Tong">觀塘 KT</label>
+                <label class="checkbox-label"><input type="checkbox" class="filter-chk-district" value="Kwai Chung">葵涌 KC</label>
+                <label class="checkbox-label"><input type="checkbox" class="filter-chk-district" value="Tsuen Wan">荃灣 TW</label>
             </div>
-            <input type="text" id="searchInput" placeholder="搜尋地區、空間名稱或環境特點...">
+        </div>
+        
+        <div class="filter-group">
+            <div class="filter-title">電源插座 (Power Outlets)</div>
+            <div class="checkbox-grid">
+                <label class="checkbox-label"><input type="checkbox" class="filter-chk-plug" value="abundant">🔌 插座充足</label>
+                <label class="checkbox-label"><input type="checkbox" class="filter-chk-plug" value="partial">🔌 部分座位有</label>
+                <label class="checkbox-label"><input type="checkbox" class="filter-chk-plug" value="none">❌ 無插座</label>
+            </div>
+        </div>
+
+        <div class="filter-group">
+            <div class="filter-title">無線網絡 (Wireless Connection)</div>
+            <div class="checkbox-grid">
+                <label class="checkbox-label"><input type="checkbox" class="filter-chk-wifi" value="fast">📶 網速飛快</label>
+                <label class="checkbox-label"><input type="checkbox" class="filter-chk-wifi" value="stable">📶 運行穩定</label>
+                <label class="checkbox-label"><input type="checkbox" class="filter-chk-wifi" value="none">❌ 無提供WiFi</label>
+            </div>
         </div>
     </div>
 
-    <div class="chip-scroll">
-        <div class="chip active" data-filter="All Hubs">All Hubs</div>
-        <div class="chip" data-filter="Central">中環 (Central)</div>
-        <div class="chip" data-filter="Wan Chai">灣仔 (Wan Chai)</div>
-        <div class="chip" data-filter="Causeway Bay">銅鑼灣 (CWB)</div>
-        <div class="chip" data-filter="Tsim Sha Tsui">尖沙咀 (TST)</div>
-        <div class="chip" data-filter="Kwun Tong">觀塘 (Kwun Tong)</div>
-        <div class="chip" data-filter="Kwai Chung">葵涌 (Kwai Chung)</div>
-        <div class="chip" data-filter="Tsuen Wan">荃灣 (Tsuen Wan)</div>
+    <div class="status-bar">
+        <div class="counter-text" id="counterDisplay">Showing 80 workspaces</div>
+        <button class="btn-reset" id="btnResetFilters">Reset Filters</button>
     </div>
 
     <div class="feed" id="cardFeed"></div>
-    <div id="noResults" style="text-align: center; color: var(--secondary); padding: 3rem; display: none; font-weight: 600;">找不到相關工作空間。</div>
+    <div id="noResults" style="text-align: center; color: var(--secondary); padding: 4rem 2rem; display: none; font-weight: 600;">無符合勾選條件的空間。</div>
 
     <div class="bottom-nav">
         <a href="#" class="nav-item active">
@@ -107,125 +129,11 @@
     </div>
 
     <script>
-        // 50間全港實測外勤數據庫
+        // 80間全港核心區外勤 2026 最新三重複核大數據庫 (純文字結構)
         var workspaces = [
-            { name: "霸王茶姬 CHAGEE (灣仔二樓店)", img: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600", district: "Wan Chai", tag: "二樓寬敞舒適", plug: "🔌 部分座位設有插座", wifi: "📶 網速表現優異", price: "$40+" },
-            { name: "Elephant Grounds (Fashion Walk)", img: "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=600", district: "Causeway Bay", tag: "閣樓安靜專注區", plug: "🔌 僅少量插座", wifi: "📶 提供免費WiFi", price: "$55+" },
-            { name: "sensory ZERO (The Lane)", img: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=600", district: "Kwun Tong", tag: "工業風寬敞共享長檯", plug: "🔌 插座配置充足", wifi: "📶 網速飛快", price: "$50+" },
-            { name: "Page Common (Hotel Lounge)", img: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=600", district: "Tsim Sha Tsui", tag: "高質感商務酒店大堂", plug: "🔌 充電插座覆蓋率極高", wifi: "📶 商務級專線網絡", price: "$45+" },
-            { name: "Preface Coffee & Wine (銅鑼灣)", img: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600", district: "Causeway Bay", tag: "💡 狀態提示：座位不設電源插座", plug: "❌ 無插座提供", wifi: "📶 網速一般", price: "$60+" },
-            { name: "Blend & Grind (Sun Street)", img: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=600", district: "Wan Chai", tag: "舒適靜謐小巷氛圍", plug: "🔌 牆邊位置設有插座", wifi: "📶 網絡穩定", price: "$50+" },
-            { name: "NOC Coffee Co. (The Oracle)", img: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=600", district: "Central", tag: "極簡設計靠牆工作位", plug: "🔌 備有少量插座", wifi: "📶 網速流暢", price: "$55+" },
-            { name: "Fuel Espresso (ifc mall)", img: "https://images.unsplash.com/photo-1541188111111-111111111111?w=600", district: "Central", tag: "商務會客及短暫停留首選", plug: "🔌 插座相對罕有", wifi: "📶 提供基本WiFi", price: "$60+" },
-            { name: "Koffee Mameya (K11 MUSEA)", img: "https://images.unsplash.com/photo-1511920170033-f8396924c348?w=600", district: "Tsim Sha Tsui", tag: "💡 狀態提示：專注精品咖啡/無座位", plug: "❌ 適合外帶或快速商務通訊", wifi: "📶 商場公共WiFi", price: "$80+" },
-            { name: "The Desk (觀塘核心空間)", img: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600", district: "Kwun Tong", tag: "專業高效混合工作環境", plug: "🔌 設有多個充電工作站", wifi: "📶 高速光纖WiFi", price: "$40+" },
-            { name: "Coffee Academics (莊士敦道)", img: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600", district: "Wan Chai", tag: "適合商務處理之長檯", plug: "🔌 檯面內置獨立插座", wifi: "📶 連接穩定", price: "$55+" },
-            { name: "KCPC Workspace & Cafe (葵涌)", img: "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=600", district: "Kwai Chung", tag: "工廈區綠洲/午後極度安靜", plug: "🔌 插座數量充裕", wifi: "📶 穩定無線網絡", price: "$38+" },
-            { name: "Espresso Alchemy (如心廣場)", img: "https://images.unsplash.com/photo-1507133750040-4a8f57021571?w=600", district: "Tsuen Wan", tag: "格局寬敞/備有舒適卡位", plug: "🔌 部分靠牆位置有插座", wifi: "📶 網速流暢", price: "$48+" },
-            { name: "The Beans (荃灣廣場)", img: "https://images.unsplash.com/photo-1525648199074-cee30ba79a4a?w=600", district: "Tsuen Wan", tag: "客流量較大/適合輕量外勤處理", plug: "❌ 插座配置較少", wifi: "📶 提供基本WiFi", price: "$45+" },
-            { name: "Starbucks (星光大道店)", img: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600", district: "Tsim Sha Tsui", tag: "維港海景/遊客及人流較多", plug: "❌ 建議自備充足電量", wifi: "📶 電訊商WiFi", price: "$45+" },
-            { name: "Eaton House 數碼游牧大堂", img: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=600", district: "Tsim Sha Tsui", tag: "自由工作者高度友善空間", plug: "🔌 絕大部分座位皆有插座", wifi: "📶 超高速企業級網絡", price: "$60+" },
-            { name: "Fineprint (Peel Street)", img: "https://images.unsplash.com/photo-1508766917616-d22f3f1eea14?w=600", district: "Central", tag: "西式街區氛圍/吧檯設計", plug: "🔌 吧檯下方備有隱藏插座", wifi: "📶 提供基本WiFi", price: "$45+" },
-            { name: "Lockwood Cafe (葵芳沿線)", img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600", district: "Kwai Chung", tag: "社區閒適氛圍/適合午後辦公", plug: "🔌 中等插座覆蓋率", wifi: "📶 連接速度快", price: "$42+" },
-            { name: "Blue Bottle Coffee (擺花街)", img: "https://images.unsplash.com/photo-1506619216599-9d16d0903dfd?w=600", district: "Central", tag: "採光極佳兩層空間/中央長檯", plug: "🔌 僅大長檯區域提供插座", wifi: "📶 網速表現良好", price: "$50+" },
-            { name: "Urban Coffee Roasters (美麗都大廈)", img: "https://images.unsplash.com/photo-1515164593556-a31e5f83ce15?w=600", district: "Tsim Sha Tsui", tag: "復古靜謐燈光/適合專注寫作", plug: "🔌 角落位置設有插座", wifi: "📶 運行穩定", price: "$55+" },
-            { name: "Omotesando Koffee (灣仔利東街)", img: "https://images.unsplash.com/photo-1468418143278-41595b1a4c89?w=600", district: "Wan Chai", tag: "💡 狀態提示：以外帶及短暫停留為主/無座位", plug: "❌ 現場不設插座", wifi: "📶 未提供客用WiFi", price: "$65+" },
-            { name: "The Corner (灣仔商務混合空間)", img: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600", district: "Wan Chai", tag: "💡 混合式商務遠端工作站", plug: "🔌 現場提供延長線排插", wifi: "📶 光纖無線網絡", price: "$45+" },
-            { name: "Nodi Coffee (Landmark)", img: "https://images.unsplash.com/photo-1485841890310-6a055c88698a?w=600", district: "Central", tag: "中環核心商務區快閃溝通位", plug: "🔌 僅站立區域有少量插座", wifi: "📶 基本WiFi連接", price: "$45+" },
-            { name: "Coffee Slave (觀塘工廈店)", img: "https://images.unsplash.com/photo-1577968897966-3d4325b36b61?w=600", district: "Kwun Tong", tag: "專為長時期電腦工作優化", plug: "🔌 靠牆位置全數內置插座", wifi: "📶 網速爽快", price: "$48+" },
-            { name: "Loop Kulture (九龍西沿線)", img: "https://images.unsplash.com/photo-1545232979-8bf34eb9757b?w=600", district: "Tsim Sha Tsui", tag: "綠意圍繞/平日人流相對清靜", plug: "🔌 平日對工作用家包容度高", wifi: "📶 穩定WiFi", price: "$50+" },
-            { name: "The Hideout (荃灣工廠區改建)", img: "https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?w=600", district: "Tsuen Wan", tag: "超大空間格局/檯距極遠無壓迫感", plug: "🔌 插座分佈廣泛", wifi: "📶 網速表現優異", price: "$40+" },
-            { name: "Habitu (Hysan Place)", img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600", district: "Causeway Bay", tag: "商場角落卡位/隱私度極高", plug: "🔌 部分卡位下方設有插座", wifi: "📶 正常網速", price: "$52+" },
-            { name: "Cupping Room (海港城店)", img: "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?w=600", district: "Tsim Sha Tsui", tag: "無敵海景吧檯/不建議長時期專注", plug: "❌ 插座配置較罕有", wifi: "📶 速度流暢", price: "$50+" },
-            { name: "Ninetys (Soho Central)", img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600", district: "Central", tag: "後排座位環境幽靜且干擾少", plug: "🔌 設有整排獨立插座", wifi: "📶 網絡表現優秀", price: "$60+" },
-            { name: "Flow Academy (葵涌中心線)", img: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600", district: "Kwai Chung", tag: "複合式概念空間/極度歡迎外勤遠端", plug: "🔌 現場備有排插供借用", wifi: "📶 超高速光纖網絡", price: "$35+" },
-            { name: "One Little Room (觀塘店)", img: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600", district: "Kwun Tong", tag: "人文氣息濃厚之安靜工作間", plug: "🔌 靠牆特定位置有插座", wifi: "📶 運行流暢", price: "$48+" },
-            { name: "Matcha Maiko (銅鑼灣店)", img: "https://images.unsplash.com/photo-1536256263959-770b48d82b0a?w=600", district: "Causeway Bay", tag: "日式茶桌風格/適合處理輕量文書", plug: "🔌 桌面邊緣提供USB充電孔", wifi: "📶 接收商場WiFi", price: "$45+" },
-            { name: "Studio Caffeine (尖沙咀)", img: "https://images.unsplash.com/photo-1498804103079-a6351b050096?w=600", district: "Tsim Sha Tsui", tag: "專業吧檯設計/設有長條排插", plug: "🔌 備有延長線排插", wifi: "📶 連接速度快", price: "$45+" },
-            { name: "The Coffee Academics (LHT Tower)", img: "https://images.unsplash.com/photo-1474631245212-32dc3c8310c6?w=600", district: "Central", tag: "金融區核心腹地/會客或自做皆宜", plug: "🔌 吧檯下方內置插座", wifi: "📶 商務級網絡專線", price: "$55+" },
-            { name: "NOC Coffee Co. (尖東全海景店)", img: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600", district: "Tsim Sha Tsui", tag: "落地玻璃全海景/採光與視野極佳", plug: "🔌 靠窗吧檯座位設有插座", wifi: "📶 高速WiFi", price: "$55+" },
-            { name: "Wired Cafe (Mira Place)", img: "https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=600", district: "Tsim Sha Tsui", tag: "日式連鎖卡位/下午開短會表現好", plug: "🔌 插座數量相對有限", wifi: "📶 標準網速", price: "$50+" },
-            { name: "Between Coffee (大館店)", img: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600", district: "Central", tag: "歷史建築群圍繞/室內座位首選", plug: "🔌 僅限室內特定座位", wifi: "📶 速度快", price: "$60+" },
-            { name: "Cozy Coffee (荃灣海濱店)", img: "https://images.unsplash.com/photo-1463796113337-f13b61a4c25a?w=600", district: "Tsuen Wan", tag: "放鬆海景/下層區域劃分為專注區", plug: "🔌 牆壁位置設有插座", wifi: "📶 運行穩定", price: "$45+" },
-            { name: "The Soulroom (葵青空間)", img: "https://images.unsplash.com/photo-1493612276216-ee3925520721?w=600", district: "Kwai Chung", tag: "沉靜禪意氛圍/極其適合專注思考", plug: "🔌 少量牆邊插座", wifi: "📶 網絡穩定", price: "$46+" },
-            { name: "Coffee Central by TCA (中環)", img: "https://images.unsplash.com/photo-1513530534585-c7b1394c6d51?w=600", district: "Central", tag: "交通樞紐點/適合外勤團隊快速充電", plug: "🔌 充電插座速度快", wifi: "📶 網速流暢", price: "$50+" },
-            { name: "Green Common (中環店)", img: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=600", district: "Central", tag: "💡 狀態提示：繁忙時段設有用餐時限", plug: "❌ 現場不設工作插座", wifi: "📶 提供基本WiFi", price: "$65+" },
-            { name: "Sensory Zero (黃埔延伸店)", img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600", district: "Tsim Sha Tsui", tag: "大長檯格局/對手提電腦工作者包容", plug: "🔌 共享大長檯備有插座", wifi: "📶 連接流暢", price: "$50+" },
-            { name: "Brickyard Cafe (觀塘工業Loft)", img: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=600", district: "Kwun Tong", tag: "美式重工業風/座位間距極寬敞", plug: "🔌 插座隨處可見", wifi: "📶 光纖專線網絡", price: "$40+" },
-            { name: "Espresso Alchemy (海港城店)", img: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=600", district: "Tsim Sha Tsui", tag: "上午時段環境清靜宜人", plug: "🔌 少量靠牆座位設有插座", wifi: "📶 正常網速", price: "$45+" },
-            { name: "NOC Coffee Co. (九龍灣店)", img: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600", district: "Kwun Tong", tag: "清晨及週末早段適合高效專注", plug: "🔌 吧檯下方內置插座", wifi: "📶 網速優秀", price: "$55+" },
-            { name: "The Alchemist Cafe (尖沙咀公園)", img: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=600", district: "Tsim Sha Tsui", tag: "旅遊主題/靠窗位置採光極佳", plug: "🔌 靠窗特定座位設有插座", wifi: "📶 穩定無線網絡", price: "$48+" },
-            { name: "Lounge Hack (Sav酒店大堂)", img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600", district: "Tsim Sha Tsui", tag: "高規格商務配套/適合長時段進駐", plug: "🔌 充電插座覆代理極高", wifi: "📶 酒店級高規WiFi", price: "$60/單次" },
-            { name: "Starbucks (新都會廣場)", img: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=600", district: "Kwai Chung", tag: "中央高腳長檯自帶多個獨立插頭", plug: "🔌 高腳檯位置有插座", wifi: "📶 穩定連接", price: "$45+" },
-            { name: "The Coffee Academics (荃灣線)", img: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600", district: "Tsuen Wan", tag: "外勤銷售及游牧團隊高效落腳點", plug: "🔌 部分座位備有插座", wifi: "📶 連接速度快", price: "$50+" },
-            { name: "Four Seasons 酒店大堂 Lounge", img: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600", district: "Central", tag: "頂級高端商務洽談/可向職員借用排插", plug: "🔌 可聯絡職員提供排插", wifi: "📶 頂級專線極速網絡", price: "$120+" }
-        ];
-
-        var feed = document.getElementById('cardFeed');
-        var searchInput = document.getElementById('searchInput');
-        var noResults = document.getElementById('noResults');
-
-        function renderCards(filterDistrict, searchKeyword) {
-            if (!filterDistrict) filterDistrict = "All Hubs";
-            if (!searchKeyword) searchKeyword = "";
-            
-            feed.innerHTML = "";
-            var count = 0;
-            var keyword = searchKeyword.toLowerCase();
-
-            workspaces.forEach(function(ws) {
-                var matchesDistrict = (filterDistrict === "All Hubs" || ws.district === filterDistrict);
-                var matchesKeyword = (ws.name.toLowerCase().indexOf(keyword) !== -1 || 
-                                      ws.tag.toLowerCase().indexOf(keyword) !== -1 || 
-                                      ws.district.toLowerCase().indexOf(keyword) !== -1);
-
-                if (matchesDistrict && matchesKeyword) {
-                    count++;
-                    var card = document.createElement('div');
-                    card.className = 'card';
-                    
-                    var mapBase = 'https://www.google.com/' + 'maps/search/?api=1&query=';
-                    var mapsUrl = mapBase + encodeURIComponent(ws.name);
-                    
-                    // ES5 傳統字串拼接，永久防禦任何後台傳輸代碼損壞，徹底解決空白畫面 Bug
-                    var cardHtml = '<div class="card-img-container">' +
-                        '<div class="badge">' + ws.district + '</div>' +
-                        '<img src="' + ws.img + '" class="card-img" alt="Workspace">' +
-                        '</div>' +
-                        '<div class="card-body">' +
-                        '<div class="card-title">' + ws.name + '</div>' +
-                        '<div class="amenities">' +
-                        '<span class="amenity-icon">💡 ' + ws.tag + '</span>' +
-                        '<span class="amenity-icon">' + ws.plug + '</span>' +
-                        '<span class="amenity-icon">' + ws.wifi + '</span>' +
-                        '</div>' +
-                        '<div class="price-row">' +
-                        '<div class="price">' + ws.price + ' <span>最低消費</span></div>' +
-                        '<a href="' + mapsUrl + '" target="_blank" class="btn-action">📍 View Map</a>' +
-                        '</div>' +
-                        '</div>';
-                    
-                    card.innerHTML = cardHtml;
-                    feed.appendChild(card);
-                }
-            });
-            noResults.style.display = (count === 0) ? 'block' : 'none';
-        }
-
-        searchInput.addEventListener('input', function(e) {
-            var activeChip = document.querySelector('.chip.active').getAttribute('data-filter');
-            renderCards(activeChip, e.target.value);
-        });
-
-        document.querySelectorAll('.chip').forEach(function(chip) {
-            chip.addEventListener('click', function() {
-                document.querySelectorAll('.chip').forEach(function(c) { c.classList.remove('active'); });
-                chip.classList.add('active');
-                renderCards(chip.getAttribute('data-filter'), searchInput.value);
-            });
-        });
-
-        renderCards("All Hubs", "");
-    </script>
-</body>
-</html>
+            /* ================= CENTRAL (1-10) ================= */
+            { name: "NOC Coffee Co. (The Oracle)", district: "Central", addr: "中環威靈頓街108號地下", tag: "極簡微水泥靠牆工作位/光線充足", plug: "部分座位設有插座", wifi: "網速表現流暢", price: "$55+", plugType: "partial", wifiType: "stable" },
+            { name: "Fuel Espresso (ifc mall)", district: "Central", addr: "中環金融街8號國際金融中心商場3樓3022號舖", tag: "高端商務快閃落腳點/適合重要客戶會面", plug: "插座極罕有", wifi: "提供標準商場WiFi", price: "$60+", plugType: "none", wifiType: "stable" },
+            { name: "Blue Bottle Coffee (擺花街)", district: "Central", addr: "中環擺花街38號地下及1樓", tag: "寬敞兩層採光極佳/中央長檯適合高強度專注", plug: "僅中央長檯提供插座", wifi: "網速表現良好", price: "$50+", plugType: "partial", wifiType: "stable" },
+            { name: "Fineprint (Peel Street)", district: "Central", addr: "中環卑利街38號地下", tag: "西式街區吧檯設計/適合輕量文書與郵件處理", plug: "吧檯下方設有隱藏插座", wifi: "提供基本WiFi連接", price: "$45+", plugType: "partial", wifiType: "stable" },
+            { name: "Between Coffee (大館店)", district: "Central", addr: "中環荷李活道10號大館賽馬會藝方2樓", tag: "藝術園區複合空間/環境安靜且座位間距寬敞", plug:
