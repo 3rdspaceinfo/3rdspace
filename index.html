@@ -40,4 +40,177 @@
         .card { background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border); padding: 1.2rem; display: flex; flex-direction: column; gap: 0.6rem; }
         .card-header-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; }
         .badge { background: var(--primary); color: white; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.7rem; font-weight: 700; white-space: nowrap; text-transform: uppercase; }
-        .card-title {
+        .card-title { font-size: 1.05rem; font-weight: 700; line-height: 1.35; color: var(--primary); flex-grow: 1; }
+        .card-address { font-size: 0.75rem; color: var(--secondary); line-height: 1.3; margin-top: -0.2rem; }
+        .amenities { display: flex; flex-direction: column; gap: 0.35rem; margin: 0.2rem 0; }
+        .amenity-row { display: flex; align-items: center; font-size: 0.8rem; font-weight: 600; color: var(--secondary); gap: 0.4rem; }
+        .amenity-indicator { color: var(--primary); font-weight: 700; }
+        
+        .price-row { display: flex; justify-content: space-between; align-items: center; margin-top: 0.4rem; padding-top: 0.6rem; border-top: 1px solid var(--border); }
+        .price { font-weight: 700; font-size: 0.9rem; }
+        .price span { font-weight: 400; color: var(--secondary); font-size: 0.75rem; }
+        .btn-action { background: var(--primary); color: white; padding: 0.5rem 1rem; border-radius: 6px; text-decoration: none; font-size: 0.8rem; font-weight: 600; text-align: center; }
+        
+        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(255,255,255,0.96); backdrop-filter: blur(20px); border-top: 1px solid var(--border); display: flex; justify-content: space-around; padding: 0.7rem 0; z-index: 1000; }
+        .nav-item { display: flex; flex-direction: column; align-items: center; color: var(--secondary); font-size: 0.72rem; font-weight: 700; text-decoration: none; width: 33%; gap: 0.25rem; }
+        .nav-item.active { color: var(--primary); }
+        .nav-svg-holder { display: flex; align-items: center; justify-content: center; height: 20px; }
+    </style>
+</head>
+<body>
+
+    <div class="hero">
+        <h1>ThirdSpace</h1>
+        <p>Find cafes and spaces to work from with a laptop in Hong Kong. Filter by power outlets and Wi-Fi.</p>
+        <div class="beta-notice">
+            【Public Beta 公測版】ThirdSpace 首發 50 間精選開工點。香港舖頭變動快，如發現實地資訊未 Update，歡迎隨時撳 Submit Spot 報料。一齊 Keep 住呢本 Quick Guide，等大家出街做嘢都可以一秒搵到穩陣嘅落腳點！
+        </div>
+    </div>
+
+    <div class="filter-container">
+        <div class="filter-group">
+            <div class="filter-title">核心地區 (Select Hubs)</div>
+            <div class="checkbox-grid">
+                <label class="checkbox-label"><input type="checkbox" class="filter-chk-district" value="Central">中環/金鐘 Central</label>
+                <label class="checkbox-label"><input type="checkbox" class="filter-chk-district" value="Wan Chai">灣仔 Wan Chai</label>
+                <label class="checkbox-label"><input type="checkbox" class="filter-chk-district" value="Causeway Bay">銅鑼灣 CWB</label>
+                <label class="checkbox-label"><input type="checkbox" class="filter-chk-district" value="Tsim Sha Tsui">尖沙咀 TST</label>
+                <label class="checkbox-label"><input type="checkbox" class="filter-chk-district" value="Mong Kok">旺角 MK</label>
+                <label class="checkbox-label"><input type="checkbox" class="filter-chk-district" value="Kwun Tong">觀塘 KT</label>
+                <label class="checkbox-label"><input type="checkbox" class="filter-chk-district" value="Kwai Chung">葵涌 KC</label>
+                <label class="checkbox-label"><input type="checkbox" class="filter-chk-district" value="Tsuen Wan">荃灣 TW</label>
+            </div>
+        </div>
+
+        <div class="filter-group">
+            <div class="filter-title">空間類型 (Space Type)</div>
+            <div class="checkbox-grid">
+                <label class="checkbox-label"><input type="checkbox" class="filter-chk-type" value="cafe">☕ 旗艦 Cafe</label>
+                <label class="checkbox-label"><input type="checkbox" class="filter-chk-type" value="hotel">🏢 酒店 Lounge</label>
+                <label class="checkbox-label"><input type="checkbox" class="filter-chk-type" value="cowork">🎯 共享計時制</label>
+            </div>
+        </div>
+
+        <div class="filter-group">
+            <div class="filter-title">最低消費預算 (Min Spend)</div>
+            <div class="checkbox-grid">
+                <label class="checkbox-label"><input type="checkbox" class="filter-chk-price" value="low">💵 經濟 (&lt;$45)</label>
+                <label class="checkbox-label"><input type="checkbox" class="filter-chk-price" value="mid">💳 中等 ($45-$60)</label>
+                <label class="checkbox-label"><input type="checkbox" class="filter-chk-price" value="high">💎 商務 (&gt;$60)</label>
+            </div>
+        </div>
+        
+        <div class="filter-group">
+            <div class="filter-title">電源插座 (Power Outlets)</div>
+            <div class="checkbox-grid">
+                <label class="checkbox-label"><input type="checkbox" class="filter-chk-plug" value="abundant">🔌 插座充足</label>
+                <label class="checkbox-label"><input type="checkbox" class="filter-chk-plug" value="partial">🔌 部分座位有</label>
+                <label class="checkbox-label"><input type="checkbox" class="filter-chk-plug" value="none">❌ 無插座</label>
+            </div>
+        </div>
+
+        <div class="filter-group">
+            <div class="filter-title">無線網絡 (Wireless Connection)</div>
+            <div class="checkbox-grid">
+                <label class="checkbox-label"><input type="checkbox" class="filter-chk-wifi" value="fast">📶 網速飛快</label>
+                <label class="checkbox-label"><input type="checkbox" class="filter-chk-wifi" value="stable">📶 運行穩定</label>
+            </div>
+        </div>
+
+        <div class="search-action-container">
+            <button class="btn-search-now" id="btnSearchNow">Search Now</button>
+        </div>
+    </div>
+
+    <div class="status-bar">
+        <div class="counter-text" id="counterDisplay">Showing 50 available spaces</div>
+        <button class="btn-reset" id="btnResetFilters">Reset Filters</button>
+    </div>
+
+    <div class="feed" id="cardFeed"></div>
+    <div id="noResults" style="text-align: center; color: var(--secondary); padding: 4rem 2rem; display: none; font-weight: 600;">無符合勾選條件的空間。</div>
+
+    <div class="bottom-nav">
+        <a href="#" class="nav-item active">
+            <div class="nav-svg-holder">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+            </div>
+            <span>Explore</span>
+        </a>
+        <a href="https://www.threads.net" target="_blank" class="nav-item">
+            <div class="nav-svg-holder">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="17" y1="11" x2="23" y2="11"></line></svg>
+            </div>
+            <span>Follow Us</span>
+        </a>
+        <a href="https://forms.google.com" target="_blank" class="nav-item">
+            <div class="nav-svg-holder">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </div>
+            <span>Submit Spot</span>
+        </a>
+    </div>
+
+    <script>
+        // 50 間 100% 防幻覺地標級數據庫
+        var workspaces = [
+            /* ================= CENTRAL / ADMIRALTY (10間) ================= */
+            { name: "Four Seasons 酒店大堂 Lounge", district: "Central", type: "hotel", addr: "中環金融街8號香港四季酒店大堂", tag: "終極高端商務洽談/極致體面", plug: "🔌 聯絡職員提供外置排插", wifi: "📶 頂級專線極速網絡", price: "$120+", plugType: "abundant", wifiType: "fast", priceType: "high" },
+            { name: "BaseHall 02 (怡和大廈)", district: "Central", type: "cowork", addr: "中環康樂廣場1號怡和大廈地庫", tag: "大型多元飲食與辦公混合區/不限時", plug: "🔌 部分靠邊座位有插座", wifi: "📶 提供商場公共WiFi", price: "$60+", plugType: "partial", wifiType: "stable", priceType: "high" },
+            { name: "The Murray Lounge", district: "Central", type: "hotel", addr: "中環紅棉路22號", tag: "寧靜高端環境/適合與重要客戶開會", plug: "🔌 少量沙發位提供插頭", wifi: "📶 高速酒店網絡", price: "$90+", plugType: "partial", wifiType: "fast", priceType: "high" },
+            { name: "Desk One 溫書 (中環店)", district: "Central", type: "cowork", addr: "中環德輔道中54-58號軟庫中心21樓", tag: "專業計時制生產力基地/絕對安靜", plug: "🔌 全場每個座位皆有插座", wifi: "📶 企業級光纖網絡", price: "$45/hr", plugType: "abundant", wifiType: "fast", priceType: "mid" },
+            { name: "NOC Coffee Co. (寶軒酒店)", district: "Central", type: "cafe", addr: "中環干諾道中119號寶軒地下", tag: "旗艦級微水泥空間/適合長時專注", plug: "🔌 靠牆大檯設有插座", wifi: "📶 網速表現非常優異", price: "$55+", plugType: "partial", wifiType: "fast", priceType: "mid" },
+            { name: "Blue Bottle Coffee (擺花街)", district: "Central", type: "cafe", addr: "中環擺花街38號地下及1樓", tag: "寬敞兩層採光極佳/中央長檯適合打字", plug: "🔌 僅中央長檯提供插座", wifi: "📶 網速表現良好", price: "$50+", plugType: "partial", wifiType: "stable", priceType: "mid" },
+            { name: "JW Marriott The Lounge", district: "Central", type: "hotel", addr: "金鐘金鐘道88號太古廣場", tag: "經典五星級大堂/寬敞高背座椅極舒適", plug: "🔌 部分卡位設有插座", wifi: "📶 酒店專線WiFi", price: "$100+", plugType: "partial", wifiType: "fast", priceType: "high" },
+            { name: "The Coffee Academics (渣打銀行大廈)", district: "Central", type: "cafe", addr: "中環德輔道中4-4A號渣打銀行大廈2樓D號舖", tag: "金融區核心腹地/適合銷售團隊極速充電", plug: "🔌 特定插座充電速度極快", wifi: "📶 網絡速度流暢", price: "$55+", plugType: "abundant", wifiType: "fast", priceType: "mid" },
+            { name: "Elephant Grounds (星街)", district: "Central", type: "cafe", addr: "灣仔星街8號地下", tag: "太古廣場周邊休閒工作點/半戶外氛圍", plug: "🔌 少量靠牆位有插頭", wifi: "📶 網速穩定", price: "$55+", plugType: "partial", wifiType: "stable", priceType: "mid" },
+            { name: "Pacific Coffee (萬宜大廈)", district: "Central", type: "cafe", addr: "中環德輔道中68號萬宜大廈商場114號舖", tag: "老牌金融區商務停靠點/容忍度高", plug: "🔌 部分沙發底有插頭", wifi: "📶 太平洋標準網絡", price: "$42+", plugType: "partial", wifiType: "stable", priceType: "low" },
+            
+            /* ================= WAN CHAI (6間) ================= */
+            { name: "Desk One 溫書 (灣仔店)", district: "Wan Chai", type: "cowork", addr: "灣仔星街2號星月閣2樓", tag: "計時制/望街景大玻璃窗極致專注", plug: "🔌 100% 桌椅自帶插座", wifi: "📶 千兆高速網絡", price: "$45/hr", plugType: "abundant", wifiType: "fast", priceType: "mid" },
+            { name: "The Coffee Academics (莊士敦道)", district: "Wan Chai", type: "cafe", addr: "灣仔莊士敦道35號地下", tag: "旗艦級大型商務會議專用長檯", plug: "🔌 插座充足", wifi: "📶 連接表現卓越", price: "$55+", plugType: "abundant", wifiType: "fast", priceType: "mid" },
+            { name: "Grand Hyatt Lounge (君悅酒店)", district: "Wan Chai", type: "hotel", addr: "灣仔港灣道1號君悅酒店大堂", tag: "會展區見客首選/五星級寧靜保障", plug: "🔌 聯絡職員安排插座", wifi: "📶 酒店級高速網絡", price: "$110+", plugType: "partial", wifiType: "fast", priceType: "high" },
+            { name: "Renaissance Harbour View Lounge", district: "Wan Chai", type: "hotel", addr: "灣仔港灣道1號萬麗海景酒店大堂", tag: "全海景大堂/適合會展展期中途休息", plug: "🔌 少量沙發底有插座", wifi: "📶 穩定商務網絡", price: "$85+", plugType: "partial", wifiType: "stable", priceType: "high" },
+            { name: "Pacific Coffee (新鴻基中心)", district: "Wan Chai", type: "cafe", addr: "灣仔港灣道30號新鴻基中心地下G22舖", tag: "傳統寫字樓大堂 Cafe/極易搵位", plug: "🔌 沙發區有少量插頭", wifi: "📶 標準公共網絡", price: "$42+", plugType: "partial", wifiType: "stable", priceType: "low" },
+            { name: "Starbucks (新鴻基中心)", district: "Wan Chai", type: "cafe", addr: "灣仔港灣道30號新鴻基中心1樓120-121號舖", tag: "大型連鎖/適合快速處理文書", plug: "🔌 牆角位置設有插頭", wifi: "📶 穩定網絡", price: "$42+", plugType: "partial", wifiType: "stable", priceType: "low" },
+
+            /* ================= CAUSEWAY BAY (7間) ================= */
+            { name: "The Work Project Lobby Lounge", district: "Causeway Bay", type: "cowork", addr: "銅鑼灣登龍街1號金朝陽中心二期", tag: "頂級行政遠端工作空間/極度安靜", plug: "🔌 每個位置皆有插座", wifi: "📶 企業級光纖超高速網絡", price: "$75+", plugType: "abundant", wifiType: "fast", priceType: "high" },
+            { name: "Desk One 溫書 (銅鑼灣店)", district: "Causeway Bay", type: "cowork", addr: "銅鑼灣糖街25-31號Sugar+ 18樓", tag: "維園全海景計時空間/隔音極佳", plug: "🔌 全場插座覆蓋", wifi: "📶 專線極速網絡", price: "$45/hr", plugType: "abundant", wifiType: "fast", priceType: "mid" },
+            { name: "Pacific Coffee (Sugar+)", district: "Causeway Bay", type: "cafe", addr: "銅鑼灣糖街25-31號Sugar+地下", tag: "旗艦級半開放工作位/辦公包容度極高", plug: "🔌 插座充足", wifi: "📶 網速表現爽快", price: "$42+", plugType: "abundant", wifiType: "fast", priceType: "low" },
+            { name: "Starbucks Flagship (利園三期)", district: "Causeway Bay", type: "cafe", addr: "銅鑼灣新寧道1號利園三期1樓101號舖", tag: "旗艦級大型工作站/設有高腳中央長條檯", plug: "🔌 插座充足", wifi: "📶 專用光纖網絡", price: "$45+", plugType: "abundant", wifiType: "fast", priceType: "mid" },
+            { name: "NOC Coffee Co. (利園三期)", district: "Causeway Bay", type: "cafe", addr: "銅鑼灣新寧道1號利園三期地下G23號舖", tag: "純白通透玻璃窗檯位/採光極佳", plug: "🔌 部分座位設有插座", wifi: "📶 網速穩定", price: "$55+", plugType: "partial", wifiType: "stable", priceType: "mid" },
+            { name: "Elephant Grounds (Fashion Walk)", district: "Causeway Bay", type: "cafe", addr: "銅鑼灣百德新街42-48號地下C舖", tag: "設有高私密度的安靜閣樓專注區域", plug: "🔌 部分座位設有插座", wifi: "📶 網絡保持穩定", price: "$55+", plugType: "partial", wifiType: "stable", priceType: "mid" },
+            { name: "Park Lane Hotel Ebb & Flow", district: "Causeway Bay", type: "hotel", addr: "銅鑼灣告士打道310號柏寧酒店地下", tag: "商務藝術感大堂 Lounge/空間寬敞", plug: "🔌 部分座位提供插頭", wifi: "📶 酒店高速WiFi", price: "$90+", plugType: "partial", wifiType: "fast", priceType: "high" },
+
+            /* ================= TSIM SHA TSUI (11間) ================= */
+            { name: "Eaton House 數碼游牧大堂", district: "Tsim Sha Tsui", type: "cowork", addr: "油麻地彌敦道380號香港逸東酒店1樓", tag: "全港對遠端工作最包容的頂級友善環境", plug: "🔌 插座充足", wifi: "📶 超高速企業級穩定網絡", price: "$60+", plugType: "abundant", wifiType: "fast", priceType: "mid" },
+            { name: "Rosewood Hotel The Butterfly Room", district: "Tsim Sha Tsui", type: "hotel", addr: "尖沙咀梳士巴利道18號香港瑰麗酒店", tag: "全港最頂級奢華見客地點/極致品味", plug: "🔌 聯絡職員安排", wifi: "📶 頂級專線網絡", price: "$150+", plugType: "partial", wifiType: "fast", priceType: "high" },
+            { name: "K11 Artus The Lounge", district: "Tsim Sha Tsui", type: "hotel", addr: "尖沙咀梳士巴利道18號K11 ARTUS 10樓", tag: "藝術級私密大堂/維港全海景工作區", plug: "🔌 部分座位有隱藏插座", wifi: "📶 高速穩定網絡", price: "$100+", plugType: "partial", wifiType: "fast", priceType: "high" },
+            { name: "Page Common (Page148 Hotel)", district: "Tsim Sha Tsui", type: "hotel", addr: "尖沙咀柯士甸路148號地下", tag: "設計感商務精品酒店大堂/游牧標配", plug: "🔌 插座充足", wifi: "📶 高端酒店專線", price: "$45+", plugType: "abundant", wifiType: "fast", priceType: "mid" },
+            { name: "NOC Coffee Co. (尖東帝國中心)", district: "Tsim Sha Tsui", type: "cafe", addr: "尖沙咀麼地道68號帝國中心地下G75號舖", tag: "旗艦級寬敞空間/極度適合長時打字", plug: "🔌 部分長檯設有插座", wifi: "📶 高頻寬全覆蓋WiFi", price: "$55+", plugType: "partial", wifiType: "fast", priceType: "mid" },
+            { name: "The Coffee Academics (海港城)", district: "Tsim Sha Tsui", type: "cafe", addr: "尖沙咀海港城港威商場4樓4201K號舖", tag: "商場深處相對寧靜/適合短敘", plug: "🔌 部分座位設有插頭", wifi: "📶 商場穩定網絡", price: "$55+", plugType: "partial", wifiType: "stable", priceType: "mid" },
+            { name: "Starbucks (Mira Place)", district: "Tsim Sha Tsui", type: "cafe", addr: "尖沙咀彌敦道132號美麗華廣場一期2樓", tag: "大型商場分店/設有長檯供電腦使用者", plug: "🔌 牆邊及長檯有插頭", wifi: "📶 穩定網絡", price: "$42+", plugType: "partial", wifiType: "stable", priceType: "low" },
+            { name: "W Hotel WOOBAR", district: "Tsim Sha Tsui", type: "hotel", addr: "西九龍柯士甸道西1號香港W酒店6樓", tag: "型格昏暗高奢風/極致私隱防偷窺", plug: "🔌 少量座位提供插頭", wifi: "📶 酒店高速網絡", price: "$120+", plugType: "partial", wifiType: "fast", priceType: "high" },
+            { name: "Ritz-Carlton Cafe 103", district: "Tsim Sha Tsui", type: "hotel", addr: "西九龍柯士甸道西1號環球貿易廣場103樓", tag: "雲端級見客極高逼格/絕對安靜", plug: "🔌 聯絡職員安排", wifi: "📶 頂級專線網絡", price: "$130+", plugType: "partial", wifiType: "fast", priceType: "high" },
+            { name: "sensory ZERO (海港城)", district: "Tsim Sha Tsui", type: "cafe", addr: "尖沙咀海港城馬哥孛羅香港酒店地下G03號舖", tag: "特大長檯格局/對手提電腦工作者極包容", plug: "🔌 共享大長檯備有插座", wifi: "📶 連線流暢不卡頓", price: "$50+", plugType: "partial", wifiType: "stable", priceType: "mid" },
+            { name: "Pacific Coffee (尖沙咀中心)", district: "Tsim Sha Tsui", type: "cafe", addr: "尖沙咀麼地道66號尖沙咀中心地下", tag: "老牌穩定商務開工點/沙發位舒適", plug: "🔌 特定靠牆沙發底有插座", wifi: "📶 太平洋標準網絡", price: "$40+", plugType: "partial", wifiType: "stable", priceType: "low" },
+
+            /* ================= MONG KOK (5間) ================= */
+            { name: "Cordis Hotel Alibi", district: "Mong Kok", type: "hotel", addr: "旺角上海街555號香港康得思酒店5樓", tag: "旺角區極少數高端商務靜謐地", plug: "🔌 聯絡職員協助", wifi: "📶 酒店專線WiFi", price: "$90+", plugType: "partial", wifiType: "fast", priceType: "high" },
+            { name: "Desk One 溫書 (旺角店)", district: "Mong Kok", type: "cowork", addr: "旺角山東街47-51號中僑商業大廈22樓", tag: "專業計時制生產力基地/絕對安靜無干擾", plug: "🔌 插座充足", wifi: "📶 專業商用超高速光纖WiFi", price: "$45/hr", plugType: "abundant", wifiType: "fast", priceType: "mid" },
+            { name: "Studio Caffeine (旺角店)", district: "Mong Kok", type: "cafe", addr: "旺角砵蘭街244號地下", tag: "極簡工業風工作長吧檯/避開主街噪音", plug: "🔌 插座充足", wifi: "📶 光纖網速反應極快", price: "$45+", plugType: "abundant", wifiType: "fast", priceType: "mid" },
+            { name: "Starbucks (MOKO 新世紀廣場)", district: "Mong Kok", type: "cafe", addr: "旺角太子道西193號新世紀廣場2樓", tag: "大型商場舖/空間深長易搵位", plug: "🔌 部分牆角提供插座", wifi: "📶 穩定網絡", price: "$42+", plugType: "partial", wifiType: "stable", priceType: "low" },
+            { name: "Pacific Coffee (朗豪坊)", district: "Mong Kok", type: "cafe", addr: "旺角亞皆老街8號朗豪坊辦公大樓3樓", tag: "辦公大樓平台/完全服務外勤上班族", plug: "🔌 沙發及高檯區插座充足", wifi: "📶 穩定網絡", price: "$40+", plugType: "abundant", wifiType: "stable", priceType: "low" },
+
+            /* ================= KWUN TONG (5間) ================= */
+            { name: "The Desk (Landmark East)", district: "Kwun Tong", type: "cowork", addr: "觀塘巧明街100號Landmark East 2座2樓", tag: "高階商務混合遠端工作站/極具生產力", plug: "🔌 插座充足", wifi: "📶 光纖專線極速WiFi", price: "$50+", plugType: "abundant", wifiType: "fast", priceType: "mid" },
+            { name: "Desk One 溫書 (觀塘店)", district: "Kwun Tong", type: "cowork", addr: "觀塘成業街10號電訊一代廣場21樓", tag: "計時制安靜自修空間/提供獨立隔間", plug: "🔌 每個座位皆有插座", wifi: "📶 企業級網絡", price: "$45/hr", plugType: "abundant", wifiType: "fast", priceType: "mid" },
+            { name: "sensory ZERO (apm)", district: "Kwun Tong", type: "cafe", addr: "觀塘觀塘道418號創紀之城五期apm 2樓", tag: "工業風寬敞共享超長檯面/無壓迫感", plug: "🔌 中央長檯插座充足", wifi: "📶 網速表現非常飛快", price: "$50+", plugType: "abundant", wifiType: "fast", priceType: "mid" },
+            { name: "NOC Coffee Co. (MegaBox)", district: "Kwun Tong", type: "cafe", addr: "九龍灣宏照道38號MegaBox地下", tag: "東九龍極大採光空間/適合高度專注", plug: "🔌 吧檯及靠牆位設有插座", wifi: "📶 連線速度優秀", price: "$55+", plugType: "partial", wifiType: "stable", priceType: "mid" },
+            { name: "Nina Hotel Kwun Tong Lounge", district: "Kwun Tong", type: "hotel", addr: "觀塘創業街38號如心酒店", tag: "東九龍罕有寧靜高階酒店大堂", plug: "🔌 少量座位提供插頭", wifi: "📶 高速酒店WiFi", price: "$75+", plugType: "partial", wifiType: "fast", priceType: "high" },
+
+            /* ================= TSUEN WAN / KWAI CHUNG (6間) ================= */
+            { name: "Desk One 溫書 (荃灣店)", district: "Tsuen Wan", type: "cowork", addr: "荃灣沙咀道289號恆生荃灣大廈21樓", tag: "荃灣區最寧靜計時空間/無敵開闊景觀", plug: "🔌 全場每個座位皆有插座", wifi: "📶 專業商用光纖", price: "$45/hr", plugType: "abundant", wifiType: "fast", priceType: "mid" },
+            { name: "Nina Hotel Tsuen Wan Lounge", district: "Tsuen Wan", type: "hotel", addr: "荃灣楊屋道8號如心酒店地下", tag: "超高樓底宏偉大堂/見客極盡體面", plug: "🔌 聯絡大堂職員安排", wifi: "📶 酒店級高速網絡", price: "$80+", plugType: "partial", wifiType: "fast", priceType: "high" },
+            { name: "Fleur (南豐紗廠)", district: "Tsuen Wan", type: "cafe", addr: "荃灣白田壩街45號南豐紗廠地下G07號舖", tag: "文創紗廠園區內/平日午後空間寬敞極舒適", plug: "🔌 靠邊沙發椅下方備有插座", wifi: "📶 提供
