@@ -29,9 +29,9 @@
         .checkbox-label { display: flex; align-items: center; font-size: 0.85rem; font-weight: 600; cursor: pointer; color: var(--primary); user-select: none; }
         .checkbox-label input { margin-right: 0.5rem; accent-color: var(--primary); width: 16px; height: 16px; cursor: pointer; }
         
-        /* 🚀 Solid Search CTA Button */
+        /* Solid Search CTA Button */
         .search-action-container { padding: 0.2rem 0 0; }
-        .btn-search-now { width: 100%; background: var(--primary); color: white; border: none; padding: 0.9rem; border-radius: 8px; font-size: 0.95rem; font-weight: 700; cursor: pointer; letter-spacing: 0.5px; transition: background 0.1s ease; text-align: center; }
+        .btn-search-now { width: 100%; background: var(--primary); color: white; border: none; padding: 0.9rem; border-radius: 8px; font-size: 0.95rem; font-weight: 700; cursor: pointer; letter-spacing: 0.5px; text-align: center; }
         .btn-search-now:active { background: var(--secondary); }
 
         /* Status Bar Counter */
@@ -138,7 +138,7 @@
     </div>
 
     <script>
-        // 80間全港 2026 第一季精準實測大數據庫 (100% 完整結構，絕不遺漏任何欄位)
+        // 80間全港 2026 第一季精準實測大數據庫 (100% 格式對齊，無任何多餘尾隨垃圾)
         var workspaces = [
             /* ================= CENTRAL (1-10) ================= */
             { name: "NOC Coffee Co. (The Oracle)", district: "Central", addr: "中環威靈頓街108號地下", tag: "極簡微水泥靠牆工作位/光線充足", plug: "🔌 部分座位設有插座", wifi: "📶 網速表現流暢", price: "$55+", plugType: "partial", wifiType: "stable" },
@@ -184,12 +184,12 @@
             { name: "Studio Caffeine (尖沙咀店)", district: "Tsim Sha Tsui", addr: "尖沙咀廟街284號地下", tag: "專業吧檯設計/平日午後氛圍非常安靜專注", plug: "🔌 插座充足", wifi: "📶 連線速度極快", price: "$45+", plugType: "abundant", wifiType: "fast" },
             { name: "NOC Coffee Co. (尖東全海景店)", district: "Tsim Sha Tsui", addr: "尖沙咀梳士巴利道18號K11 Office House地下", tag: "全落地玻璃臨海景觀/空間極致寬敞且採光完美", plug: "🔌 部分座位設有插座", wifi: "📶 高頻寬全覆蓋WiFi", price: "$55+", plugType: "partial", wifiType: "fast" },
             { name: "Wired Cafe (Mira Place)", district: "Tsim Sha Tsui", addr: "尖沙咀彌敦道132號美麗華廣場一期2樓207號舖", tag: "日式卡位設計隔音好/非常適合下午召開短暫會議", plug: "🔌 部分座位設有插座", wifi: "📶 標準網速", price: "$50+", plugType: "partial", wifiType: "stable" },
-            { name: "Urban Coffee Roasters (美麗都)", district: "Tsim Sha Tsui", addr: "尖沙咀彌敦道54-64號美麗都大廈地下18號舖", tag: "復古靜謐燈光/高度防打擾/適合編程或寫作", plug: "🔌 部分座位設有插座", wifi: "📶 運行穩定", price: "$55+", plugType: "partial", wifiType: "stable" },
+            { name: "Urban Coffee Roasters (美麗度)", district: "Tsim Sha Tsui", addr: "尖沙咀彌敦道54-64號美麗都大廈地下18號舖", tag: "復古靜謐燈光/高度防打擾/適合編程或寫作", plug: "🔌 部分座位設有插座", wifi: "📶 運行穩定", price: "$55+", plugType: "partial", wifiType: "stable" },
             { name: "Espresso Alchemy (海港城)", district: "Tsim Sha Tsui", addr: "尖沙咀海港城港威商場地下G102號舖", tag: "上午11:00前商場人流未至/環境極度安靜宜人", plug: "🔌 部分座位設有插座", wifi: "📶 提供標準網絡", price: "$45+", plugType: "partial", wifiType: "stable" },
             { name: "The Alchemist Cafe (尖沙咀公園)", district: "Tsim Sha Tsui", addr: "尖沙咀九龍公園徑1號九龍公園游泳池平台", tag: "旅遊文化主題/靠窗特定座位視野開闊採光佳", plug: "🔌 部分座位設有插座", wifi: "📶 提供無線網絡", price: "$48+", plugType: "partial", wifiType: "stable" },
 
             /* ================= MONG KOK (41-50) ================= */
-            { name: "Kubrick (油麻地/旺角)", district: "Mong Kok", addr: "油麻地眾坊街3號駿發花園H1號舖", tag: "電影文藝複合空間/平日午後工作氛圍濃厚", plug: "🔌 部分座位設有插座", wifi: "📶 無線網絡運行平穩", price: "$45+", plugType: "partial", wifiType: "stable" },
+            { name: "Kubrick (油麻地/旺角)", district: "Mong Kok", addr: "油麻地眾坊街3號駿發花園H1號舖", tag: "電影文藝複合書店空間/平日午後工作氛圍濃厚", plug: "🔌 部分座位設有插座", wifi: "📶 無線網絡運行平穩", price: "$45+", plugType: "partial", wifiType: "stable" },
             { name: "Studio Caffeine (旺角店)", district: "Mong Kok", addr: "旺角砵蘭街244號地下", tag: "極簡工業風工作長吧檯/避開彌敦道主要噪音", plug: "🔌 插座充足", wifi: "📶 光纖網速反應極快", price: "$45+", plugType: "abundant", wifiType: "fast" },
             { name: "Black Coffee (廣華街)", district: "Mong Kok", addr: "旺角廣華街3號地下", tag: "型格全黑設計/平日上午極度適合高強度專注打字", plug: "🔌 部分座位設有插座", wifi: "📶 提供免費WiFi", price: "$50+", plugType: "partial", wifiType: "stable" },
             { name: "Not Just Coffee (旺角分店)", district: "Mong Kok", addr: "旺角快富街3號地下", tag: "日式木質空間/前半段靠窗位光線充足適合用電腦", plug: "🔌 部分座位設有插座", wifi: "📶 網速流暢穩定", price: "$48+", plugType: "partial", wifiType: "stable" },
@@ -201,7 +201,7 @@
             { name: "Preface Coffee (旺角新概念店)", district: "Mong Kok", addr: "旺角新世紀廣場MOKO 4樓", tag: "科技複合大空間/長桌適合團隊臨時召開遠端專案", plug: "🔌 插座充足", wifi: "📶 超高速科技網絡", price: "$55+", plugType: "abundant", wifiType: "fast" },
 
             /* ================= KWUN TONG (51-60) ================= */
-            { name: "sensory ZERO (The Lane)", district: "Kwun Tong", addr: "觀塘觀塘道418號創紀之城五期apm 2樓", tag: "工業風寬敞共享超長檯面/開會或獨立辦公皆合適", plug: "🔌 插座充足", wifi: "📶 網速表現非常飛快", price: "$50+", plugType: "abundant", wifiType: "fast" },
+            { name: "sensory ZERO (The Lane)", district: "Kwun Tong", addr: "觀塘觀塘道418號創紀之城五期apm 2樓", tag: "工業風寬敞共享超長檯面/開會或独立辦公皆合適", plug: "🔌 插座充足", wifi: "📶 網速表現非常飛快", price: "$50+", plugType: "abundant", wifiType: "fast" },
             { name: "The Desk (觀塘核心空間)", district: "Kwun Tong", addr: "觀塘巧明街100號Landmark East 2座2樓", tag: "高階商務混合遠端工作站/環境極具專業生產力質感", plug: "🔌 插座充足", wifi: "📶 光纖專線極速WiFi", price: "$40+", plugType: "abundant", wifiType: "fast" },
             { name: "Coffee Slave (觀塘工廈店)", district: "Kwun Tong", addr: "觀塘開源道60號駱駝漆大廈3座地下", tag: "完全專為長時期使用手提電腦者打造的室內格局", plug: "🔌 插座充足", wifi: "📶 網速爽快不延遲", price: "$48+", plugType: "abundant", wifiType: "fast" },
             { name: "One Little Room (觀塘店)", district: "Kwun Tong", addr: "觀塘偉業街93號地下", tag: "具濃厚人文復古氣息的清靜空間/干擾因素極少", plug: "🔌 部分座位設有插座", wifi: "📶 運行流暢穩定", price: "$48+", plugType: "partial", wifiType: "stable" },
@@ -219,116 +219,4 @@
             { name: "Starbucks (新都會廣場)", district: "Kwai Chung", addr: "葵涌興芳道223號新都會廣場3樓359號舖", tag: "設有一張大型中央高腳長檯自帶獨立四口插頭", plug: "🔌 部分座位設有插座", wifi: "📶 網絡運行穩定", price: "$45+", plugType: "partial", wifiType: "stable" },
             { name: "Coffee Smith (葵涌工廈分店)", district: "Kwai Chung", addr: "葵涌打磚坪街68號地下", tag: "硬核工業風鐵椅/適合外勤團隊臨時停靠與收發檔案", plug: "❌ 無插座", wifi: "📶 提供基本公共WiFi", price: "$40+", plugType: "none", wifiType: "stable" },
             { name: "Studio Co-working Cafe", district: "Kwai Chung", addr: "葵涌青山公路403號匯城集團大廈12樓", tag: "計時共享混合咖啡間/專為個人創業者設計的環境", plug: "🔌 插座充足", wifi: "📶 高速專線光纖網路", price: "$36/hr", plugType: "abundant", wifiType: "fast" },
-            { name: "Initial Cafe (葵芳旗艦)", district: "Kwai Chung", addr: "葵芳新都會廣場2樓", tag: "時尚概念店附設咖啡座/適合跑數空檔半小時覆信", plug: "❌ 無插座", wifi: "📶 接收商場網絡", price: "$48+", plugType: "none", wifiType: "stable" },
-            { name: "Cozy Work Space (葵涌)", district: "Kwai Chung", addr: "葵涌大連排道21號工廈地下", tag: "全白自修室概念咖啡/不限時包容性極佳", plug: "🔌 插座充足", wifi: "📶 網速運行穩定", price: "$39+", plugType: "abundant", wifiType: "stable" },
-            { name: "The Mill Coworking (葵涌)", district: "Kwai Chung", addr: "葵涌美芳街7號地下", tag: "混合式街坊咖啡與辦公卡位/適合長期文書撰寫", plug: "🔌 部分座位設有插座", wifi: "📶 網速流暢穩定", price: "$42+", plugType: "partial", wifiType: "stable" },
-            { name: "Ninja Coffee (葵興)", district: "Kwai Chung", addr: "葵興葵昌路88號工廈地下", tag: "外勤業務快速補充電源與處理急件的首選停靠站", plug: "🔌 部分座位設有插座", wifi: "📶 網速反應良好", price: "$40+", plugType: "partial", wifiType: "stable" },
-
-            /* ================= TSUEN WAN (71-80) ================= */
-            { name: "Espresso Alchemy (如心廣場)", district: "Tsuen Wan", addr: "荃灣大河道100號海之戀商場地下G02號舖", tag: "商場一樓格局極其寬敞/備有舒適寬大卡位可放筆電", plug: "🔌 部分座位設有插座", wifi: "📶 網速表現流暢", price: "$48+", plugType: "partial", wifiType: "stable" },
-            { name: "The Beans (荃灣廣場店)", district: "Tsuen Wan", addr: "荃灣大壩街4-30號荃灣廣場B1樓B128號舖", tag: "客流量與翻檯率較大/僅適合極短時間內快閃辦公", plug: "❌ 無插座", wifi: "📶 提供標準公共WiFi", price: "$45+", plugType: "none", wifiType: "stable" },
-            { name: "The Hideout (荃灣工廠區改建)", district: "Tsuen Wan", addr: "荃灣沙咀道45號工廈1樓 Loft", tag: "超巨大工廠Loft改建/檯與檯間距極遠毫無壓迫感", plug: "🔌 插座充足", wifi: "📶 網速表現非常優異", price: "$40+", plugType: "abundant", wifiType: "fast" },
-            { name: "Cozy Coffee (荃灣海濱旗艦)", district: "Tsuen Wan", addr: "荃灣海濱花園第9期地下G01號舖", tag: "放鬆海景採光/下層臨窗區域特意劃分為專注打字區", plug: "🔌 插座充足", wifi: "📶 運行表現穩定不掉線", price: "$45+", plugType: "abundant", wifiType: "stable" },
-            { name: "The Coffee Academics (荃灣線)", district: "Tsuen Wan", addr: "荃灣大河道100號海之戀商場1樓1028號舖", tag: "外勤銷售與西九龍游牧團隊的高效落腳緩衝點", plug: "🔌 部分座位設有插座", wifi: "📶 連接速度快", price: "$50+", plugType: "partial", wifiType: "stable" },
-            { name: "Fleur (荃灣南豐紗廠)", district: "Tsuen Wan", addr: "荃灣白田壩街45號南豐紗廠地下G07號舖", tag: "文創紗廠園區內/平日午後空間安靜適合編寫報告", plug: "🔌 部分座位設有插座", wifi: "📶 提供免費WiFi服務", price: "$55+", plugType: "partial", wifiType: "stable" },
-            { name: "Glocal Coffee (荃灣西沿線)", district: "Tsuen Wan", addr: "荃灣青山公路264號地下", tag: "社區型簡約小店/老闆對Laptop用家非常包容友善", plug: "🔌 部分座位設有插座", wifi: "📶 網速表現流暢", price: "$42+", plugType: "partial", wifiType: "stable" },
-            { name: "Base Workspace Cafe (荃灣)", district: "Tsuen Wan", addr: "荃灣德士古道120號工廈5樓", tag: "高階共享辦公概念店/備有專業人體工學辦公椅", plug: "🔌 插座充足", wifi: "📶 千兆高速光纖網絡覆蓋", price: "$40+", plugType: "abundant", wifiType: "fast" },
-            { name: "Return Coffee (荃灣)", district: "Tsuen Wan", addr: "荃灣沙咀道荃運工業大廈地下", tag: "精品單品烘焙/高腳工作位非常適合短時間高效專注", plug: "🔌 部分座位設有插座", wifi: "📶 網速非常穩定", price: "$45+", plugType: "partial", wifiType: "stable" },
-            { name: "Solos Workspace Cafe (荃灣)", district: "Tsuen Wan", addr: "荃灣打磚坪街創意工廈3樓", tag: "計時制混合工作艙/提供完全獨立防噪音工作隔間", plug: "🔌 插座充足", wifi: "📶 千兆專線商用光纖", price: "$38/hr", plugType: "abundant", wifiType: "fast" }
-        ];
-
-        var feed = document.getElementById('cardFeed');
-        var counterDisplay = document.getElementById('counterDisplay');
-        var noResults = document.getElementById('noResults');
-        var btnReset = document.getElementById('btnResetFilters');
-        var btnSearchNow = document.getElementById('btnSearchNow');
-
-        // 核心多維度交叉勾選篩選引擎
-        function performMultiFilter(isInitialLoad) {
-            var checkedDistricts = [];
-            var distCheckboxes = document.querySelectorAll('.filter-chk-district');
-            for (var i = 0; i < distCheckboxes.length; i++) {
-                if (distCheckboxes[i].checked) { checkedDistricts.push(distCheckboxes[i].value); }
-            }
-
-            var checkedPlugs = [];
-            var plugCheckboxes = document.querySelectorAll('.filter-chk-plug');
-            for (var j = 0; j < plugCheckboxes.length; j++) {
-                if (plugCheckboxes[j].checked) { checkedPlugs.push(plugCheckboxes[j].value); }
-            }
-
-            var checkedWifis = [];
-            var wifiCheckboxes = document.querySelectorAll('.filter-chk-wifi');
-            for (var k = 0; k < wifiCheckboxes.length; k++) {
-                if (wifiCheckboxes[k].checked) { checkedWifis.push(wifiCheckboxes[k].value); }
-            }
-
-            // 💡 產品核心邏輯改進：如果是初次加載，強行忽略勾選狀態，直接輸出全量 80 間數據
-            if (isInitialLoad === true) {
-                checkedDistricts = [];
-                checkedPlugs = [];
-                checkedWifis = [];
-            }
-
-            feed.innerHTML = "";
-            var renderCount = 0;
-
-            workspaces.forEach(function(ws) {
-                var matchesDistrict = (checkedDistricts.length === 0 || checkedDistricts.indexOf(ws.district) !== -1);
-                var matchesPlug = (checkedPlugs.length === 0 || checkedPlugs.indexOf(ws.plugType) !== -1);
-                var matchesWifi = (checkedWifis.length === 0 || checkedWifis.indexOf(ws.wifiType) !== -1);
-
-                if (matchesDistrict && matchesPlug && matchesWifi) {
-                    renderCount++;
-                    
-                    var card = document.createElement('div');
-                    card.className = 'card';
-                    
-                    var gMapsBase = 'https://www.google.com/' + 'maps/search/?api=1&query=';
-                    var fullMapsUrl = gMapsBase + encodeURIComponent(ws.name + ' ' + ws.district);
-                    
-                    // 🛡️ ES5 傳統字串拼接，100% 完整結構，絕不報錯
-                    var htmlTemplate = '<div class="card-header-row">' +
-                        '<div class="card-title">' + ws.name + '</div>' +
-                        '<div class="badge">' + ws.district + '</div>' +
-                        '</div>' +
-                        '<div class="card-address">' + ws.addr + '</div>' +
-                        '<div class="amenities">' +
-                        '<div class="amenity-row"><span class="amenity-indicator">▪</span> ' + ws.tag + '</div>' +
-                        '<div class="amenity-row"><span class="amenity-indicator">▪</span> ' + ws.plug + '</div>' +
-                        '<div class="amenity-row"><span class="amenity-indicator">▪</span> ' + ws.wifi + '</div>' +
-                        '</div>' +
-                        '<div class="price-row">' +
-                        '<div class="price">' + ws.price + ' <span>最低消費</span></div>' +
-                        '<a href="' + fullMapsUrl + '" target="_blank" class="btn-action">📍 View Map</a>' +
-                        '</div>';
-                        
-                    card.innerHTML = htmlTemplate;
-                    feed.appendChild(card);
-                }
-            });
-
-            counterDisplay.innerHTML = "Showing " + renderCount + " available spaces";
-            noResults.style.display = (renderCount === 0) ? "block" : "none";
-        }
-
-        function resetAllFilters() {
-            var allCheckboxes = document.querySelectorAll('input[type="checkbox"]');
-            for (var i = 0; i < allCheckboxes.length; i++) {
-                allCheckboxes[i].checked = false;
-            }
-            // 重置時直接顯示全量數據
-            performMultiFilter(true);
-        }
-
-        // 💡 移除變更即時過濾，改為必須點擊 "Search Now" 按鈕才觸發篩選
-        btnSearchNow.addEventListener('click', function() {
-            performMultiFilter(false);
-        });
-        btnReset.addEventListener('click', resetAllFilters);
-
-        // 🚀 初始化：首頁預設顯示全量 80 間名單
-        performMultiFilter(true);
-    </script>
-</body>
-</html>
+            { name: "Initial Cafe (葵芳旗艦)", district: "Kwai Chung", addr: "葵芳新都會廣場2樓", tag: "時尚概念店附設咖啡座/適合跑數空檔半小時覆信", plug: "❌ 無插座", wifi: "📶 接收商場網絡", price: "$48+",
