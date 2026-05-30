@@ -149,4 +149,98 @@
             { name: "The Soulroom (葵青空間)", img: "https://images.unsplash.com/photo-1493612276216-ee3925520721?w=600", district: "Kwai Chung", tag: "沉靜禪意氛圍/極其適合專注思考", plug: "🔌 少量牆邊插座", wifi: "📶 網絡穩定", price: "$46+" },
             { name: "Coffee Central by TCA (中環)", img: "https://images.unsplash.com/photo-1513530534585-c7b1394c6d51?w=600", district: "Central", tag: "交通樞紐點/適合外勤團隊快速充電", plug: "🔌 充電插座速度快", wifi: "📶 網速流暢", price: "$50+" },
             { name: "Green Common (中環店)", img: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=600", district: "Central", tag: "💡 狀態提示：繁忙時段設有用餐時限", plug: "❌ 現場不設工作插座", wifi: "📶 提供基本WiFi", price: "$65+" },
-            { name: "Sensory Zero (黃埔延伸店)", img: "
+            { name: "Sensory Zero (黃埔延伸店)", img: "https://images.unsplash.com/photo-1515823591413-c43c20c43d8e?w=600", district: "Kwun Tong", tag: "混合辦公新趨勢據點", plug: "🔌 插座配備充足", wifi: "📶 高速商務專線", price: "$42+" }
+        ];
+
+        // Rendering function
+        function renderCards(filteredData) {
+            const feed = document.getElementById('cardFeed');
+            const noResults = document.getElementById('noResults');
+            
+            if (filteredData.length === 0) {
+                feed.innerHTML = '';
+                noResults.style.display = 'block';
+                return;
+            }
+            
+            noResults.style.display = 'none';
+            feed.innerHTML = filteredData.map(ws => `
+                <div class="card">
+                    <div class="card-img-container">
+                        <img src="${ws.img}" alt="${ws.name}" class="card-img" loading="lazy">
+                        <div class="badge">${ws.tag}</div>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">${ws.name}</h3>
+                        <div class="amenities">
+                            <span class="amenity-icon">${ws.plug}</span>
+                            <span class="amenity-icon">${ws.wifi}</span>
+                        </div>
+                        <div class="price-row">
+                            <div class="price">${ws.price} <span>/ 每杯飲品起</span></div>
+                            <a href="#" class="btn-action" onclick="alert('請直接前往該空間，或聯繫店家了解更多。'); return false;">前往</a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Initial render
+        renderCards(workspaces);
+
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        let currentFilter = 'All Hubs';
+        
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            let filtered = workspaces;
+            
+            if (currentFilter !== 'All Hubs') {
+                filtered = workspaces.filter(ws => ws.district === currentFilter);
+            }
+            
+            if (query) {
+                filtered = filtered.filter(ws => 
+                    ws.name.toLowerCase().includes(query) ||
+                    ws.district.toLowerCase().includes(query) ||
+                    ws.tag.toLowerCase().includes(query)
+                );
+            }
+            
+            renderCards(filtered);
+        });
+
+        // Chip filter functionality
+        const chips = document.querySelectorAll('.chip');
+        chips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                chips.forEach(c => c.classList.remove('active'));
+                chip.classList.add('active');
+                
+                currentFilter = chip.getAttribute('data-filter');
+                const query = searchInput.value.toLowerCase();
+                
+                let filtered = workspaces;
+                if (currentFilter !== 'All Hubs') {
+                    filtered = workspaces.filter(ws => ws.district === currentFilter);
+                }
+                
+                if (query) {
+                    filtered = filtered.filter(ws => 
+                        ws.name.toLowerCase().includes(query) ||
+                        ws.district.toLowerCase().includes(query) ||
+                        ws.tag.toLowerCase().includes(query)
+                    );
+                }
+                
+                renderCards(filtered);
+            });
+        });
+    </script>
+
+    <!-- Vercel Web Analytics -->
+    <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
+
+</body>
+</html>
