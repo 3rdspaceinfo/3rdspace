@@ -108,10 +108,12 @@
 
     <div class="feed" id="cardFeed"></div>
     <div id="noResults" style="text-align:center;color:var(--secondary);padding:3rem 1rem;display:none;font-weight:600;">無符合條件的空間。</div>
-<div style="padding: 2rem 1.2rem 1rem; text-align: center; color: #a1a1aa; font-size: 0.68rem; line-height: 1.5; background: var(--surface); border-top: 1px solid var(--border); margin-top: 1rem;">
+    
+    <div style="padding: 2rem 1.2rem 6rem; text-align: center; color: #a1a1aa; font-size: 0.68rem; line-height: 1.5; background: var(--surface); border-top: 1px solid var(--border); margin-top: 1rem;">
         <strong>Disclaimer / 免責聲明：</strong><br>
         本網站（ThirdSpace）所載之所有實測資訊及收費評級僅供一般參考之用。團隊雖盡力確保數據準確，惟店舖營運及收費隨時變更，本站並不保證所有資料無誤。讀者因信賴或使用本站資訊而引致之任何明示或暗示之損失，本站一概不承擔任何法律及賠償責任。實地狀況請以店舖即時公佈為準。
     </div>
+    
     <div class="bottom-nav">
         <a href="#" class="nav-item active">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
@@ -130,138 +132,4 @@
     <script>
         var spaces = [
             /* ================= CENTRAL / ADMIRALTY (10間) ================= */
-            {n:"Four Seasons 酒店大堂 Lounge", d:"Central", t:"hotel", a:"中環金融街8號香港四季酒店大堂", tag:"終極高端商務洽談/極致體面", p:"🔌 聯絡職員提供外置排插", w:"📶 頂級專線極速網絡", pr:"$120+", pT:"abundant", wT:"fast", prT:"high"},
-            {n:"BaseHall 02 (怡和大廈)", d:"Central", t:"cowork", a:"中環康樂廣場1號怡和大廈地庫", tag:"大型多元飲食與辦公混合區/不限時", p:"🔌 部分靠邊座位有插座", w:"📶 提供商場公共WiFi", pr:"$60+", pT:"partial", wT:"stable", prT:"mid"},
-            {n:"The Murray Lounge", d:"Central", t:"hotel", a:"中環紅棉路22號", tag:"寧靜高端環境/適合與重要客戶開會", p:"🔌 少量沙發位提供插頭", w:"📶 高速酒店網絡", pr:"$90+", pT:"partial", wT:"fast", prT:"mid"},
-            {n:"Desk One 溫書 (中環店)", d:"Central", t:"cowork", a:"中環德輔道中54-58號軟庫中心21樓", tag:"專業計時制生產力基地/絕對安靜", p:"🔌 全場每個座位皆有插座", w:"📶 企業級光纖網絡", pr:"$45/hr", pT:"abundant", wT:"fast", prT:"low"},
-            {n:"NOC Coffee Co. (寶軒酒店)", d:"Central", t:"cafe", a:"中環干諾道中119號寶軒地下", tag:"旗艦級微水泥空間/適合長時專注", p:"🔌 靠牆大檯設有插座", w:"📶 網速表現非常優異", pr:"$55+", pT:"partial", wT:"fast", prT:"mid"},
-            {n:"Blue Bottle Coffee (擺花街)", d:"Central", t:"cafe", a:"中環擺花街38號地下及1樓", tag:"寬敞兩層採光極佳/中央長檯適合打字", p:"🔌 僅中央長檯提供插座", w:"📶 網速表現良好", pr:"$50+", pT:"partial", wT:"stable", prT:"mid"},
-            {n:"JW Marriott The Lounge", d:"Central", t:"hotel", a:"金鐘金鐘道88號太古廣場", tag:"經典五星級大堂/寬敞高背座椅極舒適", p:"🔌 部分卡位設有插座", w:"📶 酒店專線WiFi", pr:"$100+", pT:"partial", wT:"fast", prT:"high"},
-            {n:"The Coffee Academics (渣打大廈)", d:"Central", t:"cafe", a:"中環德輔道中4-4A號渣打銀行大廈2樓", tag:"金融區核心腹地/適合極速充電", p:"🔌 特定插座充電速度極快", w:"📶 網絡速度流暢", pr:"$55+", pT:"abundant", wT:"fast", prT:"mid"},
-            {n:"Elephant Grounds (星街)", d:"Central", t:"cafe", a:"灣仔星街8號地下", tag:"太古廣場周邊休閒工作點/半戶外氛圍", p:"🔌 少量靠牆位有插頭", w:"📶 網速穩定", pr:"$55+", pT:"partial", wT:"stable", prT:"mid"},
-            {n:"Pacific Coffee (萬宜大廈)", d:"Central", t:"cafe", a:"中環德輔道中68號萬宜大廈商場114號舖", tag:"老牌金融區商務停靠點/容忍度高", p:"🔌 部分沙發底有插頭", w:"📶 太平洋標準網絡", pr:"$42+", pT:"partial", wT:"stable", prT:"low"},
-            
-            /* ================= WAN CHAI (6間) ================= */
-            {n:"Desk One 溫書 (灣仔店)", d:"Wan Chai", t:"cowork", a:"灣仔星街2號星月閣2樓", tag:"計時制/望街景大玻璃窗極致專注", p:"🔌 100% 桌椅自帶插座", w:"📶 千兆高速網絡", pr:"$45/hr", pT:"abundant", wT:"fast", prT:"low"},
-            {n:"The Coffee Academics (莊士敦道)", d:"Wan Chai", t:"cafe", a:"灣仔莊士敦道35號地下", tag:"旗艦級大型商務會議專用長檯", p:"🔌 插座充足", w:"📶 連接表現卓越", pr:"$55+", pT:"abundant", wT:"fast", prT:"mid"},
-            {n:"Grand Hyatt Lounge", d:"Wan Chai", t:"hotel", a:"灣仔港灣道1號君悅酒店大堂", tag:"會展區見客首選/五星級寧靜保障", p:"🔌 聯絡職員安排插座", w:"📶 酒店級高速網絡", pr:"$110+", pT:"partial", wT:"fast", prT:"high"},
-            {n:"Renaissance Harbour View", d:"Wan Chai", t:"hotel", a:"灣仔港灣道1號萬麗海景酒店大堂", tag:"全海景大堂/適合會展展期中途休息", p:"🔌 少量沙發底有插座", w:"📶 穩定商務網絡", pr:"$85+", pT:"partial", wT:"mid", prT:"mid"},
-            {n:"Pacific Coffee (新鴻基中心)", d:"Wan Chai", t:"cafe", a:"灣仔港灣道30號新鴻基中心地下", tag:"傳統寫字樓大堂 Cafe/極易搵位", p:"🔌 沙發區有少量插頭", w:"📶 標準公共網絡", pr:"$42+", pT:"partial", wT:"stable", prT:"low"},
-            {n:"Starbucks (新鴻基中心)", d:"Wan Chai", t:"cafe", a:"灣仔港灣道30號新鴻基中心1樓", tag:"大型連鎖/適合快速處理文書", p:"🔌 牆角位置設有插頭", w:"📶 穩定網絡", pr:"$42+", pT:"partial", wT:"stable", prT:"low"},
-            
-            /* ================= CAUSEWAY BAY (7間) ================= */
-            {n:"The Work Project Lobby", d:"Causeway Bay", t:"cowork", a:"銅鑼灣登龍街1號金朝陽中心二期", tag:"頂級行政遠端工作空間/極度安靜", p:"🔌 每個位置皆有插座", w:"📶 企業級光纖超高速網絡", pr:"$75+", pT:"abundant", wT:"fast", prT:"mid"},
-            {n:"Desk One 溫書 (銅鑼灣店)", d:"Causeway Bay", t:"cowork", a:"銅鑼灣糖街25-31號Sugar+ 18樓", tag:"維園全海景計時空間/隔音極佳", p:"🔌 全場插座覆蓋", w:"📶 專線極速網絡", pr:"$45/hr", pT:"abundant", wT:"fast", prT:"low"},
-            {n:"Pacific Coffee (Sugar+)", d:"Causeway Bay", t:"cafe", a:"銅鑼灣糖街25-31號Sugar+地下", tag:"旗艦級半開放工作位/辦公包容度極高", p:"🔌 插座充足", w:"📶 網速表現爽快", pr:"$42+", pT:"abundant", wT:"fast", prT:"low"},
-            {n:"Starbucks Flagship (利園)", d:"Causeway Bay", t:"cafe", a:"銅鑼灣新寧道1號利園三期1樓", tag:"旗艦級大型工作站/高腳長條檯", p:"🔌 插座充足", w:"📶 專用光纖網絡", pr:"$45+", pT:"abundant", wT:"fast", prT:"low"},
-            {n:"NOC Coffee Co. (利園三期)", d:"Causeway Bay", t:"cafe", a:"銅鑼灣新寧道1號利園三期地下", tag:"純白通透玻璃窗檯位/採光極佳", p:"🔌 部分座位設有插座", w:"📶 網速穩定", pr:"$55+", pT:"partial", wT:"stable", prT:"mid"},
-            {n:"Elephant Grounds (Fashion Walk)", d:"Causeway Bay", t:"cafe", a:"銅鑼灣百德新街42-48號地下", tag:"設有高私密度的安靜閣樓專注區域", p:"🔌 部分座位設有插座", w:"📶 網絡保持穩定", pr:"$55+", pT:"partial", wT:"stable", prT:"mid"},
-            {n:"Park Lane Hotel Ebb & Flow", d:"Causeway Bay", t:"hotel", a:"銅鑼灣告士打道310號柏寧酒店", tag:"商務藝術感大堂 Lounge/空間寬敞", p:"🔌 部分座位提供插頭", w:"📶 酒店高速WiFi", pr:"$90+", pT:"partial", wT:"fast", prT:"mid"},
-
-            /* ================= TSIM SHA TSUI (11間) ================= */
-            {n:"Eaton House 數碼游牧大堂", d:"Tsim Sha Tsui", t:"cowork", a:"油麻地彌敦道380號香港逸東酒店1樓", tag:"對遠端工作最包容的頂級友善環境", p:"🔌 插座充足", w:"📶 超高速企業級穩定網絡", pr:"$60+", pT:"abundant", wT:"fast", prT:"mid"},
-            {n:"Rosewood Hotel Lounge", d:"Tsim Sha Tsui", t:"hotel", a:"尖沙咀梳士巴利道18號香港瑰麗酒店", tag:"全港最頂級奢學見客地點/極致品味", p:"🔌 聯絡職員安排", w:"📶 頂級專線網絡", pr:"$150+", pT:"partial", wT:"fast", prT:"high"},
-            {n:"K11 Artus The Lounge", d:"Tsim Sha Tsui", t:"hotel", a:"尖沙咀梳士巴利道18號K11 ARTUS 10樓", tag:"藝術級私密大堂/維港全海景工作區", p:"🔌 部分座位有隱藏插座", w:"📶 高速穩定網絡", pr:"$100+", pT:"partial", wT:"fast", prT:"high"},
-            {n:"Page Common", d:"Tsim Sha Tsui", t:"hotel", a:"尖沙咀柯士甸路148號地下", tag:"設計感商務精品酒店大堂/游牧標配", p:"🔌 插座充足", w:"📶 高端酒店專線", pr:"$45+", pT:"abundant", wT:"fast", prT:"low"},
-            {n:"NOC Coffee Co. (帝國中心)", d:"Tsim Sha Tsui", t:"cafe", a:"尖沙咀麼地道68號帝國中心地下", tag:"旗艦級寬敞空間/極度適合長時打字", p:"🔌 部分長檯設有插座", w:"📶 高頻寬全覆蓋WiFi", pr:"$55+", pT:"partial", wT:"fast", prT:"mid"},
-            {n:"The Coffee Academics (海港城)", d:"Tsim Sha Tsui", t:"cafe", a:"尖沙咀海港城港威商場4樓", tag:"商場深處相對寧靜/適合短敘", p:"🔌 部分座位設有插頭", w:"📶 商場穩定網絡", pr:"$55+", pT:"partial", wT:"stable", prT:"mid"},
-            {n:"Starbucks (Mira Place)", d:"Tsim Sha Tsui", t:"cafe", a:"尖沙咀彌敦道132號美麗華廣場一期2樓", tag:"大型商場分店/設有長檯供電腦用家", p:"🔌 牆邊及長檯有插頭", w:"📶 穩定網絡", pr:"$42+", pT:"partial", wT:"stable", prT:"low"},
-            {n:"W Hotel WOOBAR", d:"Tsim Sha Tsui", t:"hotel", a:"西九龍柯士甸道西1號香港W酒店6樓", tag:"型格昏暗高奢風/極致私隱防偷窺", p:"🔌 少量座位提供插頭", w:"📶 酒店高速網絡", pr:"$120+", pT:"partial", wT:"fast", prT:"high"},
-            {n:"Ritz-Carlton Cafe 103", d:"Tsim Sha Tsui", t:"hotel", a:"西九龍柯士甸道西1號環球貿易廣場103樓", tag:"雲端級見客極高逼格/絕對安靜", p:"🔌 聯絡職員安排", w:"📶 頂級專線網絡", pr:"$130+", pT:"partial", wT:"fast", prT:"high"},
-            {n:"sensory ZERO (海港城)", d:"Tsim Sha Tsui", t:"cafe", a:"尖沙咀海港城馬哥孛羅香港酒店地下", tag:"特大長檯格局/對打工仔極包容", p:"🔌 共享大長檯備有插座", w:"📶 連線流暢不卡頓", pr:"$50+", pT:"partial", wT:"stable", prT:"mid"},
-            {n:"Pacific Coffee (尖沙咀中心)", d:"Tsim Sha Tsui", t:"cafe", a:"尖沙咀麼地道66號尖沙咀中心地下", tag:"老牌穩定商務開工點/沙發位舒適", p:"🔌 特定靠牆沙發底有插座", w:"📶 太平洋標準網絡", pr:"$40+", pT:"partial", wT:"stable", prT:"low"},
-
-            /* ================= MONG KOK (5間) ================= */
-            {n:"Cordis Hotel Alibi", d:"Mong Kok", t:"hotel", a:"旺角上海街555號香港康得思酒店5樓", tag:"旺角區極少數高端商務靜謐地", p:"🔌 聯絡職員協助", w:"📶 酒店專線WiFi", pr:"$90+", pT:"partial", wT:"fast", prT:"mid"},
-            {n:"Desk One 溫書 (旺角店)", d:"Mong Kok", t:"cowork", a:"旺角山東街47-51號中僑商業大廈22樓", tag:"計時制生產力基地/絕對安靜無干擾", p:"🔌 插座充足", w:"📶 商用超高速光纖WiFi", pr:"$45/hr", pT:"abundant", wT:"fast", prT:"low"},
-            {n:"Studio Caffeine (旺角店)", d:"Mong Kok", t:"cafe", a:"旺角砵蘭街244號地下", tag:"極簡工業風工作長吧檯/避開主街噪音", p:"🔌 插座充足", w:"📶 光纖網速反應極快", pr:"$45+", pT:"abundant", wT:"fast", prT:"low"},
-            {n:"Starbucks (MOKO 新世紀廣場)", d:"Mong Kok", t:"cafe", a:"旺角太子道西193號新世紀廣場2樓", tag:"大型商場舖/空間深長易搵位", p:"🔌 部分牆角提供插座", w:"📶 穩定網絡", pr:"$42+", pT:"partial", wT:"stable", prT:"low"},
-            {n:"Pacific Coffee (朗豪坊)", d:"Mong Kok", t:"cafe", a:"旺角亞皆老街8號朗豪坊辦公大樓3樓", tag:"辦公大樓平台/完全服務外勤上班族", p:"🔌 沙發及高檯區插座充足", w:"📶 穩定網絡", pr:"$40+", pT:"abundant", wT:"stable", prT:"low"},
-
-            /* ================= KWUN TONG (5間) ================= */
-            {n:"The Desk (Landmark East)", d:"Kwun Tong", t:"cowork", a:"觀塘巧明街100號Landmark East 2座2樓", tag:"高階商務混合遠端工作站/極具生產力", p:"🔌 插座充足", w:"📶 光纖專線極速WiFi", pr:"$50+", pT:"abundant", wT:"fast", prT:"mid"},
-            {n:"Desk One 溫書 (觀塘店)", d:"Kwun Tong", t:"cowork", a:"觀塘成業街10號電訊一代廣場21樓", tag:"計時制安靜自修空間/提供獨立隔間", p:"🔌 每個座位皆有插座", w:"📶 企業級網絡", pr:"$45/hr", pT:"abundant", wT:"fast", prT:"low"},
-            {n:"sensory ZERO (apm)", d:"Kwun Tong", t:"cafe", a:"觀塘觀塘道418號創紀之城五期apm 2樓", tag:"工業風寬敞共享超長檯面/無壓迫感", p:"🔌 中央長檯插座充足", w:"📶 網速表現非常飛快", pr:"$50+", pT:"abundant", wT:"fast", prT:"mid"},
-            {n:"NOC Coffee Co. (MegaBox)", d:"Kwun Tong", t:"cafe", a:"九龍灣宏照道38號MegaBox地下", tag:"東九龍極大採光空間/適合高度專注", p:"🔌 吧檯及靠牆位設有插座", w:"📶 連線速度優秀", pr:"$55+", pT:"partial", wT:"stable", prT:"mid"},
-            {n:"Nina Hotel Kwun Tong", d:"Kwun Tong", t:"hotel", a:"觀塘創業街38號如心酒店", tag:"東九龍罕有寧靜高階酒店大堂", p:"🔌 少量座位提供插頭", w:"📶 高速酒店WiFi", pr:"$75+", pT:"partial", wT:"fast", prT:"mid"},
-
-            /* ================= TSUEN WAN / KWAI CHUNG (6間) ================= */
-            {n:"Desk One 溫書 (荃灣店)", d:"Tsuen Wan", t:"cowork", a:"荃灣沙咀道289號恆生荃灣大廈21樓", tag:"荃灣區最寧靜計時空間/無敵開闊景觀", p:"🔌 全場每個座位皆有插座", w:"📶 專業商用光纖", pr:"$45/hr", pT:"abundant", wT:"fast", prT:"low"},
-            {n:"Nina Hotel Tsuen Wan", d:"Tsuen Wan", t:"hotel", a:"荃灣楊屋道8號如心酒店地下", tag:"超高樓底宏偉大堂/見客極盡體面", p:"🔌 聯絡大堂職員安排", w:"📶 酒店級高速網絡", pr:"$80+", pT:"partial", wT:"fast", prT:"mid"},
-            {n:"Fleur (南豐紗廠)", d:"Tsuen Wan", t:"cafe", a:"荃灣白田壩街45號南豐紗廠地下", tag:"文創紗廠園區內/空間寬敞極舒適", p:"🔌 靠邊沙發椅下方備有插座", w:"📶 提供免費WiFi", pr:"$55+", pT:"partial", wT:"stable", prT:"mid"},
-            {n:"The Coffee Academics (海之戀)", d:"Tsuen Wan", t:"cafe", a:"荃灣大河道100號海之戀商場1樓", tag:"西九龍外勤團隊的高效落腳緩衝點", p:"🔌 部分長檯座位備有插座", w:"📶 連接速度快", pr:"$50+", pT:"partial", wT:"stable", prT:"mid"},
-            {n:"Pacific Coffee (新都會廣場)", d:"Kwai Chung", t:"cafe", a:"葵芳興芳道223號新都會廣場2樓", tag:"商場天橋交匯處/適合極速回信", p:"🔌 部分高檯及沙發有插座", w:"📶 穩定網絡", pr:"$40+", pT:"partial", wT:"stable", prT:"low"},
-            {n:"Starbucks (新都會廣場)", d:"Kwai Chung", t:"cafe", a:"葵芳興芳道223號新都會廣場3樓", tag:"設有一張大型中央高腳長檯", p:"🔌 高腳檯固定位置有插座", w:"📶 網絡運行穩定", pr:"$45+", pT:"partial", wT:"stable", prT:"low"}
-        ];
-
-        var feed = document.getElementById('cardFeed');
-        var counterDisplay = document.getElementById('counterDisplay');
-        var noResults = document.getElementById('noResults');
-
-        function getChecked(className) {
-            var arr = [];
-            var nodes = document.querySelectorAll(className);
-            for(var i=0; i<nodes.length; i++) { if(nodes[i].checked) arr.push(nodes[i].value); }
-            return arr;
-        }
-
-        function runFilter(init) {
-            try {
-                var dArr = init ? [] : getChecked('.chk-dist');
-                var tArr = init ? [] : getChecked('.chk-type');
-                var prArr = init ? [] : getChecked('.chk-price');
-                var plArr = init ? [] : getChecked('.chk-plug');
-                var wArr = init ? [] : getChecked('.chk-wifi');
-                
-                feed.innerHTML = "";
-                var count = 0;
-
-                for(var i=0; i<spaces.length; i++) {
-                    var s = spaces[i];
-                    if ((dArr.length===0 || dArr.indexOf(s.d)>-1) &&
-                        (tArr.length===0 || tArr.indexOf(s.t)>-1) &&
-                        (prArr.length===0 || prArr.indexOf(s.prT)>-1) &&
-                        (plArr.length===0 || plArr.indexOf(s.pT)>-1) &&
-                        (wArr.length===0 || wArr.indexOf(s.wT)>-1)) {
-                        
-                        count++;
-                        var cleanName = s.n;
-                        if(cleanName.indexOf('(')>-1) cleanName = cleanName.split('(')[0];
-                        if(cleanName.indexOf('（')>-1) cleanName = cleanName.split('（')[0];
-                        
-                        // 🚀【終極修復】：修正為 100% 合法且精準的 Google Maps 正規檢索協議
-                        var mapUrl = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(cleanName.trim() + ' ' + s.a);
-                        
-                        var html = '<div class="card-header-row"><div class="card-title">'+s.n+'</div><div class="badge">'+s.d+'</div></div>'+
-                                   '<div class="card-address">'+s.a+'</div>'+
-                                   '<div class="amenities">'+
-                                   '<div class="amenity-row"><span class="amenity-indicator">▪</span> '+s.tag+'</div>'+
-                                   '<div class="amenity-row"><span class="amenity-indicator">▪</span> '+s.p+'</div>'+
-                                   '<div class="amenity-row"><span class="amenity-indicator">▪</span> '+s.w+'</div></div>'+
-                                   '<div class="price-row"><div class="price">'+s.pr+' <span>最低消費</span></div><a href="' + mapUrl + '" target="_blank" class="btn-action">📍 View Map</a></div>';
-                        
-                        var div = document.createElement('div');
-                        div.className = 'card';
-                        div.innerHTML = html;
-                        feed.appendChild(div);
-                    }
-                }
-                counterDisplay.innerHTML = "Showing " + count + " available spaces";
-                noResults.style.display = (count===0) ? "block" : "none";
-            } catch(e) {
-                console.log(e);
-            }
-        }
-
-        document.getElementById('btnSearchNow').addEventListener('click', function(){ runFilter(false); });
-        document.getElementById('btnResetFilters').addEventListener('click', function(){
-            var nodes = document.querySelectorAll('input[type="checkbox"]');
-            for(var i=0; i<nodes.length; i++) nodes[i].checked = false;
-            runFilter(true);
-        });
-
-        // 啟動引擎
-        runFilter(true);
-    <script defer src="/_vercel/insights/script.js"></script>
-</body>
-</html>
+            {n:"Four Seasons 酒店大堂 Lounge", d:"Central", t:"hotel", a:"中環金融街8號香港四季酒店大堂", tag:"終極高端商務洽談/極致體面", p:"🔌 聯絡職員提供外置排插", w:"📶 頂級專線極
