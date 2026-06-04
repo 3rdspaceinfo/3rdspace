@@ -633,10 +633,7 @@
             if (space.prT === 'low') baseScore += 0.5;
             if (space.prT === 'high') baseScore -= 0.5;
 
-            // Caps raw calculation at a maximum of 10.0
             let finalScore = Math.min(baseScore, 10.0);
-            
-            // Rounds to the nearest 0.5 step tier
             let roundedScore = Math.round(finalScore * 2) / 2;
             
             return roundedScore.toFixed(1);
@@ -751,30 +748,28 @@
             });
         });
 
-       document.getElementById('emailForm').addEventListener('submit', function(e) {
+        document.getElementById('emailForm').addEventListener('submit', function(e) {
             e.preventDefault();
+            var form = this; // explicitly bind form context
             var btn = document.getElementById('submitBtn');
             btn.innerText = '處理中...';
             
-            // CRITICAL FIX: This wraps the data so Google can actually read it
-            var data = new URLSearchParams(new FormData(this));
+            var data = new URLSearchParams(new FormData(form));
             
             fetch('https://script.google.com/macros/s/AKfycbxWEi7Za60oE0N3QCdzpeK2-mGR2jbKB8zB0uKaYPpyhIELII_8FKvM8lU5vcDlOxcg/exec', {
                 method: 'POST',
                 mode: 'no-cors', 
-                body: data // <-- Must be 'data', NOT 'formData'
+                body: data
             })
-            .then(() => {
+            .then(function() {
                 alert('感謝訂閱 ThirdSpace！');
-                this.reset();
+                form.reset();
                 btn.innerText = '加入';
             })
-            .catch(error => {
+            .catch(function(error) {
                 console.error(error);
                 alert('系統繁忙，請稍後再試。');
                 btn.innerText = '加入';
-            });
-        });
             });
         });
     </script>
