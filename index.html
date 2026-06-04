@@ -599,7 +599,7 @@
             {n:"Pacific Coffee (尖沙咀中心)", d:"Tsim Sha Tsui", t:"cafe", a:"尖沙咀麼地道66號尖沙咀中心地下", tag:"老牌穩定商務開工點 / 沙發位好舒適", p:"特定靠牆沙發底有插座", w:"文書瀏覽流暢", pr:"$40+", pT:"partial", wT:"stable", prT:"low"},
 
             /* ================= MONG KOK ================= */
-            {n:"THE RIPPLES 一滴", d:"Mong Kok", t:"cafe", a:"大角咀杉樹街2-16號金基大樓3樓", tag:"世一工作友善樓上舖 / 絕對歡迎長坐", p:"插座充足", w:"文書瀏覽流暢", pr:"$55+", pT:"abundant", wT:"stable", prT:"mid"},
+           {n:"THE RIPPLES 一滴", d:"Mong Kok", t:"cafe", a:"大角咀杉樹街2-16號金基大樓3樓", tag:"世一工作友善樓上舖 / 絕對歡迎長坐", p:"插座充足", w:"文書瀏覽流暢", pr:"$55+", pT:"abundant", wT:"stable", prT:"mid", isPremium: true},
             {n:"Cordis Hotel Alibi", d:"Mong Kok", t:"hotel", a:"旺角上海街555號香港康得思酒店5樓", tag:"旺角區極少數高端商務靜謐地", p:"聯絡職員協助", w:"視像會議暢順", pr:"$90+", pT:"partial", wT:"fast", prT:"mid"},
             {n:"Desk One 溫書 (旺角店)", d:"Mong Kok", t:"cowork", a:"旺角山東街47-51號中僑商業大廈22樓", tag:"收費自修空間 / 絕對安靜無干擾", p:"插座充足", w:"視像會議暢順", pr:"$45/hr", pT:"abundant", wT:"fast", prT:"low"},
             {n:"Studio Caffeine (旺角店)", d:"Mong Kok", t:"cafe", a:"旺角砵蘭街244號地下", tag:"極簡吧檯 / 避開主街人流噪音", p:"插座充足", w:"視像會議暢順", pr:"$45+", pT:"abundant", wT:"fast", prT:"low"},
@@ -725,10 +725,41 @@
 
         function buildTopPicks() {
             const container = document.getElementById('topPicksContainer');
-            const picks = [spaces[3], spaces[10], spaces[35], spaces[22]]; 
+            if (!container) return;
             
-            picks.forEach(s => {
+            // 1. Separate premium sponsored merchants from regular spaces
+            let premiumSpots = spaces.filter(s => s.isPremium === true);
+            let regularSpaces = spaces.filter(s => !s.isPremium);
+            
+            // 2. Generate the daily date seed (YYYYMMDD)
+            const today = new Date();
+            const dateSeed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
+            
+            // 3. Shuffle ONLY the regular spaces dynamically every day
+            let seed = dateSeed;
+            for (let i = regularSpaces.length - 1; i > 0; i--) {
+                seed = (seed * 9301 + 49297) % 233280;
+                let j = Math.floor((seed / 233280) * (i + 1));
+                let temp = regularSpaces[i];
+                regularSpaces[i] = regularSpaces[j];
+                regularSpaces[j] = temp;
+            }
+            
+            // 4. Combine them: Premium merchants go FIRST, followed by random high-score spaces
+            let highScoringRegulars = regularSpaces.filter(s => {
+                return parseFloat(calculateProductivityScore(s)) >= 7.0;
+            });
+            
+            // Merge lists together
+            let combinedList = [...premiumSpots, ...highScoringRegulars, ...regularSpaces];
+            
+            // 5. Slice exactly the top 4 spaces to display
+            const dailyPicks = combinedList.slice(0, 4);
+            
+            dailyPicks.forEach(s => {
                 const score = calculateProductivityScore(s);
+                // If the shop is a premium partner, pass true to give it the featured accent border
+                const isCardFeatured = s.isPremium === true ? true : true; 
                 const pickCard = createWorkspaceCardHTML(s, score, true);
                 container.appendChild(pickCard);
             });
