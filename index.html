@@ -751,18 +751,18 @@
             });
         });
 
-        document.getElementById('emailForm').addEventListener('submit', function(e) {
+       document.getElementById('emailForm').addEventListener('submit', function(e) {
             e.preventDefault();
             var btn = document.getElementById('submitBtn');
             btn.innerText = '處理中...';
             
-            // Fix: Format data correctly as URLSearchParams so Google Apps Script accepts it
+            // CRITICAL FIX: This wraps the data so Google can actually read it
             var data = new URLSearchParams(new FormData(this));
             
             fetch('https://script.google.com/macros/s/AKfycbxWEi7Za60oE0N3QCdzpeK2-mGR2jbKB8zB0uKaYPpyhIELII_8FKvM8lU5vcDlOxcg/exec', {
                 method: 'POST',
                 mode: 'no-cors', 
-                body: data
+                body: data // <-- Must be 'data', NOT 'formData'
             })
             .then(() => {
                 alert('感謝訂閱 ThirdSpace！');
@@ -773,6 +773,8 @@
                 console.error(error);
                 alert('系統繁忙，請稍後再試。');
                 btn.innerText = '加入';
+            });
+        });
             });
         });
     </script>
