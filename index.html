@@ -531,7 +531,6 @@
     </div>
     
     <div class="bottom-nav">
-        <!-- Reverted Buttons to English Here -->
         <a href="#" class="nav-item active">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
             <span>Explore</span>
@@ -624,10 +623,9 @@
             {n:"Starbucks (新都會廣場)", d:"Kwai Chung", t:"cafe", a:"葵芳興芳道223號新都會廣場3樓", tag:"設有一張大型中央高腳長檯", p:"高腳檯固定位置有插座", w:"文書瀏覽流暢", pr:"$45+", pT:"partial", wT:"stable", prT:"low"}
         ];
 
-       function calculateProductivityScore(space) {
+        function calculateProductivityScore(space) {
             let baseScore = 5.0;
             
-            // Add attributes
             if (space.pT === 'abundant') baseScore += 2.0;
             if (space.pT === 'partial') baseScore += 1.0;
             if (space.wT === 'fast') baseScore += 1.5;
@@ -635,15 +633,13 @@
             if (space.prT === 'low') baseScore += 0.5;
             if (space.prT === 'high') baseScore -= 0.5;
 
-            // 1. Cap the raw calculation at a maximum of 10.0
+            // Caps raw calculation at a maximum of 10.0
             let finalScore = Math.min(baseScore, 10.0);
             
-            // 2. Mathematically round to the nearest 0.5 step tier
+            // Rounds to the nearest 0.5 step tier
             let roundedScore = Math.round(finalScore * 2) / 2;
             
-            // 3. Ensure it formats with one decimal place (e.g., "10.0" instead of "10")
             return roundedScore.toFixed(1);
-        }
         }
 
         function getChecked(className) {
@@ -760,20 +756,21 @@
             var btn = document.getElementById('submitBtn');
             btn.innerText = '處理中...';
             
-            var formData = new FormData(this);
+            // Fix: Format data correctly as URLSearchParams so Google Apps Script accepts it
+            var data = new URLSearchParams(new FormData(this));
             
-            // ADDED mode: 'no-cors' TO FIX BROWSER SECURITY BLOCK
             fetch('https://script.google.com/macros/s/AKfycbxWEi7Za60oE0N3QCdzpeK2-mGR2jbKB8zB0uKaYPpyhIELII_8FKvM8lU5vcDlOxcg/exec', {
                 method: 'POST',
                 mode: 'no-cors', 
-                body: formData
+                body: data
             })
-            .then(response => {
+            .then(() => {
                 alert('感謝訂閱 ThirdSpace！');
                 this.reset();
                 btn.innerText = '加入';
             })
             .catch(error => {
+                console.error(error);
                 alert('系統繁忙，請稍後再試。');
                 btn.innerText = '加入';
             });
