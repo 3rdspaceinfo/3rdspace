@@ -3,275 +3,780 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ThirdSpace | Public Beta</title>
+    <title>ThirdSpace | 搵位開工首選</title>
     <style>
-        :root { --bg: #f4f4f5; --surface: #ffffff; --primary: #000000; --secondary: #52525b; --border: #e4e4e7; --radius: 12px; }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-        body { background-color: var(--bg); color: var(--primary); padding-bottom: 95px; -webkit-font-smoothing: antialiased; }
-        .hero { background: var(--surface); padding: 2rem 1.2rem 1rem; border-bottom: 1px solid var(--border); }
-        .hero h1 { font-size: 1.8rem; font-weight: 800; margin-bottom: 0.4rem; letter-spacing: -0.8px; }
-        .hero p { color: var(--secondary); font-size: 0.88rem; line-height: 1.45; }
-        .beta-notice { margin-top: 0.8rem; padding: 0.8rem; background: #fafafa; border: 1px solid var(--primary); border-radius: 8px; font-size: 0.8rem; color: var(--primary); font-weight: 600; line-height: 1.45; }
-        .filter-container { background: var(--surface); padding: 1rem 1.2rem; border-bottom: 1px solid var(--border); display: flex; flex-direction: column; gap: 1rem; }
-        .filter-group { display: flex; flex-direction: column; gap: 0.5rem; }
-        .filter-title { font-size: 0.78rem; font-weight: 800; color: var(--secondary); text-transform: uppercase; border-left: 3px solid var(--primary); padding-left: 6px; }
-        .checkbox-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.4rem; }
-        .checkbox-label { display: flex; align-items: center; font-size: 0.85rem; font-weight: 600; cursor: pointer; color: var(--primary); }
-        .checkbox-label input { margin-right: 0.5rem; accent-color: var(--primary); width: 16px; height: 16px; }
-        .search-action-container { padding: 0.2rem 0 0; }
-        .btn-search-now { width: 100%; background: var(--primary); color: white; border: none; padding: 0.9rem; border-radius: 8px; font-size: 0.95rem; font-weight: 700; cursor: pointer; }
-        .btn-search-now:active { background: var(--secondary); }
-        .status-bar { padding: 0.6rem 1.2rem; background: var(--bg); display: flex; justify-content: space-between; border-bottom: 1px solid var(--border); }
-        .counter-text { font-size: 0.8rem; font-weight: 700; color: var(--secondary); }
-        .btn-reset { background: transparent; border: none; font-size: 0.8rem; font-weight: 700; color: var(--primary); text-decoration: underline; cursor: pointer; }
-        .feed { padding: 1rem 1.2rem; display: flex; flex-direction: column; gap: 1rem; }
-        .card { background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border); padding: 1.2rem; display: flex; flex-direction: column; gap: 0.6rem; }
-        .card-header-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; }
-        .badge { background: var(--primary); color: white; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.7rem; font-weight: 700; white-space: nowrap; }
-        .card-title { font-size: 1.05rem; font-weight: 700; line-height: 1.35; }
-        .card-address { font-size: 0.75rem; color: var(--secondary); line-height: 1.3; margin-top: -0.2rem; }
-        .amenities { display: flex; flex-direction: column; gap: 0.35rem; margin: 0.2rem 0; }
-        .amenity-row { display: flex; align-items: center; font-size: 0.8rem; font-weight: 600; color: var(--secondary); gap: 0.4rem; }
-        .amenity-indicator { color: var(--primary); font-weight: 700; }
-        .price-row { display: flex; justify-content: space-between; align-items: center; margin-top: 0.4rem; padding-top: 0.6rem; border-top: 1px solid var(--border); }
-        .price { font-weight: 700; font-size: 0.9rem; }
-        .price span { font-weight: 400; color: var(--secondary); font-size: 0.75rem; }
-        .btn-action { background: var(--primary); color: white; padding: 0.5rem 1rem; border-radius: 6px; text-decoration: none; font-size: 0.8rem; font-weight: 600; }
-        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(255,255,255,0.96); backdrop-filter: blur(20px); border-top: 1px solid var(--border); display: flex; justify-content: space-around; padding: 0.7rem 0; z-index: 1000; }
-        .nav-item { display: flex; flex-direction: column; align-items: center; color: var(--secondary); font-size: 0.72rem; font-weight: 700; text-decoration: none; width: 33%; gap: 0.25rem; }
-        .nav-item.active { color: var(--primary); }
+        :root {
+            --bg: #f5f5f7;
+            --surface: #ffffff;
+            --primary: #1d1d1f;
+            --secondary: #86868b;
+            --accent: #0071e3;
+            --accent-bg: #e8f2ff;
+            --border: rgba(0, 0, 0, 0.08);
+            --radius-lg: 16px;
+            --radius-md: 12px;
+            --radius-sm: 8px;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.06);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--primary);
+            padding-bottom: 100px;
+        }
+
+        header {
+            background: var(--surface);
+            padding: 2.5rem 1.2rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .brand-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: var(--primary);
+        }
+
+        .district-badge {
+            background: var(--primary);
+            color: var(--surface);
+            padding: 0.3rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        header p {
+            color: var(--secondary);
+            font-size: 0.95rem;
+            line-height: 1.4;
+            margin-bottom: 1rem;
+        }
+
+        .beta-notice {
+            background: #fff8e6;
+            border: 1px solid #ffe5a0;
+            border-radius: var(--radius-sm);
+            padding: 0.8rem 1rem;
+            font-size: 0.8rem;
+            color: #b06000;
+            font-weight: 500;
+            line-height: 1.45;
+            margin-bottom: 1.2rem;
+        }
+
+        .newsletter-box {
+            background: var(--bg);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+        }
+
+        .newsletter-box h3 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 0.6rem 0.8rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .newsletter-input:focus {
+            border-color: var(--accent);
+        }
+
+        .newsletter-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 1rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            min-width: 70px;
+        }
+
+        .quick-actions-section {
+            background: var(--surface);
+            padding: 1rem 0 1rem 1.2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.6rem;
+        }
+
+        .scroll-row {
+            display: flex;
+            overflow-x: auto;
+            gap: 0.5rem;
+            padding-right: 1.2rem;
+            scroll-behavior: smooth;
+        }
+
+        .scroll-row::-webkit-scrollbar {
+            display: none;
+        }
+
+        .action-pill {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: var(--bg);
+            border: 1px solid transparent;
+            padding: 0.6rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+            color: var(--primary);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .action-pill.active {
+            background: var(--accent-bg);
+            color: var(--accent);
+            border-color: rgba(0, 113, 227, 0.2);
+        }
+
+        .advanced-filters {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .filter-trigger {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.2rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--accent);
+            cursor: pointer;
+        }
+
+        .filter-content {
+            display: none;
+            padding: 0 1.2rem 1.5rem;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .filter-content.open {
+            display: flex;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .filter-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            background: var(--bg);
+            padding: 0.6rem;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+        }
+
+        .checkbox-label input {
+            accent-color: var(--accent);
+            width: 16px;
+            height: 16px;
+        }
+
+        .top-picks-section {
+            padding: 1.5rem 0 0.5rem 1.2rem;
+        }
+
+        .feed-section {
+            padding: 1rem 1.2rem;
+        }
+
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .counter-text {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .btn-reset {
+            background: transparent;
+            border: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent);
+            cursor: pointer;
+        }
+
+        .cards-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .card {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            padding: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+        }
+
+        .card.featured {
+            border-left: 4px solid var(--accent);
+            width: 280px;
+            flex-shrink: 0;
+            box-shadow: var(--shadow-md);
+        }
+
+        .card-meta-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .score-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            background: #e6f7ed;
+            color: #1a7f37;
+            padding: 0.3rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .score-badge.mid {
+            background: #fff8e6;
+            color: #b06000;
+        }
+
+        .card-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            line-height: 1.3;
+            letter-spacing: -0.3px;
+        }
+
+        .card-address {
+            font-size: 0.8rem;
+            color: var(--secondary);
+            line-height: 1.4;
+        }
+
+        .tag-line {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--primary);
+            background: var(--bg);
+            padding: 0.5rem 0.7rem;
+            border-radius: var(--radius-sm);
+            line-height: 1.4;
+        }
+
+        .amenities-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            margin: 0.2rem 0;
+        }
+
+        .amenity-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--secondary);
+            font-weight: 500;
+        }
+
+        .amenity-icon {
+            font-size: 1rem;
+            width: 18px;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 0.5rem;
+            padding-top: 0.8rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .price-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .price-label {
+            font-size: 0.7rem;
+            color: var(--secondary);
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .price-value {
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .btn-map {
+            background: var(--primary);
+            color: white;
+            padding: 0.6rem 1.1rem;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-around;
+            padding: 0.7rem 0 calc(0.7rem + env(safe-area-inset-bottom));
+            z-index: 1000;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--secondary);
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-decoration: none;
+            gap: 0.2rem;
+        }
+
+        .nav-item.active {
+            color: var(--accent);
+        }
+
+        .footer-disclaimer {
+            padding: 2rem 1.2rem;
+            font-size: 0.75rem;
+            color: var(--secondary);
+            line-height: 1.5;
+            text-align: justify;
+        }
     </style>
 </head>
 <body>
-    <div class="hero">
-        <h1>ThirdSpace</h1>
-        <p>Find cafes and spaces to work from with a laptop in Hong Kong. Filter by power outlets and Wi-Fi.</p>
+
+    <header>
+        <div class="brand-wrapper">
+            <h1>ThirdSpace</h1>
+            <span class="district-badge">Beta</span>
+        </div>
+        <p>告別四圍搵位煩惱。專為香港 Remote Workers 篩選有插頭、有 Wi-Fi、唔趕人嘅高質落腳地圖。</p>
+        
         <div class="beta-notice">
-            【Public Beta 公測版】ThirdSpace 首發 50 間精選開工點。香港舖頭變動快，如發現實地資訊未 Update，歡迎隨時撳 Submit Spot 報料，等大家出街做嘢都可以一秒搵到穩陣嘅落腳點！
+            香港舖頭變動快，如發現實地資訊未 Update，歡迎隨時撳 Submit Spot 報料！
+        </div>
+        
+        <div class="newsletter-box">
+            <h3>每週接收最新香港開工點情報</h3>
+            <form class="newsletter-form" id="emailForm">
+                <input type="email" name="email" class="newsletter-input" placeholder="輸入你的電郵地址" required>
+                <button type="submit" class="newsletter-btn" id="submitBtn">加入</button>
+            </form>
+        </div>
+    </header>
+
+    <div class="quick-actions-section">
+        <div class="section-label">快捷篩選 Quick Filters</div>
+        <div class="scroll-row">
+            <div class="action-pill" id="qa-power" onclick="toggleQuickAction('power')">🔌 插座充足</div>
+            <div class="action-pill" id="qa-focus" onclick="toggleQuickAction('focus')">🤫 適合長坐喪做</div>
+            <div class="action-pill" id="qa-zoom" onclick="toggleQuickAction('zoom')">📞 視像會議順暢</div>
+            <div class="action-pill" id="qa-cheap" onclick="toggleQuickAction('cheap')">☕ 經濟之選</div>
         </div>
     </div>
 
-    <div class="filter-container">
-        <div class="filter-group">
-            <div class="filter-title">核心地區 (Select Hubs)</div>
-            <div class="checkbox-grid">
-                <label class="checkbox-label"><input type="checkbox" class="chk-dist" value="Central">中環/金鐘 Central</label>
-                <label class="checkbox-label"><input type="checkbox" class="chk-dist" value="Wan Chai">灣仔 Wan Chai</label>
-                <label class="checkbox-label"><input type="checkbox" class="chk-dist" value="Causeway Bay">銅鑼灣 CWB</label>
-                <label class="checkbox-label"><input type="checkbox" class="chk-dist" value="Tsim Sha Tsui">尖沙咀 TST</label>
-                <label class="checkbox-label"><input type="checkbox" class="chk-dist" value="Mong Kok">旺角 MK</label>
-                <label class="checkbox-label"><input type="checkbox" class="chk-dist" value="Kwun Tong">觀塘 KT</label>
-                <label class="checkbox-label"><input type="checkbox" class="chk-dist" value="Kwai Chung">葵涌 KC</label>
-                <label class="checkbox-label"><input type="checkbox" class="chk-dist" value="Tsuen Wan">荃灣 TW</label>
-            </div>
+    <div class="advanced-filters">
+        <div class="filter-trigger" onclick="document.getElementById('advFilterContent').classList.toggle('open')">
+            <span>按地區、類型及預算詳細篩選</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </div>
-        <div class="filter-group">
-            <div class="filter-title">空間類型 (Space Type)</div>
-            <div class="checkbox-grid">
-                <label class="checkbox-label"><input type="checkbox" class="chk-type" value="cafe">☕ Cafe</label>
-                <label class="checkbox-label"><input type="checkbox" class="chk-type" value="hotel">🏢 酒店 Lounge</label>
-                <label class="checkbox-label"><input type="checkbox" class="chk-type" value="cowork">🎯 Co-working Space (計時)</label>
+        <div class="filter-content" id="advFilterContent">
+            <div class="filter-group">
+                <div class="filter-title">核心地區 (Select Hubs)</div>
+                <div class="checkbox-grid">
+                    <label class="checkbox-label"><input type="checkbox" class="chk-dist" value="Central" onchange="runFilter()">中環/金鐘</label>
+                    <label class="checkbox-label"><input type="checkbox" class="chk-dist" value="Wan Chai" onchange="runFilter()">灣仔 Wan Chai</label>
+                    <label class="checkbox-label"><input type="checkbox" class="chk-dist" value="Causeway Bay" onchange="runFilter()">銅鑼灣 CWB</label>
+                    <label class="checkbox-label"><input type="checkbox" class="chk-dist" value="Tsim Sha Tsui" onchange="runFilter()">尖沙咀/紅磡</label>
+                    <label class="checkbox-label"><input type="checkbox" class="chk-dist" value="Mong Kok" onchange="runFilter()">旺角/大角咀</label>
+                    <label class="checkbox-label"><input type="checkbox" class="chk-dist" value="Kwun Tong" onchange="runFilter()">東九龍 (觀塘/啟德)</label>
+                    <label class="checkbox-label"><input type="checkbox" class="chk-dist" value="Kwai Chung" onchange="runFilter()">葵涌 KC</label>
+                    <label class="checkbox-label"><input type="checkbox" class="chk-dist" value="Tsuen Wan" onchange="runFilter()">荃灣 TW</label>
+                </div>
             </div>
-        </div>
-        <div class="filter-group">
-            <div class="filter-title">最低消費預算 (Min Spend)</div>
-            <div class="checkbox-grid">
-                <label class="checkbox-label"><input type="checkbox" class="chk-price" value="low">💵 經濟 (<$50)</label>
-                <label class="checkbox-label"><input type="checkbox" class="chk-price" value="mid">💳 中等 ($50-$100)</label>
-                <label class="checkbox-label"><input type="checkbox" class="chk-price" value="high">💎 商務 (>$100)</label>
+            <div class="filter-group">
+                <div class="filter-title">空間類型 (Space Type)</div>
+                <div class="checkbox-grid">
+                    <label class="checkbox-label"><input type="checkbox" class="chk-type" value="cafe" onchange="runFilter()">Cafe</label>
+                    <label class="checkbox-label"><input type="checkbox" class="chk-type" value="hotel" onchange="runFilter()">酒店 Lounge</label>
+                    <label class="checkbox-label"><input type="checkbox" class="chk-type" value="cowork" onchange="runFilter()">Co-working</label>
+                </div>
             </div>
-        </div>
-        <div class="filter-group">
-            <div class="filter-title">電源插座 (Power Outlets)</div>
-            <div class="checkbox-grid">
-                <label class="checkbox-label"><input type="checkbox" class="chk-plug" value="abundant">🔌 插座充足</label>
-                <label class="checkbox-label"><input type="checkbox" class="chk-plug" value="partial">🔌 部分座位有</label>
-                <label class="checkbox-label"><input type="checkbox" class="chk-plug" value="none">❌ 無插座</label>
+            <div class="filter-group">
+                <div class="filter-title">最低消費預算 (Min Spend)</div>
+                <div class="checkbox-grid">
+                    <label class="checkbox-label"><input type="checkbox" class="chk-price" value="low" onchange="runFilter()">經濟 (<$50)</label>
+                    <label class="checkbox-label"><input type="checkbox" class="chk-price" value="mid" onchange="runFilter()">中等 ($50-$100)</label>
+                    <label class="checkbox-label"><input type="checkbox" class="chk-price" value="high" onchange="runFilter()">商務 (>$100)</label>
+                </div>
             </div>
-        </div>
-        <div class="filter-group">
-            <div class="filter-title">無線網絡 (Wireless Connection)</div>
-            <div class="checkbox-grid">
-                <label class="checkbox-label"><input type="checkbox" class="chk-wifi" value="fast">📶 網速飛快</label>
-                <label class="checkbox-label"><input type="checkbox" class="chk-wifi" value="stable">📶 運行穩定</label>
-            </div>
-        </div>
-        <div class="search-action-container">
-            <button class="btn-search-now" id="btnSearchNow">Search Now</button>
         </div>
     </div>
 
-    <div class="status-bar">
-        <div class="counter-text" id="counterDisplay">加載中...</div>
-        <button class="btn-reset" id="btnResetFilters">Reset Filters</button>
+    <div class="top-picks-section">
+        <div class="section-label">🔥 今日精選 Top Picks</div>
+        <div class="scroll-row" id="topPicksContainer" style="padding-bottom: 0.5rem;"></div>
     </div>
 
-    <div class="feed" id="cardFeed"></div>
-    <div id="noResults" style="text-align:center;color:var(--secondary);padding:3rem 1rem;display:none;font-weight:600;">無符合條件的空間。</div>
+    <div class="feed-section">
+        <div class="status-bar">
+            <div class="counter-text" id="counterDisplay">正在搜尋空間...</div>
+            <button class="btn-reset" id="btnResetFilters">重設</button>
+        </div>
+
+        <div class="cards-container" id="cardFeed"></div>
+        <div id="noResults" style="text-align:center;color:var(--secondary);padding:4rem 1rem;display:none;font-weight:600;font-size:0.95rem;">
+            沒有符合條件的空間。<br><span style="font-size:0.8rem; font-weight:400; margin-top:0.5rem; display:block;">請嘗試重設篩選條件。</span>
+        </div>
+    </div>
     
-    <div style="padding: 2rem 1.2rem 6rem; text-align: center; color: #a1a1aa; font-size: 0.68rem; line-height: 1.5; background: var(--surface); border-top: 1px solid var(--border); margin-top: 1rem;">
-        <strong>Disclaimer / 免責聲明：</strong><br>
-        本網站（ThirdSpace）所載之所有實測資訊及收費評級僅供一般參考之用。團隊雖盡力確保數據準確，惟店舖營運及收費隨時變更，本站並不保證所有資料無誤。讀者因信賴或使用本站資訊而引致之任何明示或暗示之損失，本站一概不承擔任何法律及賠償責任。實地狀況請以店舖即時公佈為準。
+    <div class="footer-disclaimer">
+        <strong>免責聲明：</strong><br>
+        本網站（ThirdSpace）所載之所有實測資訊及收費評級僅供一般參考之用。團隊雖盡力確保數據準確，惟店舖營運及收費隨時變更，本站並不保證所有資料無誤。
     </div>
     
     <div class="bottom-nav">
+        <!-- Reverted Buttons to English Here -->
         <a href="#" class="nav-item active">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
             <span>Explore</span>
         </a>
         <a href="https://www.threads.net/@freedomloghk" target="_blank" class="nav-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="17" y1="11" x2="23" y2="11"></line></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="17" y1="11" x2="23" y2="11"></line></svg>
             <span>Follow Us</span>
         </a>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLScNsnhFgeJL482hQS9gviYQb9VU091aAcTCpB0DBVCo7_qttg/viewform" target="_blank" class="nav-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
             <span>Submit Spot</span>
         </a>
     </div>
 
-    <script defer src="/_vercel/insights/script.js"></script>
-    
     <script>
-        // 等待整個網頁加載完成才執行，防止 DOM 找不到元素
-        window.addEventListener('DOMContentLoaded', function() {
-            var spaces = [
-                /* ================= CENTRAL / ADMIRALTY (10間) ================= */
-                {n:"Four Seasons 酒店大堂 Lounge", d:"Central", t:"hotel", a:"中環金融街8號香港四季酒店大堂", tag:"終極高端商務洽談/極致體面", p:"🔌 聯絡職員提供外置排插", w:"📶 頂級專線極速網絡", pr:"$120+", pT:"abundant", wT:"fast", prT:"high"},
-                {n:"BaseHall 02 (怡和大廈)", d:"Central", t:"cowork", a:"中環康樂廣場1號怡和大廈地庫", tag:"大型多元飲食與辦公混合區/不限時", p:"🔌 部分靠邊座位有插座", w:"📶 提供商場公共WiFi", pr:"$60+", pT:"partial", wT:"stable", prT:"mid"},
-                {n:"The Murray Lounge", d:"Central", t:"hotel", a:"中環紅棉路22號", tag:"寧靜高端環境/適合與重要客戶開會", p:"🔌 少量沙發位提供插頭", w:"📶 高速酒店網絡", pr:"$90+", pT:"partial", wT:"fast", prT:"mid"},
-                {n:"Desk One 溫書 (中環店)", d:"Central", t:"cowork", a:"中環德輔道中54-58號軟庫中心21樓", tag:"專業計時制生產力基地/絕對安靜", p:"🔌 全場每個座位皆有插座", w:"📶 企業級光纖網絡", pr:"$45/hr", pT:"abundant", wT:"fast", prT:"low"},
-                {n:"NOC Coffee Co. (寶軒酒店)", d:"Central", t:"cafe", a:"中環干諾道中119號寶軒地下", tag:"旗艦級微水泥空間/適合長時專注", p:"🔌 靠牆大檯設有插座", w:"📶 網速表現非常優異", pr:"$55+", pT:"partial", wT:"fast", prT:"mid"},
-                {n:"Blue Bottle Coffee (擺花街)", d:"Central", t:"cafe", a:"中環擺花街38號地下及1樓", tag:"寬敞兩層採光極佳/中央長檯適合打字", p:"🔌 僅中央長檯提供插座", w:"📶 網速表現良好", pr:"$50+", pT:"partial", wT:"stable", prT:"mid"},
-                {n:"JW Marriott The Lounge", d:"Central", t:"hotel", a:"金鐘金鐘道88號太古廣場", tag:"經典五星級大堂/寬敞高背座椅極舒適", p:"🔌 部分卡位設有插座", w:"📶 酒店專線WiFi", pr:"$100+", pT:"partial", wT:"fast", prT:"high"},
-                {n:"The Coffee Academics (渣打大廈)", d:"Central", t:"cafe", a:"中環德輔道中4-4A號渣打銀行大廈2樓", tag:"金融區核心腹地/適合極速充電", p:"🔌 特定插座充電速度極快", w:"📶 網絡速度流暢", pr:"$55+", pT:"abundant", wT:"fast", prT:"mid"},
-                {n:"Elephant Grounds (星街)", d:"Central", t:"cafe", a:"灣仔星街8號地下", tag:"太古廣場周邊休閒工作點/半戶外氛圍", p:"🔌 少量靠牆位有插頭", w:"📶 網速穩定", pr:"$55+", pT:"partial", wT:"stable", prT:"mid"},
-                {n:"Pacific Coffee (萬宜大廈)", d:"Central", t:"cafe", a:"中環德輔道中68號萬宜大廈商場114號舖", tag:"老牌金融區商務停靠點/容忍度高", p:"🔌 部分沙發底有插頭", w:"📶 太平洋標準網絡", pr:"$42+", pT:"partial", wT:"stable", prT:"low"},
-                
-                /* ================= WAN CHAI (6間) ================= */
-                {n:"Desk One 溫書 (灣仔店)", d:"Wan Chai", t:"cowork", a:"灣仔星街2號星月閣2樓", tag:"計時制/望街景大玻璃窗極致專注", p:"🔌 100% 桌椅自帶插座", w:"📶 千兆高速網絡", pr:"$45/hr", pT:"abundant", wT:"fast", prT:"low"},
-                {n:"The Coffee Academics (莊士敦道)", d:"Wan Chai", t:"cafe", a:"灣仔莊士敦道35號地下", tag:"旗艦級大型商務會議專用長檯", p:"🔌 插座充足", w:"📶 連接表現卓越", pr:"$55+", pT:"abundant", wT:"fast", prT:"mid"},
-                {n:"Grand Hyatt Lounge", d:"Wan Chai", t:"hotel", a:"灣仔港灣道1號君悅酒店大堂", tag:"會展區見客首選/五星級寧靜保障", p:"🔌 聯絡職員安排插座", w:"📶 酒店級高速網絡", pr:"$110+", pT:"partial", wT:"fast", prT:"high"},
-                {n:"Renaissance Harbour View", d:"Wan Chai", t:"hotel", a:"灣仔港灣道1號萬麗海景酒店大堂", tag:"全海景大堂/適合會展展期中途休息", p:"🔌 少量沙發底有插座", w:"📶 穩定商務網絡", pr:"$85+", pT:"partial", wT:"mid", prT:"mid"},
-                {n:"Pacific Coffee (新鴻基中心)", d:"Wan Chai", t:"cafe", a:"灣仔港灣道30號新鴻基中心地下", tag:"傳統寫字樓大堂 Cafe/極易搵位", p:"🔌 沙發區有少量插頭", w:"📶 標準公共網絡", pr:"$42+", pT:"partial", wT:"stable", prT:"low"},
-                {n:"Starbucks (新鴻基中心)", d:"Wan Chai", t:"cafe", a:"灣仔港灣道30號新鴻基中心1樓", tag:"大型連鎖/適合快速處理文書", p:"🔌 牆角位置設有插頭", w:"📶 穩定網絡", pr:"$42+", pT:"partial", wT:"stable", prT:"low"},
-                
-                /* ================= CAUSEWAY BAY (7間) ================= */
-                {n:"The Work Project Lobby", d:"Causeway Bay", t:"cowork", a:"銅鑼灣登龍街1號金朝陽中心二期", tag:"頂級行政遠端工作空間/極度安靜", p:"🔌 每個位置皆有插座", w:"📶 企業級光纖超高速網絡", pr:"$75+", pT:"abundant", wT:"fast", prT:"mid"},
-                {n:"Desk One 溫書 (銅鑼灣店)", d:"Causeway Bay", t:"cowork", a:"銅鑼灣糖街25-31號Sugar+ 18樓", tag:"維園全海景計時空間/隔音極佳", p:"🔌 全場插座覆蓋", w:"📶 專線極速網絡", pr:"$45/hr", pT:"abundant", wT:"fast", prT:"low"},
-                {n:"Pacific Coffee (Sugar+)", d:"Causeway Bay", t:"cafe", a:"銅鑼灣糖街25-31號Sugar+地下", tag:"旗艦級半開放工作位/辦公包容度極高", p:"🔌 插座充足", w:"📶 網速表現爽快", pr:"$42+", pT:"abundant", wT:"fast", prT:"low"},
-                {n:"Starbucks Flagship (利園)", d:"Causeway Bay", t:"cafe", a:"銅鑼灣新寧道1號利園三期1樓", tag:"旗艦級大型工作站/高腳長條檯", p:"🔌 插座充足", w:"📶 專用光纖網絡", pr:"$45+", pT:"abundant", wT:"fast", prT:"low"},
-                {n:"NOC Coffee Co. (利園三期)", d:"Causeway Bay", t:"cafe", a:"銅鑼灣新寧道1號利園三期地下", tag:"純白通透玻璃窗檯位/採光極佳", p:"🔌 部分座位設有插座", w:"📶 網速穩定", pr:"$55+", pT:"partial", wT:"stable", prT:"mid"},
-                {n:"Elephant Grounds (Fashion Walk)", d:"Causeway Bay", t:"cafe", a:"銅鑼灣百德新街42-48號地下", tag:"設有高私密度的安靜閣樓專注區域", p:"🔌 部分座位設有插座", w:"📶 網絡保持穩定", pr:"$55+", pT:"partial", wT:"stable", prT:"mid"},
-                {n:"Park Lane Hotel Ebb & Flow", d:"Causeway Bay", t:"hotel", a:"銅鑼灣告士打道310號柏寧酒店", tag:"商務藝術感大堂 Lounge/空間寬敞", p:"🔌 部分座位提供插頭", w:"📶 酒店高速WiFi", pr:"$90+", pT:"partial", wT:"fast", prT:"mid"},
+        let activeQuickFilters = {
+            power: false,
+            focus: false,
+            zoom: false,
+            cheap: false
+        };
 
-                /* ================= TSIM SHA TSUI (11間) ================= */
-                {n:"Eaton House 數碼游牧大堂", d:"Tsim Sha Tsui", t:"cowork", a:"油麻地彌敦道380號香港逸東酒店1樓", tag:"對遠端工作最包容的頂級友善環境", p:"🔌 插座充足", w:"📶 超高速企業級穩定網絡", pr:"$60+", pT:"abundant", wT:"fast", prT:"mid"},
-                {n:"Rosewood Hotel Lounge", d:"Tsim Sha Tsui", t:"hotel", a:"尖沙咀梳士巴利道18號香港瑰麗酒店", tag:"全港最頂級奢學見客地點/極致品味", p:"🔌 聯絡職員安排", w:"📶 頂級專線網絡", pr:"$150+", pT:"partial", wT:"fast", prT:"high"},
-                {n:"K11 Artus The Lounge", d:"Tsim Sha Tsui", t:"hotel", a:"尖沙咀梳士巴利道18號K11 ARTUS 10樓", tag:"藝術級私密大堂/維港全海景工作區", p:"🔌 部分座位有隱藏插座", w:"📶 高速穩定網絡", pr:"$100+", pT:"partial", wT:"fast", prT:"high"},
-                {n:"Page Common", d:"Tsim Sha Tsui", t:"hotel", a:"尖沙咀柯士甸路148號地下", tag:"設計感商務精品酒店大堂/游牧標配", p:"🔌 插座充足", w:"📶 高端酒店專線", pr:"$45+", pT:"abundant", wT:"fast", prT:"low"},
-                {n:"NOC Coffee Co. (帝國中心)", d:"Tsim Sha Tsui", t:"cafe", a:"尖沙咀麼地道68號帝國中心地下", tag:"旗艦級寬敞空間/極度適合長時打字", p:"🔌 部分長檯設有插座", w:"📶 高頻寬全覆蓋WiFi", pr:"$55+", pT:"partial", wT:"fast", prT:"mid"},
-                {n:"The Coffee Academics (海港城)", d:"Tsim Sha Tsui", t:"cafe", a:"尖沙咀海港城港威商場4樓", tag:"商場深處相對寧靜/適合短敘", p:"🔌 部分座位設有插頭", w:"📶 商場穩定網絡", pr:"$55+", pT:"partial", wT:"stable", prT:"mid"},
-                {n:"Starbucks (Mira Place)", d:"Tsim Sha Tsui", t:"cafe", a:"尖沙咀彌敦道132號美麗華廣場一期2樓", tag:"大型商場分店/設有長檯供電腦用家", p:"🔌 牆邊及長檯有插頭", w:"📶 穩定網絡", pr:"$42+", pT:"partial", wT:"stable", prT:"low"},
-                {n:"W Hotel WOOBAR", d:"Tsim Sha Tsui", t:"hotel", a:"西九龍柯士甸道西1號香港W酒店6樓", tag:"型格昏暗高奢風/極致私隱防偷窺", p:"🔌 少量座位提供插頭", w:"📶 酒店高速網絡", pr:"$120+", pT:"partial", wT:"fast", prT:"high"},
-                {n:"Ritz-Carlton Cafe 103", d:"Tsim Sha Tsui", t:"hotel", a:"西九龍柯士甸道西1號環球貿易廣場103樓", tag:"雲端級見客極高逼格/絕對安靜", p:"🔌 聯絡職員安排", w:"📶 頂級專線網絡", pr:"$130+", pT:"partial", wT:"fast", prT:"high"},
-                {n:"sensory ZERO (海港城)", d:"Tsim Sha Tsui", t:"cafe", a:"尖沙咀海港城馬哥孛羅香港酒店地下", tag:"特大長檯格局/對打工仔極包容", p:"🔌 共享大長檯備有插座", w:"📶 連線流暢不卡頓", pr:"$50+", pT:"partial", wT:"stable", prT:"mid"},
-                {n:"Pacific Coffee (尖沙咀中心)", d:"Tsim Sha Tsui", t:"cafe", a:"尖沙咀麼地道66號尖沙咀中心地下", tag:"老牌穩定商務開工點/沙發位舒適", p:"🔌 特定靠牆沙發底有插座", w:"📶 太平洋標準網絡", pr:"$40+", pT:"partial", wT:"stable", prT:"low"},
+        const spaces = [
+            /* ================= CENTRAL / ADMIRALTY ================= */
+            {n:"Four Seasons 酒店大堂 Lounge", d:"Central", t:"hotel", a:"中環金融街8號香港四季酒店大堂", tag:"見客極盡體面 / 頂級商務洽談", p:"聯絡職員提供外置排插", w:"視像會議暢順", pr:"$120+", pT:"abundant", wT:"fast", prT:"high"},
+            {n:"BaseHall 02 (怡和大廈)", d:"Central", t:"cowork", a:"中環康樂廣場1號怡和大廈地庫", tag:"大型多元飲食辦公混合區 / 唔會畀人趕", p:"部分靠邊座位有插座", w:"文書瀏覽流暢", pr:"$60+", pT:"partial", wT:"stable", prT:"mid"},
+            {n:"The Murray Lounge", d:"Central", t:"hotel", a:"中環紅棉路22號", tag:"寧靜高端環境 / 傾密計一流", p:"少量沙發位提供插頭", w:"視像會議暢順", pr:"$90+", pT:"partial", wT:"fast", prT:"mid"},
+            {n:"Desk One 溫書 (中環店)", d:"Central", t:"cowork", a:"中環德輔道中54-58號軟庫中心21樓", tag:"專業收費空間 / 適合長坐喪做", p:"全場每個座位皆有插座", w:"視像會議暢順", pr:"$45/hr", pT:"abundant", wT:"fast", prT:"low"},
+            {n:"NOC Coffee Co. (寶軒酒店)", d:"Central", t:"cafe", a:"中環干諾道中119號寶軒地下", tag:"純白微水泥設計 / 空間採光極佳", p:"靠牆大檯設有插座", w:"視像會議暢順", pr:"$55+", pT:"partial", wT:"fast", prT:"mid"},
+            {n:"Blue Bottle Coffee (擺花街)", d:"Central", t:"cafe", a:"中環擺花街38號地下及1樓", tag:"寬敞兩層採光極佳 / 中央長檯適合打字", p:"僅中央長檯提供插座", w:"文書瀏覽流暢", pr:"$50+", pT:"partial", wT:"stable", prT:"mid"},
+            {n:"JW Marriott The Lounge", d:"Central", t:"hotel", a:"金鐘金鐘道88號太古廣場", tag:"五星級大堂 / 寬敞沙發位極舒適", p:"部分卡位設有插座", w:"視像會議暢順", pr:"$100+", pT:"partial", wT:"fast", prT:"high"},
+            {n:"The Coffee Academics (渣打大廈)", d:"Central", t:"cafe", a:"中環德輔道中4-4A號渣打銀行大廈2樓", tag:"金融區核心腹地 / 適合極速處理公事", p:"特定插座充電速度極快", w:"視像會議暢順", pr:"$55+", pT:"abundant", wT:"fast", prT:"mid"},
+            {n:"Elephant Grounds (星街)", d:"Central", t:"cafe", a:"灣仔星街8號地下", tag:"休閒工作點 / 半戶外氛圍", p:"少量靠牆位有插頭", w:"Wi-Fi 弱 建議用自己 Data", pr:"$55+", pT:"partial", wT:"stable", prT:"mid"},
+            {n:"Pacific Coffee (萬宜大廈)", d:"Central", t:"cafe", a:"中環德輔道中68號萬宜大廈商場114號舖", tag:"老牌商務停靠點 / 辦公包容度高", p:"部分沙發底有插頭", w:"文書瀏覽流暢", pr:"$42+", pT:"partial", wT:"stable", prT:"low"},
+            
+            /* ================= WAN CHAI ================= */
+            {n:"Desk One 溫書 (灣仔店)", d:"Wan Chai", t:"cowork", a:"灣仔星街2號星月閣2樓", tag:"收費制 / 望街景大玻璃窗極致專注", p:"100% 桌椅自帶插座", w:"視像會議暢順", pr:"$45/hr", pT:"abundant", wT:"fast", prT:"low"},
+            {n:"The Coffee Academics (莊士敦道)", d:"Wan Chai", t:"cafe", a:"灣仔莊士敦道35號地下", tag:"大型商務會議專用長檯", p:"插座充足", w:"視像會議暢順", pr:"$55+", pT:"abundant", wT:"fast", prT:"mid"},
+            {n:"Grand Hyatt Lounge", d:"Wan Chai", t:"hotel", a:"灣仔港灣道1號君悅酒店大堂", tag:"會展區見客首選 / 體面過人", p:"聯絡職員安排插座", w:"視像會議暢順", pr:"$110+", pT:"partial", wT:"fast", prT:"high"},
+            {n:"Renaissance Harbour View", d:"Wan Chai", t:"hotel", a:"灣仔港灣道1號萬麗海景酒店大堂", tag:"全海景大堂 / 適合展期中途休息回信", p:"少量沙發底有插座", w:"文書瀏覽流暢", pr:"$85+", pT:"partial", wT:"mid", prT:"mid"},
+            {n:"Pacific Coffee (新鴻基中心)", d:"Wan Chai", t:"cafe", a:"灣仔港灣道30號新鴻基中心地下", tag:"傳統寫字樓大堂 / 容易搵位", p:"沙發區有少量插頭", w:"文書瀏覽流暢", pr:"$42+", pT:"partial", wT:"stable", prT:"low"},
+            {n:"Starbucks (新鴻基中心)", d:"Wan Chai", t:"cafe", a:"灣仔港灣道30號新鴻基中心1樓", tag:"大型連鎖 / 適合快速處理文書", p:"隱蔽牆角位置設有插頭", w:"文書瀏覽流暢", pr:"$42+", pT:"partial", wT:"stable", prT:"low"},
+            
+            /* ================= CAUSEWAY BAY ================= */
+            {n:"The Work Project Lobby", d:"Causeway Bay", t:"cowork", a:"銅鑼灣登龍街1號金朝陽中心二期", tag:"頂級遠端工作空間 / 適合長坐喪做", p:"每個位置皆有插座", w:"視像會議暢順", pr:"$75+", pT:"abundant", wT:"fast", prT:"mid"},
+            {n:"Desk One 溫書 (銅鑼灣店)", d:"Causeway Bay", t:"cowork", a:"銅鑼灣糖街25-31號Sugar+ 18樓", tag:"維園全海景收費空間 / 隔音極佳", p:"全場插座覆蓋", w:"視像會議暢順", pr:"$45/hr", pT:"abundant", wT:"fast", prT:"low"},
+            {n:"Pacific Coffee (Sugar+)", d:"Causeway Bay", t:"cafe", a:"銅鑼灣糖街25-31號Sugar+地下", tag:"半開放工作位 / 辦公包容度極高", p:"插座充足", w:"視像會議暢順", pr:"$42+", pT:"abundant", wT:"fast", prT:"low"},
+            {n:"Starbucks Flagship (利園)", d:"Causeway Bay", t:"cafe", a:"銅鑼灣新寧道1號利園三期1樓", tag:"旗艦級大型工作站 / 高腳長條檯", p:"插座充足", w:"視像會議暢順", pr:"$45+", pT:"abundant", wT:"fast", prT:"low"},
+            {n:"NOC Coffee Co. (利園三期)", d:"Causeway Bay", t:"cafe", a:"銅鑼灣新寧道1號利園三期地下", tag:"通透玻璃窗 / 採光與空間感極好", p:"部分座位設有插座", w:"文書瀏覽流暢", pr:"$55+", pT:"partial", wT:"stable", prT:"mid"},
+            {n:"Elephant Grounds (Fashion Walk)", d:"Causeway Bay", t:"cafe", a:"銅鑼灣百德新街42-48號地下", tag:"設有高私密度的安靜閣樓", p:"部分座位設有插座", w:"文書瀏覽流暢", pr:"$55+", pT:"partial", wT:"stable", prT:"mid"},
+            {n:"Park Lane Hotel Ebb & Flow", d:"Causeway Bay", t:"hotel", a:"銅鑼灣告士打道310號柏寧酒店", tag:"商務藝術感大堂 / 空間寬敞", p:"部分座位提供插頭", w:"視像會議暢順", pr:"$90+", pT:"partial", wT:"fast", prT:"mid"},
 
-                /* ================= MONG KOK (5間) ================= */
-                {n:"Cordis Hotel Alibi", d:"Mong Kok", t:"hotel", a:"旺角上海街555號香港康得思酒店5樓", tag:"旺角區極少數高端商務靜謐地", p:"🔌 聯絡職員協助", w:"📶 酒店專線WiFi", pr:"$90+", pT:"partial", wT:"fast", prT:"mid"},
-                {n:"Desk One 溫書 (旺角店)", d:"Mong Kok", t:"cowork", a:"旺角山東街47-51號中僑商業大廈22樓", tag:"計時制生產力基地/絕對安靜無干擾", p:"🔌 插座充足", w:"📶 商用超高速光纖WiFi", pr:"$45/hr", pT:"abundant", wT:"fast", prT:"low"},
-                {n:"Studio Caffeine (旺角店)", d:"Mong Kok", t:"cafe", a:"旺角砵蘭街244號地下", tag:"極簡工業風工作長吧檯/避開主街噪音", p:"🔌 插座充足", w:"📶 光纖網速反應極快", pr:"$45+", pT:"abundant", wT:"fast", prT:"low"},
-                {n:"Starbucks (MOKO 新世紀廣場)", d:"Mong Kok", t:"cafe", a:"旺角太子道西193號新世紀廣場2樓", tag:"大型商場舖/空間深長易搵位", p:"🔌 部分牆角提供插座", w:"📶 穩定網絡", pr:"$42+", pT:"partial", wT:"stable", prT:"low"},
-                {n:"Pacific Coffee (朗豪坊)", d:"Mong Kok", t:"cafe", a:"旺角亞皆老街8號朗豪坊辦公大樓3樓", tag:"辦公大樓平台/完全服務外勤上班族", p:"🔌 沙發及高檯區插座充足", w:"📶 穩定網絡", pr:"$40+", pT:"abundant", wT:"stable", prT:"low"},
+            /* ================= TSIM SHA TSUI ================= */
+            {n:"InFuse by Ideaology (K11)", d:"Tsim Sha Tsui", t:"cafe", a:"尖沙咀 K11 ATELIER 地下", tag:"頂級精品咖啡 / 藝術館級高雅空間", p:"部分座位提供插頭", w:"文書瀏覽流暢", pr:"$55+", pT:"partial", wT:"stable", prT:"mid"},
+            {n:"Ideaology (黃埔)", d:"Tsim Sha Tsui", t:"cafe", a:"紅磡黃埔天地百合苑商場地下1A號舖", tag:"高性價比精品咖啡 / 屋苑寧靜落腳點", p:"少量靠牆位有插頭", w:"文書瀏覽流暢", pr:"$45+", pT:"partial", wT:"stable", prT:"low"},
+            {n:"Eaton House 大堂", d:"Tsim Sha Tsui", t:"cowork", a:"油麻地彌敦道380號香港逸東酒店1樓", tag:"游牧上班族極度友善環境 / 傾密計一流", p:"插座充足", w:"視像會議暢順", pr:"$60+", pT:"abundant", wT:"fast", prT:"mid"},
+            {n:"Rosewood Hotel Lounge", d:"Tsim Sha Tsui", t:"hotel", a:"尖沙咀梳士巴利道18號香港瑰麗酒店", tag:"全港頂級奢華見客地點 / 體面過人", p:"聯絡職員安排", w:"視像會議暢順", pr:"$150+", pT:"partial", wT:"fast", prT:"high"},
+            {n:"K11 Artus The Lounge", d:"Tsim Sha Tsui", t:"hotel", a:"尖沙咀梳士巴利道18號K11 ARTUS 10樓", tag:"藝術級私密大堂 / 維港海景高專注區", p:"部分座位有隱藏插座", w:"視像會議暢順", pr:"$100+", pT:"partial", wT:"fast", prT:"high"},
+            {n:"Page Common", d:"Tsim Sha Tsui", t:"hotel", a:"尖沙咀柯士甸路148號地下", tag:"設計感精品酒店大堂 / 遠端工作標配", p:"插座充足", w:"視像會議暢順", pr:"$45+", pT:"abundant", wT:"fast", prT:"low"},
+            {n:"NOC Coffee Co. (帝國中心)", d:"Tsim Sha Tsui", t:"cafe", a:"尖沙咀麼地道68號帝國中心地下", tag:"海旁旗艦級寬敞空間 / 適合打字喪做", p:"部分長檯設有插座", w:"視像會議暢順", pr:"$55+", pT:"partial", wT:"fast", prT:"mid"},
+            {n:"The Coffee Academics (海港城)", d:"Tsim Sha Tsui", t:"cafe", a:"尖沙咀海港城港威商場4樓", tag:"商場深處相對寧靜 / 方便短時間開會", p:"部分座位設有插頭", w:"文書瀏覽流暢", pr:"$55+", pT:"partial", wT:"stable", prT:"mid"},
+            {n:"Starbucks (Mira Place)", d:"Tsim Sha Tsui", t:"cafe", a:"尖沙咀彌敦道132號美麗華廣場一期2樓", tag:"大商場分店 / 設有工作長檯", p:"牆邊及長檯有插頭", w:"文書瀏覽流暢", pr:"$42+", pT:"partial", wT:"stable", prT:"low"},
+            {n:"W Hotel WOOBAR", d:"Tsim Sha Tsui", t:"hotel", a:"西九龍柯士甸道西1號香港W酒店6樓", tag:"型格高奢暗黑風 / 私隱防窺極佳", p:"少量座位提供插頭", w:"視像會議暢順", pr:"$120+", pT:"partial", wT:"fast", prT:"high"},
+            {n:"Ritz-Carlton Cafe 103", d:"Tsim Sha Tsui", t:"hotel", a:"西九龍柯士甸道西1號環球貿易廣場103樓", tag:"雲端級景觀 / 絕對安靜奢華見客點", p:"聯絡職員安排", w:"視像會議暢順", pr:"$130+", pT:"partial", wT:"fast", prT:"high"},
+            {n:"sensory ZERO (海港城)", d:"Tsim Sha Tsui", t:"cafe", a:"尖沙咀海港城馬哥孛羅香港酒店地下", tag:"特大長檯格局 / 對打工仔極包容", p:"共享大長檯備有插座", w:"文書瀏覽流暢", pr:"$50+", pT:"partial", wT:"stable", prT:"mid"},
+            {n:"Pacific Coffee (尖沙咀中心)", d:"Tsim Sha Tsui", t:"cafe", a:"尖沙咀麼地道66號尖沙咀中心地下", tag:"老牌穩定商務開工點 / 沙發位好舒適", p:"特定靠牆沙發底有插座", w:"文書瀏覽流暢", pr:"$40+", pT:"partial", wT:"stable", prT:"low"},
 
-                /* ================= KWUN TONG (5間) ================= */
-                {n:"The Desk (Landmark East)", d:"Kwun Tong", t:"cowork", a:"觀塘巧明街100號Landmark East 2座2樓", tag:"高階商務混合遠端工作站/極具生產力", p:"🔌 插座充足", w:"📶 光纖專線極速WiFi", pr:"$50+", pT:"abundant", wT:"fast", prT:"mid"},
-                {n:"Desk One 溫書 (觀塘店)", d:"Kwun Tong", t:"cowork", a:"觀塘成業街10號電訊一代廣場21樓", tag:"計時制安靜自修空間/提供獨立隔間", p:"🔌 每個座位皆有插座", w:"📶 企業級網絡", pr:"$45/hr", pT:"abundant", wT:"fast", prT:"low"},
-                {n:"sensory ZERO (apm)", d:"Kwun Tong", t:"cafe", a:"觀塘觀塘道418號創紀之城五期apm 2樓", tag:"工業風寬敞共享超長檯面/無壓迫感", p:"🔌 中央長檯插座充足", w:"📶 網速表現非常飛快", pr:"$50+", pT:"abundant", wT:"fast", prT:"mid"},
-                {n:"NOC Coffee Co. (MegaBox)", d:"Kwun Tong", t:"cafe", a:"九龍灣宏照道38號MegaBox地下", tag:"東九龍極大採光空間/適合高度專注", p:"🔌 吧檯及靠牆位設有插座", w:"📶 連線速度優秀", pr:"$55+", pT:"partial", wT:"stable", prT:"mid"},
-                {n:"Nina Hotel Kwun Tong", d:"Kwun Tong", t:"hotel", a:"觀塘創業街38號如心酒店", tag:"東九龍罕有寧靜高階酒店大堂", p:"🔌 少量座位提供插頭", w:"📶 高速酒店WiFi", pr:"$75+", pT:"partial", wT:"fast", prT:"mid"},
+            /* ================= MONG KOK ================= */
+            {n:"THE RIPPLES 一滴", d:"Mong Kok", t:"cafe", a:"大角咀杉樹街2-16號金基大樓3樓", tag:"世一工作友善樓上舖 / 絕對歡迎長坐", p:"插座充足", w:"文書瀏覽流暢", pr:"$55+", pT:"abundant", wT:"stable", prT:"mid"},
+            {n:"Cordis Hotel Alibi", d:"Mong Kok", t:"hotel", a:"旺角上海街555號香港康得思酒店5樓", tag:"旺角區極少數高端商務靜謐地", p:"聯絡職員協助", w:"視像會議暢順", pr:"$90+", pT:"partial", wT:"fast", prT:"mid"},
+            {n:"Desk One 溫書 (旺角店)", d:"Mong Kok", t:"cowork", a:"旺角山東街47-51號中僑商業大廈22樓", tag:"收費自修空間 / 絕對安靜無干擾", p:"插座充足", w:"視像會議暢順", pr:"$45/hr", pT:"abundant", wT:"fast", prT:"low"},
+            {n:"Studio Caffeine (旺角店)", d:"Mong Kok", t:"cafe", a:"旺角砵蘭街244號地下", tag:"極簡吧檯 / 避開主街人流噪音", p:"插座充足", w:"視像會議暢順", pr:"$45+", pT:"abundant", wT:"fast", prT:"low"},
+            {n:"Starbucks (MOKO)", d:"Mong Kok", t:"cafe", a:"旺角太子道西193號新世紀廣場2樓", tag:"大型商場舖 / 空間深長容易搵位", p:"部分牆角提供插座", w:"文書瀏覽流暢", pr:"$42+", pT:"partial", wT:"stable", prT:"low"},
+            {n:"Pacific Coffee (朗豪坊)", d:"Mong Kok", t:"cafe", a:"旺角亞皆老街8號朗豪坊辦公大樓3樓", tag:"寫字樓平台 / 專門支援外勤上班族", p:"沙發及高檯區插座充足", w:"文書瀏覽流暢", pr:"$40+", pT:"abundant", wT:"stable", prT:"low"},
 
-                /* ================= TSUEN WAN / KWAI CHUNG (6間) ================= */
-                {n:"Desk One 溫書 (荃灣店)", d:"Tsuen Wan", t:"cowork", a:"荃灣沙咀道289號恆生荃灣大廈21樓", tag:"荃灣區最寧靜計時空間/無敵開闊景觀", p:"🔌 全場每個座位皆有插座", w:"📶 專業商用光纖", pr:"$45/hr", pT:"abundant", wT:"fast", prT:"low"},
-                {n:"Nina Hotel Tsuen Wan", d:"Tsuen Wan", t:"hotel", a:"荃灣楊屋道8號如心酒店地下", tag:"超高樓底宏偉大堂/見客極盡體面", p:"🔌 聯絡大堂職員安排", w:"📶 酒店級高速網絡", pr:"$80+", pT:"partial", wT:"fast", prT:"mid"},
-                {n:"Fleur (南豐紗廠)", d:"Tsuen Wan", t:"cafe", a:"荃灣白田壩街45號南豐紗廠地下", tag:"文創紗廠園區內/空間寬敞極舒適", p:"🔌 靠邊沙發椅下方備有插座", w:"📶 提供免費WiFi", pr:"$55+", pT:"partial", wT:"stable", prT:"mid"},
-                {n:"The Coffee Academics (海之戀)", d:"Tsuen Wan", t:"cafe", a:"荃灣大河道100號海之戀商場1樓", tag:"西九龍外勤團隊的高效落腳緩衝點", p:"🔌 部分長檯座位備有插座", w:"📶 連接速度快", pr:"$50+", pT:"partial", wT:"stable", prT:"mid"},
-                {n:"Pacific Coffee (新都會廣場)", d:"Kwai Chung", t:"cafe", a:"葵芳興芳道223號新都會廣場2樓", tag:"商場天橋交匯處/適合極速回信", p:"🔌 部分高檯及沙發有插座", w:"📶 穩定網絡", pr:"$40+", pT:"partial", wT:"stable", prT:"low"},
-                {n:"Starbucks (新都會廣場)", d:"Kwai Chung", t:"cafe", a:"葵芳興芳道223號新都會廣場3樓", tag:"設有一張大型中央高腳長檯", p:"🔌 高腳檯固定位置有插座", w:"📶 網絡運行穩定", pr:"$45+", pT:"partial", wT:"stable", prT:"low"}
-            ];
+            /* ================= KWUN TONG ================= */
+            {n:"Ideaology (AIRSIDE)", d:"Kwun Tong", t:"cafe", a:"啟德 AIRSIDE 地下 G016-G017號舖", tag:"全新旗艦商場舖 / 採光極佳高樓底", p:"部分座位設有插座", w:"文書瀏覽流暢", pr:"$50+", pT:"partial", wT:"stable", prT:"mid"},
+            {n:"The Desk (Landmark East)", d:"Kwun Tong", t:"cowork", a:"觀塘巧明街100號Landmark East 2座2樓", tag:"高階商務混合遠端工作站 / 唔會畀人趕", p:"插座充足", w:"視像會議暢順", pr:"$50+", pT:"abundant", wT:"fast", prT:"mid"},
+            {n:"Desk One 溫書 (觀塘店)", d:"Kwun Tong", t:"cowork", a:"觀塘成業街10號電訊一代廣場21樓", tag:"收費自修空間 / 提供獨立卡位隔間", p:"每個座位皆有插座", w:"視像會議暢順", pr:"$45/hr", pT:"abundant", wT:"fast", prT:"low"},
+            {n:"sensory ZERO (apm)", d:"Kwun Tong", t:"cafe", a:"觀塘觀塘道418號創紀之城五期apm 2樓", tag:"工業風寬敞共享超長檯面 / 無壓迫感", p:"中央長檯插座充足", w:"視像會議暢順", pr:"$50+", pT:"abundant", wT:"fast", prT:"mid"},
+            {n:"NOC Coffee Co. (MegaBox)", d:"Kwun Tong", t:"cafe", a:"九龍灣宏照道38號MegaBox地下", tag:"東九龍極大採光空間 / 適合長坐專注", p:"吧檯及靠牆位設有插座", w:"文書瀏覽流暢", pr:"$55+", pT:"partial", wT:"stable", prT:"mid"},
+            {n:"Nina Hotel Kwun Tong", d:"Kwun Tong", t:"hotel", a:"觀塘創業街38號如心酒店", tag:"東九龍罕有寧靜高階酒店大堂", p:"少量座位提供插頭", w:"視像會議暢順", pr:"$75+", pT:"partial", wT:"fast", prT:"mid"},
 
-            var feed = document.getElementById('cardFeed');
-            var counterDisplay = document.getElementById('counterDisplay');
-            var noResults = document.getElementById('noResults');
+            /* ================= TSUEN WAN / KWAI CHUNG ================= */
+            {n:"Desk One 溫書 (荃灣店)", d:"Tsuen Wan", t:"cowork", a:"荃灣沙咀道289號恆生荃灣大廈21樓", tag:"全區最寧靜計時空間 / 景觀極開揚", p:"全場每個座位皆有插座", w:"視像會議暢順", pr:"$45/hr", pT:"abundant", wT:"fast", prT:"low"},
+            {n:"Nina Hotel Tsuen Wan", d:"Tsuen Wan", t:"hotel", a:"荃灣楊屋道8號如心酒店地下", tag:"超高樓底大堂 / 見客極盡體面", p:"聯絡大堂職員安排", w:"視像會議暢順", pr:"$80+", pT:"partial", wT:"fast", prT:"mid"},
+            {n:"Fleur (南豐紗廠)", d:"Tsuen Wan", t:"cafe", a:"荃灣白田壩街45號南豐紗廠地下", tag:"文創園區內 / 空間寬敞打字舒適", p:"靠邊沙發椅下方備有插座", w:"文書瀏覽流暢", pr:"$55+", pT:"partial", wT:"stable", prT:"mid"},
+            {n:"The Coffee Academics (海之戀)", d:"Tsuen Wan", t:"cafe", a:"荃灣大河道100號海之戀商場1樓", tag:"海旁高質開工點 / 適合處理公事", p:"部分長檯座位備有插座", w:"文書瀏覽流暢", pr:"$50+", pT:"partial", wT:"stable", prT:"mid"},
+            {n:"Pacific Coffee (新都會廣場)", d:"Kwai Chung", t:"cafe", a:"葵芳興芳道223號新都會廣場2樓", tag:"商場交匯處 / 適合極速短時間回信", p:"部分高檯及沙發有插座", w:"文書瀏覽流暢", pr:"$40+", pT:"partial", wT:"stable", prT:"low"},
+            {n:"Starbucks (新都會廣場)", d:"Kwai Chung", t:"cafe", a:"葵芳興芳道223號新都會廣場3樓", tag:"設有一張大型中央高腳長檯", p:"高腳檯固定位置有插座", w:"文書瀏覽流暢", pr:"$45+", pT:"partial", wT:"stable", prT:"low"}
+        ];
 
-            if(!feed || !counterDisplay || !noResults) {
-                console.error("找不到 HTML 元素");
-                return;
-            }
+       function calculateProductivityScore(space) {
+            let baseScore = 5.0;
+            
+            // Add attributes
+            if (space.pT === 'abundant') baseScore += 2.0;
+            if (space.pT === 'partial') baseScore += 1.0;
+            if (space.wT === 'fast') baseScore += 1.5;
+            if (space.wT === 'stable') baseScore += 0.5;
+            if (space.prT === 'low') baseScore += 0.5;
+            if (space.prT === 'high') baseScore -= 0.5;
 
-            function getChecked(className) {
-                var arr = [];
-                var nodes = document.querySelectorAll(className);
-                for(var i=0; i<nodes.length; i++) { if(nodes[i].checked) arr.push(nodes[i].value); }
-                return arr;
-            }
+            // 1. Cap the raw calculation at a maximum of 10.0
+            let finalScore = Math.min(baseScore, 10.0);
+            
+            // 2. Mathematically round to the nearest 0.5 step tier
+            let roundedScore = Math.round(finalScore * 2) / 2;
+            
+            // 3. Ensure it formats with one decimal place (e.g., "10.0" instead of "10")
+            return roundedScore.toFixed(1);
+        }
+        }
 
-            function runFilter(init) {
-                try {
-                    var dArr = init ? [] : getChecked('.chk-dist');
-                    var tArr = init ? [] : getChecked('.chk-type');
-                    var prArr = init ? [] : getChecked('.chk-price');
-                    var plArr = init ? [] : getChecked('.chk-plug');
-                    var wArr = init ? [] : getChecked('.chk-wifi');
-                    
-                    feed.innerHTML = "";
-                    var count = 0;
+        function getChecked(className) {
+            const arr = [];
+            const nodes = document.querySelectorAll(className);
+            nodes.forEach(node => { if(node.checked) arr.push(node.value); });
+            return arr;
+        }
 
-                    for(var i=0; i<spaces.length; i++) {
-                        var s = spaces[i];
-                        if ((dArr.length===0 || dArr.indexOf(s.d)>-1) &&
-                            (tArr.length===0 || tArr.indexOf(s.t)>-1) &&
-                            (prArr.length===0 || prArr.indexOf(s.prT)>-1) &&
-                            (plArr.length===0 || plArr.indexOf(s.pT)>-1) &&
-                            (wArr.length===0 || wArr.indexOf(s.wT)>-1)) {
-                            
-                            count++;
-                            var cleanName = s.n;
-                            if(cleanName.indexOf('(')>-1) cleanName = cleanName.split('(')[0];
-                            if(cleanName.indexOf('（')>-1) cleanName = cleanName.split('（')[0];
-                            
-                            var mapUrl = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(cleanName.trim() + ' ' + s.a);
-                            
-                            var html = '<div class="card-header-row"><div class="card-title">'+s.n+'</div><div class="badge">'+s.d+'</div></div>'+
-                                       '<div class="card-address">'+s.a+'</div>'+
-                                       '<div class="amenities">'+
-                                       '<div class="amenity-row"><span class="amenity-indicator">▪</span> '+s.tag+'</div>'+
-                                       '<div class="amenity-row"><span class="amenity-indicator">▪</span> '+s.p+'</div>'+
-                                       '<div class="amenity-row"><span class="amenity-indicator">▪</span> '+s.w+'</div></div>'+
-                                       '<div class="price-row"><div class="price">'+s.pr+' <span>最低消費</span></div><a href="' + mapUrl + '" target="_blank" class="btn-action">📍 View Map</a></div>';
-                            
-                            var div = document.createElement('div');
-                            div.className = 'card';
-                            div.innerHTML = html;
-                            feed.appendChild(div);
-                        }
-                    }
-                    counterDisplay.innerHTML = "Showing " + count + " available spaces";
-                    noResults.style.display = (count===0) ? "block" : "none";
-                } catch(e) {
-                    console.error("篩選引擎出錯:", e);
+        function toggleQuickAction(type) {
+            activeQuickFilters[type] = !activeQuickFilters[type];
+            document.getElementById(`qa-${type}`).classList.toggle('active', activeQuickFilters[type]);
+            runFilter();
+        }
+
+        function runFilter() {
+            const feed = document.getElementById('cardFeed');
+            const counterDisplay = document.getElementById('counterDisplay');
+            const noResults = document.getElementById('noResults');
+            
+            const dArr = getChecked('.chk-dist');
+            const tArr = getChecked('.chk-type');
+            const prArr = getChecked('.chk-price');
+
+            feed.innerHTML = "";
+            let count = 0;
+
+            spaces.forEach(s => {
+                const matchDistrict = dArr.length === 0 || dArr.includes(s.d);
+                const matchType = tArr.length === 0 || tArr.includes(s.t);
+                const matchPrice = prArr.length === 0 || prArr.includes(s.prT);
+
+                let matchQuickAction = true;
+                if (activeQuickFilters.power && s.pT !== 'abundant') matchQuickAction = false;
+                if (activeQuickFilters.focus && !s.tag.includes('喪做') && !s.tag.includes('專注') && s.t !== 'cowork') matchQuickAction = false;
+                if (activeQuickFilters.zoom && s.wT !== 'fast') matchQuickAction = false;
+                if (activeQuickFilters.cheap && s.prT !== 'low') matchQuickAction = false;
+
+                if (matchDistrict && matchType && matchPrice && matchQuickAction) {
+                    count++;
+                    const score = calculateProductivityScore(s);
+                    const cardElement = createWorkspaceCardHTML(s, score, false);
+                    feed.appendChild(cardElement);
                 }
-            }
-
-            document.getElementById('btnSearchNow').addEventListener('click', function(){ runFilter(false); });
-            document.getElementById('btnResetFilters').addEventListener('click', function(){
-                var nodes = document.querySelectorAll('input[type="checkbox"]');
-                for(var i=0; i<nodes.length; i++) nodes[i].checked = false;
-                runFilter(true);
             });
 
-            // 啟動引擎
-            runFilter(true);
+            counterDisplay.innerHTML = `合共 ${count} 個精選空間`;
+            noResults.style.display = count === 0 ? "block" : "none";
+        }
+
+        function createWorkspaceCardHTML(s, score, isFeatured) {
+            let cleanName = s.n;
+            if(cleanName.includes('(')) cleanName = cleanName.split('(')[0];
+            if(cleanName.includes('（')) cleanName = cleanName.split('（')[0];
+            
+            const mapUrl = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(cleanName.trim() + ' ' + s.a);
+            const scoreClass = parseFloat(score) < 8.5 ? 'mid' : '';
+
+            const div = document.createElement('div');
+            div.className = `card ${isFeatured ? 'featured' : ''}`;
+            
+            div.innerHTML = `
+                <div class="card-meta-row">
+                    <span class="district-badge">${s.d}</span>
+                    <div class="score-badge ${scoreClass}">
+                        <span>⭐ ${score}</span>
+                    </div>
+                </div>
+                <div class="card-title">${s.n}</div>
+                <div class="card-address">${s.a}</div>
+                <div class="tag-line">💡 ${s.tag}</div>
+                <div class="amenities-list">
+                    <div class="amenity-item"><span class="amenity-icon">🔌</span>${s.p}</div>
+                    <div class="amenity-item"><span class="amenity-icon">📶</span>${s.w}</div>
+                </div>
+                <div class="card-footer">
+                    <div class="price-info">
+                        <span class="price-label">最低消費</span>
+                        <span class="price-value">💵 ${s.pr}</span>
+                    </div>
+                    <a href="${mapUrl}" target="_blank" class="btn-map">📍 開地圖</a>
+                </div>
+            `;
+            return div;
+        }
+
+        function buildTopPicks() {
+            const container = document.getElementById('topPicksContainer');
+            const picks = [spaces[3], spaces[10], spaces[35], spaces[22]]; 
+            
+            picks.forEach(s => {
+                const score = calculateProductivityScore(s);
+                const pickCard = createWorkspaceCardHTML(s, score, true);
+                container.appendChild(pickCard);
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            buildTopPicks();
+            runFilter();
+
+            document.getElementById('btnResetFilters').addEventListener('click', function() {
+                document.querySelectorAll('input[type="checkbox"]').forEach(chk => chk.checked = false);
+                Object.keys(activeQuickFilters).forEach(k => {
+                    activeQuickFilters[k] = false;
+                    document.getElementById(`qa-${k}`).classList.remove('active');
+                });
+                runFilter();
+            });
+        });
+
+        document.getElementById('emailForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var btn = document.getElementById('submitBtn');
+            btn.innerText = '處理中...';
+            
+            var formData = new FormData(this);
+            
+            // ADDED mode: 'no-cors' TO FIX BROWSER SECURITY BLOCK
+            fetch('https://script.google.com/macros/s/AKfycbxWEi7Za60oE0N3QCdzpeK2-mGR2jbKB8zB0uKaYPpyhIELII_8FKvM8lU5vcDlOxcg/exec', {
+                method: 'POST',
+                mode: 'no-cors', 
+                body: formData
+            })
+            .then(response => {
+                alert('感謝訂閱 ThirdSpace！');
+                this.reset();
+                btn.innerText = '加入';
+            })
+            .catch(error => {
+                alert('系統繁忙，請稍後再試。');
+                btn.innerText = '加入';
+            });
         });
     </script>
 </body>
