@@ -4,35 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <!-- SEO METADATA -->
-    <title>香港工作據點指南 | 搵位開工首選 Laptop Friendly Cafe & Coworking Space | ThirdSpace</title>
-    <meta name="description" content="ThirdSpace 香港工作據點指南：為你快速搵到有插蘇、有 WiFi、適合回 Email、開 Zoom、見客及處理工作的落腳點。收錄全港高質香港開工 Cafe、Laptop Cafe、工作 Cafe、計時 Coworking Space 及酒店 Lounge，實測插座、網速，數據持續更新！">
-    <meta name="keywords" content="香港開工Cafe, 香港 Laptop Cafe, 香港工作Cafe, 香港 Coworking Space, 中環開工Cafe, 灣仔工作Cafe, 香港 Zoom Cafe, 香港見客Cafe, Laptop Friendly Cafe, 遠端工作, 共享空間">
+    <title>ThirdSpace — 幫你搵到啱你嘅開工空間與活動場地</title>
+    <meta name="description" content="無論你想搵個地方開工、開 Zoom、見客，定係搞 Meetup、Workshop 或社群活動，ThirdSpace 幫你更快搵到適合空間。為你手動配對最優質的香港開工 Cafe、工作空間及活動場地。">
+    <meta name="keywords" content="香港開工Cafe, 香港 Laptop Cafe, 香港工作Cafe, 香港 Coworking Space, 中環開工Cafe, 灣仔工作Cafe, 香港活動場地, Event Venue Hong Kong, Laptop Friendly Cafe, 遠端工作, 共享空間">
     <link rel="canonical" href="https://3rdspace.freedomlog.org/">
     
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://3rdspace.freedomlog.org/">
-    <meta property="og:title" content="香港工作據點指南 | 搵位開工首選 Laptop Friendly Cafe & Coworking Space | ThirdSpace">
-    <meta property="og:description" content="快速搵到有插蘇、有 WiFi、適合回 Email、開 Zoom、見客及處理工作的落腳點。收錄中環、灣仔、銅鑼灣、尖沙咀等核心區高質開工Cafe與工作空間。">
+    <meta property="og:title" content="ThirdSpace — 幫你搵到啱你嘅開工空間與活動場地">
+    <meta property="og:description" content="無論你想搵個地方開工、開 Zoom、見客，定係搞 Meetup、Workshop 或社群活動，ThirdSpace 幫你更快搵到適合空間。">
     <meta property="og:image" content="https://3rdspace.freedomlog.org/og-image.jpg">
 
-    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://3rdspace.freedomlog.org/">
-    <meta property="twitter:title" content="香港工作據點指南 | 搵位開工首選 Laptop Friendly Cafe & Coworking Space">
-    <meta property="twitter:description" content="快速搵到有插蘇、有 WiFi、適合回 Email、開 Zoom、見客及處理工作的落腳點。數據持續更新，歡迎報料！">
+    <meta property="twitter:title" content="ThirdSpace — 幫你搵到啱你嘅開工空間與活動場地">
+    <meta property="twitter:description" content="無論你想搵個地方開工、開 Zoom、見客，定係搞 Meetup、Workshop 或社群活動，ThirdSpace 幫你更快搵到適合空間。">
     <meta property="twitter:image" content="https://3rdspace.freedomlog.org/og-image.jpg">
 
-    <!-- STRUCTURED DATA (JSON-LD) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
       "name": "ThirdSpace",
-      "alternateName": "ThirdSpace 香港工作據點指南",
+      "alternateName": "ThirdSpace 香港工作據點及活動場地配對",
       "url": "https://3rdspace.freedomlog.org/",
-      "description": "專為辦公、見客、開會篩選全港有插蘇、有 WiFi、不趕人的高質落腳點指南。",
+      "description": "專為辦公、見客、開會及各類社群活動篩選全港高質落腳點及場地。",
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "All"
     }
@@ -89,19 +85,20 @@
 
     <style>
         :root {
-            --bg: #f5f5f7;
+            /* Warm neutral palette [cite: 10] */
+            --bg: #fdfcfb;
             --surface: #ffffff;
-            --primary: #1d1d1f;
-            --secondary: #86868b;
-            --accent: #0071e3;
-            --accent-bg: #e8f2ff;
-            --border: rgba(0, 0, 0, 0.08);
-            --radius-lg: 16px;
-            --radius-md: 12px;
+            --primary: #1c1917;
+            --secondary: #57534e;
+            --accent: #4f46e5;
+            --accent-bg: #e0e7ff;
+            --border: #e7e5e4;
+            --radius-lg: 20px;
+            --radius-md: 14px;
             --radius-sm: 8px;
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
-            --shadow-md: 0 4px 16px rgba(0,0,0,0.06);
-            --font-stack: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            --shadow-sm: 0 4px 12px rgba(0,0,0,0.03);
+            --shadow-md: 0 8px 24px rgba(0,0,0,0.06);
+            --font-stack: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
         }
 
         * {
@@ -117,15 +114,59 @@
             background-color: var(--bg);
             color: var(--primary);
             padding-bottom: 110px;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
+        /* BUTTON STYLES */
+        .btn {
+            padding: 0.85rem 1.25rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 12px rgba(28, 25, 23, 0.15);
+        }
+        .btn-primary:active, .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(28, 25, 23, 0.2);
+            opacity: 0.95;
+        }
+        .btn-secondary {
+            background: var(--accent-bg);
+            color: var(--accent);
+        }
+        .btn-secondary:active, .btn-secondary:hover {
+            background: #d8e1ff;
+            transform: translateY(-1px);
+        }
+        .btn-outline {
+            background: var(--surface);
+            color: var(--primary);
+            border: 1px solid #d6d3d1;
+        }
+        .btn-outline:active, .btn-outline:hover {
+            background: #f5f5f4;
+            transform: translateY(-1px);
+        }
+        
         .trust-banner {
             background: var(--primary);
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(255, 255, 255, 0.95);
             font-size: 0.75rem;
             font-weight: 600;
-            padding: 0.5rem 1.2rem;
+            padding: 0.6rem 1.2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -146,75 +187,96 @@
 
         header {
             background: var(--surface);
-            padding: 2rem 1.2rem 1.5rem;
+            padding: 2.5rem 1.2rem 2rem;
             border-bottom: 1px solid var(--border);
         }
 
         .brand-wrapper {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.75rem;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            gap: 1rem;
         }
 
         header h1 {
-            font-size: 2.2rem;
+            font-size: 2.1rem;
             font-weight: 800;
-            letter-spacing: -1px;
+            letter-spacing: -0.8px;
             color: var(--primary);
-            line-height: 1.1;
+            line-height: 1.25;
         }
 
         .district-badge {
-            background: var(--bg);
+            background: #f5f5f4;
             color: var(--primary);
             padding: 0.35rem 0.75rem;
             border-radius: 20px;
             font-size: 0.75rem;
             font-weight: 700;
-            border: 1px solid var(--border);
+            border: 1px solid #e7e5e4;
+            white-space: nowrap;
+            flex-shrink: 0;
+            margin-top: 0.4rem;
         }
 
         header p {
             color: var(--secondary);
-            font-size: 1rem;
+            font-size: 1.05rem;
             line-height: 1.5;
-            margin-bottom: 1.25rem;
+            margin-bottom: 1.5rem;
             font-weight: 500;
         }
 
+        .hero-ctas {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (min-width: 600px) {
+            .hero-ctas {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            .hero-ctas .btn {
+                flex: 1;
+                min-width: max-content;
+            }
+        }
+
         .beta-notice {
-            background: #fff8e6;
-            border: 1px solid #ffe5a0;
+            background: #fffbeb;
+            border: 1px solid #fde68a;
             border-radius: var(--radius-md);
-            padding: 0.9rem 1.1rem;
+            padding: 1rem;
             font-size: 0.85rem;
-            color: #b06000;
+            color: #92400e;
             font-weight: 600;
             line-height: 1.5;
             margin-bottom: 1.5rem;
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
         }
 
         .newsletter-box {
-            background: var(--bg);
+            background: #fbfaf9;
             border-radius: var(--radius-md);
-            padding: 1.25rem;
+            padding: 1.5rem;
             border: 1px solid var(--border);
         }
 
         .newsletter-box h3 {
-            font-size: 0.95rem;
-            font-weight: 700;
+            font-size: 1rem;
+            font-weight: 800;
             color: var(--primary);
-            margin-bottom: 0.35rem;
+            margin-bottom: 0.4rem;
         }
         
         .newsletter-box p {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: var(--secondary);
-            margin-bottom: 0.75rem;
-            line-height: 1.4;
+            margin-bottom: 1rem;
+            line-height: 1.5;
         }
 
         .newsletter-form {
@@ -225,10 +287,10 @@
         .newsletter-input {
             flex: 1;
             background: var(--surface);
-            border: 1px solid var(--border);
-            padding: 0.75rem 1rem;
+            border: 1px solid #d6d3d1;
+            padding: 0.85rem 1rem;
             border-radius: var(--radius-sm);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             outline: none;
             transition: all 0.2s ease;
             color: var(--primary);
@@ -236,7 +298,7 @@
 
         .newsletter-input:focus {
             border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(0,113,227,0.15);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
         }
 
         .newsletter-btn {
@@ -245,10 +307,10 @@
             border: none;
             padding: 0 1.25rem;
             border-radius: var(--radius-sm);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 700;
             cursor: pointer;
-            min-width: 80px;
+            min-width: 90px;
             transition: opacity 0.2s;
         }
         
@@ -256,9 +318,49 @@
             opacity: 0.8;
         }
 
+        /* NEW EVENT PLANNING SECTION */
+        .event-planning-section {
+            background: linear-gradient(145deg, #e0e7ff 0%, #f3f4f6 100%);
+            padding: 2.5rem 1.2rem;
+            border-bottom: 1px solid var(--border);
+            text-align: left;
+        }
+
+        .event-planning-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .event-planning-section h2 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.5px;
+        }
+
+        .event-planning-section p {
+            font-size: 1rem;
+            color: #3f3f46;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .event-planning-section .subtext {
+            font-size: 0.85rem;
+            color: #52525b;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        /* WORKSPACE DISCOVERY SECTION */
+        .workspace-section {
+            padding-top: 1rem;
+        }
+
         .quick-actions-section {
-            background: var(--surface);
-            padding: 1.2rem 0 1.2rem 1.2rem;
+            background: var(--bg);
+            padding: 1.5rem 0 1.2rem 1.2rem;
             border-bottom: 1px solid var(--border);
         }
 
@@ -268,16 +370,17 @@
             color: var(--secondary);
             text-transform: uppercase;
             letter-spacing: 0.8px;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.85rem;
         }
 
         .scroll-row {
             display: flex;
             overflow-x: auto;
-            gap: 0.6rem;
+            gap: 0.75rem;
             padding-right: 1.2rem;
             scroll-behavior: smooth;
             -webkit-overflow-scrolling: touch;
+            padding-bottom: 0.5rem;
         }
 
         .scroll-row::-webkit-scrollbar {
@@ -288,43 +391,43 @@
             display: flex;
             align-items: center;
             gap: 0.4rem;
-            background: var(--bg);
-            border: 1px solid transparent;
-            padding: 0.65rem 1.1rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 0.75rem 1.2rem;
             border-radius: 24px;
-            font-size: 0.85rem;
+            font-size: 0.88rem;
             font-weight: 700;
             white-space: nowrap;
             color: var(--primary);
             cursor: pointer;
             transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             user-select: none;
-            min-height: 44px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
 
         .action-pill.active {
             background: var(--accent-bg);
             color: var(--accent);
-            border-color: rgba(0, 113, 227, 0.25);
+            border-color: rgba(79, 70, 229, 0.3);
             transform: scale(0.98);
         }
 
         .advanced-filters {
             background: var(--surface);
             border-bottom: 1px solid var(--border);
+            margin-bottom: 1rem;
         }
 
         .filter-trigger {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.1rem 1.2rem;
+            padding: 1.25rem 1.2rem;
             font-size: 0.95rem;
             font-weight: 700;
             color: var(--accent);
             cursor: pointer;
             user-select: none;
-            min-height: 44px;
         }
 
         .filter-content {
@@ -341,7 +444,7 @@
         .filter-group {
             display: flex;
             flex-direction: column;
-            gap: 0.65rem;
+            gap: 0.75rem;
         }
 
         .filter-title {
@@ -354,7 +457,7 @@
         .checkbox-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 0.6rem;
+            gap: 0.75rem;
         }
 
         .checkbox-label {
@@ -363,17 +466,17 @@
             gap: 0.65rem;
             font-size: 0.9rem;
             font-weight: 600;
-            background: var(--bg);
-            padding: 0.75rem 0.85rem;
-            border-radius: var(--radius-md);
+            background: #f5f5f4;
+            padding: 0.85rem;
+            border-radius: var(--radius-sm);
             cursor: pointer;
             transition: background 0.15s ease;
             user-select: none;
-            min-height: 44px;
+            border: 1px solid transparent;
         }
         
         .checkbox-label:active {
-            background: rgba(0,0,0,0.04);
+            background: #e7e5e4;
         }
 
         .checkbox-label input {
@@ -383,11 +486,11 @@
         }
 
         .top-picks-section {
-            padding: 1.75rem 0 0.5rem 1.2rem;
+            padding: 1.5rem 0 1rem 1.2rem;
         }
 
         .feed-section {
-            padding: 1.2rem 1.2rem;
+            padding: 0 1.2rem 2rem;
         }
 
         .status-bar {
@@ -395,11 +498,12 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 1.2rem;
+            padding-top: 1rem;
         }
 
         .counter-text {
             font-size: 0.95rem;
-            font-weight: 700;
+            font-weight: 800;
             color: var(--primary);
         }
 
@@ -408,10 +512,9 @@
             border: none;
             font-size: 0.9rem;
             font-weight: 700;
-            color: var(--accent);
+            color: var(--secondary);
             cursor: pointer;
             padding: 0.5rem;
-            min-height: 44px;
             display: flex;
             align-items: center;
         }
@@ -438,11 +541,12 @@
         
         .card:hover {
             box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
         }
 
         .card.featured {
             border-left: 5px solid var(--accent);
-            width: 300px;
+            width: 320px;
             flex-shrink: 0;
             box-shadow: var(--shadow-md);
         }
@@ -464,23 +568,21 @@
             display: flex;
             align-items: center;
             gap: 0.3rem;
-            background: #e6f7ed;
-            color: #1a7f37;
-            padding: 0.4rem 0.75rem;
-            border-radius: 8px;
+            background: #ecfdf5;
+            color: #059669;
+            padding: 0.45rem 0.8rem;
+            border-radius: var(--radius-sm);
             font-size: 0.95rem;
             font-weight: 800;
-            box-shadow: 0 1px 2px rgba(26,127,55,0.08);
         }
 
         .score-badge.mid {
-            background: #fff8e6;
-            color: #b06000;
-            box-shadow: 0 1px 2px rgba(176,96,0,0.08);
+            background: #fffbeb;
+            color: #d97706;
         }
 
         .card-title {
-            font-size: 1.3rem;
+            font-size: 1.35rem;
             font-weight: 800;
             line-height: 1.3;
             letter-spacing: -0.4px;
@@ -488,7 +590,7 @@
         }
 
         .card-address {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: var(--secondary);
             line-height: 1.45;
             font-weight: 500;
@@ -497,53 +599,53 @@
         .best-for-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.4rem;
-            margin: 0.15rem 0;
+            gap: 0.5rem;
+            margin: 0.25rem 0;
         }
         
         .best-for-badge {
-            background: rgba(0, 113, 227, 0.08);
-            color: var(--accent);
-            font-size: 0.78rem;
+            background: var(--bg);
+            color: var(--primary);
+            font-size: 0.8rem;
             font-weight: 700;
-            padding: 0.3rem 0.65rem;
+            padding: 0.4rem 0.75rem;
             border-radius: 6px;
-            letter-spacing: 0.2px;
+            border: 1px solid var(--border);
         }
 
         .tag-line {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 600;
             color: var(--primary);
-            background: var(--bg);
-            padding: 0.6rem 0.85rem;
+            background: #f5f5f4;
+            padding: 0.75rem 1rem;
             border-radius: var(--radius-sm);
             line-height: 1.45;
-            border-left: 3px solid var(--secondary);
+            border-left: 3px solid #a8a29e;
         }
 
         .amenities-list {
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
-            background: rgba(0,0,0,0.01);
-            padding: 0.75rem;
+            gap: 0.6rem;
+            background: #fafaf9;
+            padding: 1rem;
             border-radius: var(--radius-sm);
-            border: 1px dashed var(--border);
+            border: 1px dashed #d6d3d1;
         }
 
         .amenity-item {
             display: flex;
             align-items: flex-start;
             gap: 0.6rem;
-            font-size: 0.88rem;
-            color: #3a3a3c;
+            font-size: 0.9rem;
+            color: #44403c;
             font-weight: 600;
         }
 
         .amenity-icon {
-            font-size: 1.05rem;
-            width: 20px;
+            font-size: 1.1rem;
+            width: 22px;
             display: flex;
             justify-content: center;
         }
@@ -553,17 +655,18 @@
             justify-content: space-between;
             align-items: center;
             margin-top: 0.5rem;
-            padding-top: 1rem;
+            padding-top: 1.25rem;
             border-top: 1px solid var(--border);
         }
 
         .price-info {
             display: flex;
             flex-direction: column;
+            gap: 0.1rem;
         }
 
         .price-label {
-            font-size: 0.72rem;
+            font-size: 0.75rem;
             color: var(--secondary);
             text-transform: uppercase;
             font-weight: 700;
@@ -571,7 +674,7 @@
         }
 
         .price-value {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             font-weight: 800;
             color: var(--primary);
         }
@@ -582,41 +685,41 @@
             padding: 0.75rem 1.25rem;
             border-radius: var(--radius-md);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 700;
-            transition: all 0.15s ease;
+            transition: all 0.2s ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 44px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
         
         .btn-map:active {
             transform: scale(0.97);
-            opacity: 0.9;
+            background: #292524;
         }
 
         .seo-faq-container {
             background: var(--surface);
             margin: 2rem 1.2rem;
-            padding: 1.75rem 1.5rem;
+            padding: 2rem 1.5rem;
             border-radius: var(--radius-lg);
             border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
         }
         
         .seo-faq-container h2 {
             font-size: 1.4rem;
             font-weight: 800;
             letter-spacing: -0.5px;
-            margin-bottom: 1.25rem;
+            margin-bottom: 1.5rem;
             color: var(--primary);
             border-bottom: 2px solid var(--primary);
-            padding-bottom: 0.5rem;
+            padding-bottom: 0.75rem;
         }
         
         .faq-item {
-            margin-bottom: 1.25rem;
+            margin-bottom: 1.5rem;
         }
         
         .faq-item:last-child {
@@ -627,13 +730,13 @@
             font-size: 1.05rem;
             font-weight: 700;
             color: var(--primary);
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.5rem;
         }
         
         .faq-answer {
-            font-size: 0.9rem;
-            color: #48484a;
-            line-height: 1.55;
+            font-size: 0.95rem;
+            color: #44403c;
+            line-height: 1.6;
             font-weight: 500;
         }
 
@@ -642,15 +745,15 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.92);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-top: 1px solid var(--border);
             display: flex;
             justify-content: space-around;
-            padding: 0.75rem 0 calc(0.75rem + env(safe-area-inset-bottom));
+            padding: 0.85rem 0 calc(0.85rem + env(safe-area-inset-bottom));
             z-index: 1000;
-            box-shadow: 0 -2px 12px rgba(0,0,0,0.03);
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.04);
         }
 
         .nav-item {
@@ -661,7 +764,7 @@
             font-size: 0.75rem;
             font-weight: 700;
             text-decoration: none;
-            gap: 0.3rem;
+            gap: 0.35rem;
             transition: color 0.15s ease;
             width: 33.33%;
         }
@@ -671,8 +774,8 @@
         }
 
         .footer-disclaimer {
-            padding: 1rem 1.2rem 2rem;
-            font-size: 0.75rem;
+            padding: 1rem 1.2rem 3rem;
+            font-size: 0.8rem;
             color: var(--secondary);
             line-height: 1.6;
             text-align: justify;
@@ -683,7 +786,7 @@
 <body>
 
     <div class="trust-banner">
-        <span>香港工作據點指南</span>
+        <span>ThirdSpace 香港實測據點</span>
         <div style="display: flex; gap: 1rem;">
             <span class="trust-tag">歡迎報料</span>
         </div>
@@ -691,13 +794,19 @@
 
     <header>
         <div class="brand-wrapper">
-            <h1>ThirdSpace</h1>
+            <h1>ThirdSpace — 幫你搵到啱你嘅開工空間與活動場地</h1>
             <span class="district-badge">公測版</span>
         </div>
-        <p>快速搵到有插蘇、有 WiFi、適合回 Email、開 Zoom、見客及處理工作的落腳點。</p>
+        <p>無論你想搵個地方開工、開 Zoom、見客，定係搞 Meetup、Workshop 或社群活動，ThirdSpace 幫你更快搵到適合空間。</p>
         
+        <div class="hero-ctas">
+            <button class="btn btn-primary" onclick="document.getElementById('workspace-section').scrollIntoView({behavior: 'smooth'})">💻 搵開工位</button>
+            <button class="btn btn-secondary" onclick="openNewEventForm()">🎪 搵活動場地</button>
+            <button class="btn btn-outline" onclick="openSubmitSpotForm()">📝 推薦好地方</button>
+        </div>
+
         <div class="beta-notice">
-            香港舖頭變動快，如發現實地資訊未 Update，歡迎隨時撳 Submit Spot 報料！
+            香港舖頭變動快，如發現實地資訊未 Update，歡迎隨時撳「推薦好地方」報料！
         </div>
         
         <div class="newsletter-box">
@@ -710,70 +819,81 @@
         </div>
     </header>
 
-    <div class="quick-actions-section">
-        <div class="section-label">快捷篩選 Quick Filters</div>
-        <div class="scroll-row">
-            <div class="action-pill" id="qa-power" onclick="toggleQuickAction('power')">🔌 插座充足</div>
-            <div class="action-pill" id="qa-focus" onclick="toggleQuickAction('focus')">🤫 適合長坐喪做</div>
-            <div class="action-pill" id="qa-zoom" onclick="toggleQuickAction('zoom')">📞 視像會議順暢</div>
-            <div class="action-pill" id="qa-cheap" onclick="toggleQuickAction('cheap')">☕ 經濟之選</div>
+    <section class="event-planning-section">
+        <div class="event-planning-content">
+            <h2>🎪 搞活動搵唔到場？</h2>
+            <p>想搞 AI Meetup、Workshop、讀書會、Networking 或小型分享會，但唔知邊度啱？</p>
+            <p class="subtext">話俾我哋知你嘅需求，ThirdSpace 會按人數、地區、預算幫你手動配對合適場地。</p>
+            <button class="btn btn-primary" onclick="openNewEventForm()">搵活動場地</button>
         </div>
-    </div>
+    </section>
 
-    <div class="advanced-filters">
-        <div class="filter-trigger" onclick="document.getElementById('advFilterContent').classList.toggle('open')">
-            <span>按地區、類型及預算詳細篩選</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </div>
-        <div class="filter-content" id="advFilterContent">
-            <div class="filter-group">
-                <div class="filter-title">核心地區 (Select Hubs)</div>
-                <div class="checkbox-grid">
-                    <label class="checkbox-label"><input type="checkbox" class="chk-dist" value="Central" onchange="runFilter()">中環/金鐘</label>
-                    <label class="checkbox-label"><input type="checkbox" class="chk-dist" value="Wan Chai" onchange="runFilter()">灣仔 Wan Chai</label>
-                    <label class="checkbox-label"><input type="checkbox" class="chk-dist" value="Causeway Bay" onchange="runFilter()">銅鑼灣 CWB</label>
-                    <label class="checkbox-label"><input type="checkbox" class="chk-dist" value="Tsim Sha Tsui" onchange="runFilter()">尖沙咀/紅磡</label>
-                    <label class="checkbox-label"><input type="checkbox" class="chk-dist" value="Mong Kok" onchange="runFilter()">旺角/大角咀</label>
-                    <label class="checkbox-label"><input type="checkbox" class="chk-dist" value="Kwun Tong" onchange="runFilter()">東九龍 (觀塘/啟德)</label>
-                    <label class="checkbox-label"><input type="checkbox" class="chk-dist" value="Kwai Chung" onchange="runFilter()">葵涌 KC</label>
-                    <label class="checkbox-label"><input type="checkbox" class="chk-dist" value="Tsuen Wan" onchange="runFilter()">荃灣 TW</label>
-                </div>
-            </div>
-            <div class="filter-group">
-                <div class="filter-title">空間類型 (Space Type)</div>
-                <div class="checkbox-grid">
-                    <label class="checkbox-label"><input type="checkbox" class="chk-type" value="cafe" onchange="runFilter()">Cafe</label>
-                    <label class="checkbox-label"><input type="checkbox" class="chk-type" value="hotel" onchange="runFilter()">酒店 Lounge</label>
-                    <label class="checkbox-label"><input type="checkbox" class="chk-type" value="cowork" onchange="runFilter()">Co-working</label>
-                </div>
-            </div>
-            <div class="filter-group">
-                <div class="filter-title">最低消費預算 (Min Spend)</div>
-                <div class="checkbox-grid">
-                    <label class="checkbox-label"><input type="checkbox" class="chk-price" value="low" onchange="runFilter()">經濟 (<$50)</label>
-                    <label class="checkbox-label"><input type="checkbox" class="chk-price" value="mid" onchange="runFilter()">中等 ($50-$100)</label>
-                    <label class="checkbox-label"><input type="checkbox" class="chk-price" value="high" onchange="runFilter()">商務 (>$100)</label>
-                </div>
+    <section id="workspace-section" class="workspace-section">
+        <div class="quick-actions-section">
+            <div class="section-label">快捷篩選 Quick Filters</div>
+            <div class="scroll-row">
+                <div class="action-pill" id="qa-power" onclick="toggleQuickAction('power')">🔌 插座充足</div>
+                <div class="action-pill" id="qa-focus" onclick="toggleQuickAction('focus')">🤫 適合長坐喪做</div>
+                <div class="action-pill" id="qa-zoom" onclick="toggleQuickAction('zoom')">📞 視像會議順暢</div>
+                <div class="action-pill" id="qa-cheap" onclick="toggleQuickAction('cheap')">☕ 經濟之選</div>
             </div>
         </div>
-    </div>
 
-    <div class="top-picks-section">
-        <div class="section-label">🔥 今日精選 Top Picks</div>
-        <div class="scroll-row" id="topPicksContainer" style="padding-bottom: 0.5rem;"></div>
-    </div>
-
-    <div class="feed-section">
-        <div class="status-bar">
-            <div class="counter-text" id="counterDisplay">正在搜尋空間...</div>
-            <button class="btn-reset" id="btnResetFilters">重設</button>
+        <div class="advanced-filters">
+            <div class="filter-trigger" onclick="document.getElementById('advFilterContent').classList.toggle('open')">
+                <span>按地區、類型及預算詳細篩選</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <div class="filter-content" id="advFilterContent">
+                <div class="filter-group">
+                    <div class="filter-title">核心地區 (Select Hubs)</div>
+                    <div class="checkbox-grid">
+                        <label class="checkbox-label"><input type="checkbox" class="chk-dist" value="Central" onchange="runFilter()">中環/金鐘</label>
+                        <label class="checkbox-label"><input type="checkbox" class="chk-dist" value="Wan Chai" onchange="runFilter()">灣仔 Wan Chai</label>
+                        <label class="checkbox-label"><input type="checkbox" class="chk-dist" value="Causeway Bay" onchange="runFilter()">銅鑼灣 CWB</label>
+                        <label class="checkbox-label"><input type="checkbox" class="chk-dist" value="Tsim Sha Tsui" onchange="runFilter()">尖沙咀/紅磡</label>
+                        <label class="checkbox-label"><input type="checkbox" class="chk-dist" value="Mong Kok" onchange="runFilter()">旺角/大角咀</label>
+                        <label class="checkbox-label"><input type="checkbox" class="chk-dist" value="Kwun Tong" onchange="runFilter()">東九龍 (觀塘/啟德)</label>
+                        <label class="checkbox-label"><input type="checkbox" class="chk-dist" value="Kwai Chung" onchange="runFilter()">葵涌 KC</label>
+                        <label class="checkbox-label"><input type="checkbox" class="chk-dist" value="Tsuen Wan" onchange="runFilter()">荃灣 TW</label>
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <div class="filter-title">空間類型 (Space Type)</div>
+                    <div class="checkbox-grid">
+                        <label class="checkbox-label"><input type="checkbox" class="chk-type" value="cafe" onchange="runFilter()">Cafe</label>
+                        <label class="checkbox-label"><input type="checkbox" class="chk-type" value="hotel" onchange="runFilter()">酒店 Lounge</label>
+                        <label class="checkbox-label"><input type="checkbox" class="chk-type" value="cowork" onchange="runFilter()">Co-working</label>
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <div class="filter-title">最低消費預算 (Min Spend)</div>
+                    <div class="checkbox-grid">
+                        <label class="checkbox-label"><input type="checkbox" class="chk-price" value="low" onchange="runFilter()">經濟 (<$50)</label>
+                        <label class="checkbox-label"><input type="checkbox" class="chk-price" value="mid" onchange="runFilter()">中等 ($50-$100)</label>
+                        <label class="checkbox-label"><input type="checkbox" class="chk-price" value="high" onchange="runFilter()">商務 (>$100)</label>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="cards-container" id="cardFeed"></div>
-        <div id="noResults" style="text-align:center;color:var(--secondary);padding:4rem 1rem;display:none;font-weight:600;font-size:0.95rem;">
-            沒有符合條件的空間。<br><span style="font-size:0.8rem; font-weight:400; margin-top:0.5rem; display:block;">請嘗試重設篩選條件。</span>
+        <div class="top-picks-section">
+            <div class="section-label">🔥 今日精選 Top Picks</div>
+            <div class="scroll-row" id="topPicksContainer" style="padding-bottom: 0.5rem;"></div>
         </div>
-    </div>
+
+        <div class="feed-section">
+            <div class="status-bar">
+                <div class="counter-text" id="counterDisplay">正在搜尋空間...</div>
+                <button class="btn-reset" id="btnResetFilters">重設篩選</button>
+            </div>
+
+            <div class="cards-container" id="cardFeed"></div>
+            <div id="noResults" style="text-align:center;color:var(--secondary);padding:4rem 1rem;display:none;font-weight:600;font-size:1rem;">
+                沒有符合條件的空間。<br><span style="font-size:0.85rem; font-weight:500; margin-top:0.75rem; display:block;">請嘗試重設篩選條件。</span>
+            </div>
+        </div>
+    </section>
 
     <div class="seo-faq-container">
         <h2>💡 香港工作落腳點常見問題 (FAQ)</h2>
@@ -806,18 +926,20 @@
     
     <div class="bottom-nav">
         <a href="#" class="nav-item active">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
-            <span>Explore</span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+            <span>搵開工位</span>
         </a>
         <a href="https://www.threads.net/@freedomloghk" target="_blank" class="nav-item">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="17" y1="11" x2="23" y2="11"></line></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="17" y1="11" x2="23" y2="11"></line></svg>
             <span>Follow Us</span>
         </a>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScNsnhFgeJL482hQS9gviYQb9VU091aAcTCpB0DBVCo7_qttg/viewform" target="_blank" class="nav-item">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-            <span>Submit Spot</span>
+        <a href="javascript:void(0)" onclick="openSubmitSpotForm()" class="nav-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <span>推薦好地方</span>
         </a>
     </div>
+
+    <script defer src="/_vercel/insights/script.js"></script>
 
     <script>
         let activeQuickFilters = {
@@ -898,9 +1020,17 @@
             {n:"Kactus Coffee (葵涌)", d:"Kwai Chung", t:"cafe", a:"葵涌大連排道132號TLP132地下", tag:"工商腹地型格水泥風 / 專門支援外勤上班族", p:"特設靠邊吧檯插座座位", w:"文書瀏覽流暢", pr:"$42+", pT:"partial", wT:"stable", prT:"low"}
         ];
 
+        /* ================= GOOGLE FORM FUNCTIONS ================= */
+        function openNewEventForm() {
+            window.open('https://docs.google.com/forms/d/e/1FAIpQLSexg1CDxdLRWP6PgmvqSBfKhtcFA4XlZ1LMlP7auCtJCZN0ZA/viewform?usp=header', '_blank');
+        }
+
+        function openSubmitSpotForm() {
+            window.open('https://docs.google.com/forms/d/e/1FAIpQLScNsnhFgeJL482hQS9gviYQb9VU091aAcTCpB0DBVCo7_qttg/viewform', '_blank');
+        }
+
         function calculateProductivityScore(space) {
             let baseScore = 5.0;
-            
             if (space.pT === 'abundant') baseScore += 2.0;
             if (space.pT === 'partial') baseScore += 1.0;
             if (space.wT === 'fast') baseScore += 1.5;
@@ -916,7 +1046,6 @@
 
         function generateBestForBadges(s) {
             let badges = [];
-            
             if (s.t === 'hotel' || s.tag.includes('見客') || s.tag.includes('體面')) {
                 badges.push('<span class="best-for-badge">🤝 見客</span>');
             }
@@ -961,13 +1090,13 @@
 
             feed.innerHTML = "";
             let count = 0;
-
             spaces.forEach(s => {
                 const matchDistrict = dArr.length === 0 || dArr.includes(s.d);
                 const matchType = tArr.length === 0 || tArr.includes(s.t);
                 const matchPrice = prArr.length === 0 || prArr.includes(s.prT);
 
                 let matchQuickAction = true;
+          
                 if (activeQuickFilters.power && s.pT !== 'abundant') matchQuickAction = false;
                 if (activeQuickFilters.focus && !s.tag.includes('喪做') && !s.tag.includes('專注') && s.t !== 'cowork') matchQuickAction = false;
                 if (activeQuickFilters.zoom && s.wT !== 'fast') matchQuickAction = false;
@@ -977,10 +1106,10 @@
                     count++;
                     const score = calculateProductivityScore(s);
                     const cardElement = createWorkspaceCardHTML(s, score, false);
+                  
                     feed.appendChild(cardElement);
                 }
             });
-
             counterDisplay.innerHTML = `合共 ${count} 個精選空間`;
             noResults.style.display = count === 0 ? "block" : "none";
         }
@@ -1035,10 +1164,8 @@
             
             let premiumSpots = spaces.filter(s => s.isPremium === true);
             let regularSpaces = spaces.filter(s => !s.isPremium);
-            
             const today = new Date();
             const dateSeed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
-            
             let seed = dateSeed;
             for (let i = regularSpaces.length - 1; i > 0; i--) {
                 seed = (seed * 9301 + 49297) % 233280;
@@ -1052,9 +1179,14 @@
                 return parseFloat(calculateProductivityScore(s)) >= 7.0;
             });
             
-            let combinedList = [...premiumSpots, ...highScoringRegulars, ...regularSpaces];
-            const dailyPicks = combinedList.slice(0, 4);
+            // BUG FIX: Spread syntax properly fixes the previously malformed array combination
+            let combinedList = [
+                ...premiumSpots,
+                ...highScoringRegulars,
+                ...regularSpaces
+            ];
             
+            const dailyPicks = combinedList.slice(0, 4);
             dailyPicks.forEach(s => {
                 const score = calculateProductivityScore(s);
                 const pickCard = createWorkspaceCardHTML(s, score, true);
@@ -1075,17 +1207,16 @@
                 });
                 runFilter();
             });
-            
+             
             document.getElementById('emailForm').addEventListener('submit', function(e) {
                 e.preventDefault();
                 var form = this;
                 var btn = document.getElementById('submitBtn');
                 if (!btn) return;
-                
+                 
                 btn.innerText = '處理中...';
                 
                 var data = new URLSearchParams(new FormData(form));
-                
                 fetch('https://script.google.com/macros/s/AKfycbxWEi7Za60oE0N3QCdzpeK2-mGR2jbKB8zB0uKaYPpyhIELII_8FKvM8lU5vcDlOxcg/exec', {
                     method: 'POST',
                     mode: 'no-cors',
