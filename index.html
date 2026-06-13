@@ -85,7 +85,7 @@
 
     <style>
         :root {
-            /* Warm neutral palette [cite: 10] */
+            /* Warm neutral palette */
             --bg: #fdfcfb;
             --surface: #ffffff;
             --primary: #1c1917;
@@ -781,6 +781,108 @@
             text-align: justify;
             font-weight: 500;
         }
+
+        /* --- NEW CRO & GATING STYLES --- */
+        .btn-secondary-link {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--secondary);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.2s;
+        }
+        .btn-secondary-link:hover {
+            color: var(--primary);
+        }
+
+        .social-proof-banner {
+            text-align: left;
+            padding: 1rem 0;
+            margin-bottom: 1.5rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.85rem;
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        .waitlist-form {
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+        }
+        .form-row {
+            display: flex;
+            gap: 0.85rem;
+            flex-wrap: wrap;
+        }
+        .form-row > * {
+            flex: 1;
+            min-width: 140px;
+        }
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            background: var(--surface);
+            border: 1px solid #d6d3d1;
+            padding: 0.85rem 1rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+            outline: none;
+            transition: all 0.2s ease;
+            color: var(--primary);
+            font-family: inherit;
+        }
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+        }
+        .form-textarea {
+            resize: vertical;
+            min-height: 70px;
+        }
+
+        /* Premium Gating */
+        .card.gated {
+            user-select: none;
+        }
+        .card.gated .card-blur-target {
+            filter: blur(5px);
+            opacity: 0.4;
+            transition: all 0.3s ease;
+            pointer-events: none; /* Disables inner links/buttons */
+        }
+        .gated-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.4);
+            z-index: 10;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .gated-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .gated-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 0.4rem;
+        }
+        .gated-desc {
+            font-size: 0.85rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 600;
+            text-shadow: 0 1px 2px rgba(255,255,255,0.8);
+        }
     </style>
 </head>
 <body>
@@ -794,27 +896,43 @@
 
     <header>
         <div class="brand-wrapper">
-            <h1>ThirdSpace — 幫你搵到啱你嘅開工空間與活動場地</h1>
+            <h1 style="line-height: 1.1;">Work From Anywhere.<br>Never Work Alone.<br>
+                <span style="font-size: 1.35rem; color: var(--secondary); display: block; margin-top: 0.5rem; letter-spacing: 0;">隨時隨地開工，都有人同行</span>
+            </h1>
             <span class="district-badge">公測版</span>
         </div>
-        <p>無論你想搵個地方開工、開 Zoom、見客，定係搞 Meetup、Workshop 或社群活動，ThirdSpace 幫你更快搵到適合空間。</p>
+        <p>Discover productive third spaces across Hong Kong and connect with founders, freelancers, and remote professionals around you.</p>
         
-        <div class="hero-ctas">
-            <button class="btn btn-primary" onclick="document.getElementById('workspace-section').scrollIntoView({behavior: 'smooth'})">💻 搵開工位</button>
-            <button class="btn btn-secondary" onclick="openNewEventForm()">🎪 搵活動場地</button>
-            <button class="btn btn-outline" onclick="openSubmitSpotForm()">📝 推薦好地方</button>
+        <div class="hero-ctas" style="align-items: center; flex-direction: row; gap: 1.5rem;">
+            <button class="btn btn-primary" onclick="document.getElementById('waitlist-box').scrollIntoView({behavior: 'smooth'})">Apply for Access / 申請加入</button>
+            <a onclick="document.getElementById('workspace-section').scrollIntoView({behavior: 'smooth'})" class="btn-secondary-link">Browse Spaces</a>
         </div>
 
-        <div class="beta-notice">
-            香港舖頭變動快，如發現實地資訊未 Update，歡迎隨時撳「推薦好地方」報料！
+        <div class="social-proof-banner">
+            ✨ Join professionals from startups, tech, consulting, and creative industries already exploring ThirdSpace.
         </div>
         
-        <div class="newsletter-box">
-            <h3>每週精選香港工作據點</h3>
-            <p>免費接收最新開工位、隱世 Cafe 及工作空間推薦。</p>
-            <form class="newsletter-form" id="emailForm">
-                <input type="email" name="email" class="newsletter-input" placeholder="輸入你的電郵地址" required>
-                <button type="submit" class="newsletter-btn" id="submitBtn">加入</button>
+        <div class="newsletter-box" id="waitlist-box">
+            <h3>Apply for ThirdSpace Access</h3>
+            <p>Join the waitlist to unlock premium lounges, hidden cafes, and curated community insights.</p>
+            <form class="waitlist-form" id="emailForm">
+                <div class="form-row">
+                    <input type="text" name="name" class="form-input" placeholder="Your Name" required>
+                    <input type="email" name="email" class="form-input" placeholder="Email Address" required>
+                </div>
+                <select name="persona" class="form-select" required>
+                    <option value="" disabled selected>I am a...</option>
+                    <option value="Founder">Founder</option>
+                    <option value="Freelancer">Freelancer</option>
+                    <option value="Corporate Remote">Corporate Remote</option>
+                    <option value="Creative">Creative</option>
+                    <option value="Student">Student</option>
+                    <option value="Other">Other</option>
+                </select>
+                <textarea name="working_on" class="form-textarea" placeholder="What are you currently working on? (Optional)"></textarea>
+                <textarea name="want_to_meet" class="form-textarea" placeholder="Who do you want to meet? (Optional)"></textarea>
+                
+                <button type="submit" class="newsletter-btn" id="submitBtn" style="width: 100%; padding: 1rem;">Join Waitlist</button>
             </form>
         </div>
     </header>
@@ -1124,35 +1242,51 @@
             const bestForBadgesHTML = generateBestForBadges(s);
 
             const div = document.createElement('div');
-            div.className = `card ${isFeatured ? 'featured' : ''}`;
+            div.className = `card ${isFeatured ? 'featured' : ''} ${s.isPremium ? 'gated' : ''}`;
             
-            div.innerHTML = `
-                <div class="card-meta-row">
-                    <div class="meta-left">
-                        <span class="district-badge">${s.d}</span>
+            let cardInnerHTML = `
+                <div class="card-blur-target">
+                    <div class="card-meta-row">
+                        <div class="meta-left">
+                            <span class="district-badge">${s.d}</span>
+                        </div>
+                        <div class="score-badge ${scoreClass}">
+                            <span>⭐ ${score}</span>
+                        </div>
                     </div>
-                    <div class="score-badge ${scoreClass}">
-                        <span>⭐ ${score}</span>
+                    <div class="card-title">${s.n}</div>
+                    <div class="card-address">${s.a}</div>
+                    <div class="best-for-container">
+                        ${bestForBadgesHTML}
                     </div>
-                </div>
-                <div class="card-title">${s.n}</div>
-                <div class="card-address">${s.a}</div>
-                <div class="best-for-container">
-                    ${bestForBadgesHTML}
-                </div>
-                <div class="tag-line">💡 ${s.tag}</div>
-                <div class="amenities-list">
-                    <div class="amenity-item"><span class="amenity-icon" aria-hidden="true">🔌</span><span>${s.p}</span></div>
-                    <div class="amenity-item"><span class="amenity-icon" aria-hidden="true">📶</span><span>${s.w}</span></div>
-                </div>
-                <div class="card-footer">
-                    <div class="price-info">
-                        <span class="price-label">最低消費</span>
-                        <span class="price-value">💵 ${s.pr}</span>
+                    <div class="tag-line">💡 ${s.tag}</div>
+                    <div class="amenities-list">
+                        <div class="amenity-item"><span class="amenity-icon" aria-hidden="true">🔌</span><span>${s.p}</span></div>
+                        <div class="amenity-item"><span class="amenity-icon" aria-hidden="true">📶</span><span>${s.w}</span></div>
                     </div>
-                    <a href="${mapUrl}" target="_blank" class="btn-map">📍 開地圖</a>
+                    <div class="card-footer">
+                        <div class="price-info">
+                            <span class="price-label">最低消費</span>
+                            <span class="price-value">💵 ${s.pr}</span>
+                        </div>
+                        <a href="${mapUrl}" target="_blank" class="btn-map" tabindex="${s.isPremium ? '-1' : '0'}">📍 開地圖</a>
+                    </div>
                 </div>
             `;
+
+            // Inject the lock overlay if premium
+            if (s.isPremium) {
+                cardInnerHTML += `
+                <div class="gated-overlay">
+                    <div class="gated-icon">🔒</div>
+                    <div class="gated-title">Premium Space</div>
+                    <div class="gated-desc">Join waitlist to unlock top-tier lounges and community reviews.</div>
+                    <button class="btn btn-primary" onclick="document.getElementById('waitlist-box').scrollIntoView({behavior: 'smooth'})" style="font-size: 0.85rem; padding: 0.6rem 1.2rem;">Unlock Access</button>
+                </div>
+                `;
+            }
+
+            div.innerHTML = cardInnerHTML;
             return div;
         }
 
@@ -1179,7 +1313,6 @@
                 return parseFloat(calculateProductivityScore(s)) >= 7.0;
             });
             
-            // BUG FIX: Spread syntax properly fixes the previously malformed array combination
             let combinedList = [
                 ...premiumSpots,
                 ...highScoringRegulars,
@@ -1195,6 +1328,24 @@
         }
 
         window.addEventListener('DOMContentLoaded', function() {
+            // --- NEW: Check if user already unlocked via Local Storage ---
+            let isUnlocked = localStorage.getItem('thirdspace_unlocked') === 'true';
+
+            // Dynamically gate top 20% of spaces as premium
+            spaces.forEach(s => s.calculatedScore = parseFloat(calculateProductivityScore(s)));
+            let sortedSpaces = [...spaces].sort((a, b) => b.calculatedScore - a.calculatedScore);
+            let top20Count = Math.floor(spaces.length * 0.2);
+            let premiumThreshold = sortedSpaces[top20Count - 1].calculatedScore;
+            
+            spaces.forEach(s => {
+                // Only apply premium gate if they haven't unlocked it yet
+                if (s.calculatedScore >= premiumThreshold && !isUnlocked) {
+                    s.isPremium = true;
+                } else {
+                    s.isPremium = false;
+                }
+            });
+
             buildTopPicks();
             runFilter();
 
@@ -1223,14 +1374,25 @@
                     body: data
                 })
                 .then(function() {
-                    alert('感謝訂閱 ThirdSpace！');
+                    alert('歡迎加入 ThirdSpace！Premium 空間已為您解鎖。(Premium spaces unlocked!)');
                     form.reset();
-                    btn.innerText = '加入';
+                    btn.innerText = 'Joined / 已加入';
+                    
+                    // --- NEW: Unlock Logic ---
+                    // 1. Save to browser so it stays unlocked on refresh
+                    localStorage.setItem('thirdspace_unlocked', 'true');
+                    
+                    // 2. Remove the premium flag from all data objects
+                    spaces.forEach(s => s.isPremium = false);
+                    
+                    // 3. Re-render the UI instantly to remove blurs and locks
+                    buildTopPicks();
+                    runFilter();
                 })
                 .catch(function(error) {
                     console.error(error);
                     alert('系統繁忙，請稍後再試。');
-                    btn.innerText = '加入';
+                    btn.innerText = 'Join Waitlist';
                 });
             });
         });
